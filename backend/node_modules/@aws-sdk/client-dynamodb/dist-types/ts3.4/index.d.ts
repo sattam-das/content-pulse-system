@@ -1,0 +1,13 @@
+export * from "./DynamoDBClient";
+export * from "./DynamoDB";
+export { ClientInputEndpointParameters } from "./endpoint/EndpointParameters";
+export { RuntimeExtension } from "./runtimeExtensions";
+export { DynamoDBExtensionConfiguration } from "./extensionConfiguration";
+export * from "./commands";
+export * from "./schemas/schemas_0";
+export * from "./pagination";
+export * from "./waiters";
+export * from "./models/enums";
+export * from "./models/errors";
+export * from "./models/models_0";
+export { DynamoDBServiceException } from "./models/DynamoDBServiceException";
