@@ -1,0 +1,16 @@
+{
+  "targets": {
+    "java": {
+      "package": "software.amazon.awscdk.interfaces.amplify"
+    },
+    "dotnet": {
+      "namespace": "Amazon.CDK.Interfaces.Amplify"
+    },
+    "python": {
+      "module": "aws_cdk.interfaces.aws_amplify"
+    },
+    "go": {
+      "packageName": "interfacesawsamplify"
+    }
+  }
+}

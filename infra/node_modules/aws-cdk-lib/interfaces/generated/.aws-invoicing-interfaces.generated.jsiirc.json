@@ -1,0 +1,16 @@
+{
+  "targets": {
+    "java": {
+      "package": "software.amazon.awscdk.interfaces.invoicing"
+    },
+    "dotnet": {
+      "namespace": "Amazon.CDK.Interfaces.Invoicing"
+    },
+    "python": {
+      "module": "aws_cdk.interfaces.aws_invoicing"
+    },
+    "go": {
+      "packageName": "interfacesawsinvoicing"
+    }
+  }
+}

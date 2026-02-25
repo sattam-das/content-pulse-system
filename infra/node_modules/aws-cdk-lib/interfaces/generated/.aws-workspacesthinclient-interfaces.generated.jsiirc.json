@@ -1,0 +1,16 @@
+{
+  "targets": {
+    "java": {
+      "package": "software.amazon.awscdk.interfaces.workspacesthinclient"
+    },
+    "dotnet": {
+      "namespace": "Amazon.CDK.Interfaces.WorkSpacesThinClient"
+    },
+    "python": {
+      "module": "aws_cdk.interfaces.aws_workspacesthinclient"
+    },
+    "go": {
+      "packageName": "interfacesawsworkspacesthinclient"
+    }
+  }
+}

@@ -1,0 +1,1047 @@
+{
+ "Resources": {
+  "VideoAnalysesTable003E418B": {
+   "Type": "AWS::DynamoDB::Table",
+   "Properties": {
+    "AttributeDefinitions": [
+     {
+      "AttributeName": "analysisId",
+      "AttributeType": "S"
+     }
+    ],
+    "BillingMode": "PAY_PER_REQUEST",
+    "KeySchema": [
+     {
+      "AttributeName": "analysisId",
+      "KeyType": "HASH"
+     }
+    ],
+    "TableName": "video-analyses"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "ContentPulseInfraStack/VideoAnalysesTable/Resource"
+   }
+  },
+  "CommentsTableBBDBF0A8": {
+   "Type": "AWS::DynamoDB::Table",
+   "Properties": {
+    "AttributeDefinitions": [
+     {
+      "AttributeName": "analysisId",
+      "AttributeType": "S"
+     },
+     {
+      "AttributeName": "commentId",
+      "AttributeType": "S"
+     }
+    ],
+    "BillingMode": "PAY_PER_REQUEST",
+    "KeySchema": [
+     {
+      "AttributeName": "analysisId",
+      "KeyType": "HASH"
+     },
+     {
+      "AttributeName": "commentId",
+      "KeyType": "RANGE"
+     }
+    ],
+    "TableName": "comments",
+    "TimeToLiveSpecification": {
+     "AttributeName": "ttl",
+     "Enabled": true
+    }
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "ContentPulseInfraStack/CommentsTable/Resource"
+   }
+  },
+  "AnalysisResultsTable7FFFA52B": {
+   "Type": "AWS::DynamoDB::Table",
+   "Properties": {
+    "AttributeDefinitions": [
+     {
+      "AttributeName": "analysisId",
+      "AttributeType": "S"
+     }
+    ],
+    "BillingMode": "PAY_PER_REQUEST",
+    "KeySchema": [
+     {
+      "AttributeName": "analysisId",
+      "KeyType": "HASH"
+     }
+    ],
+    "TableName": "analysis-results"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "ContentPulseInfraStack/AnalysisResultsTable/Resource"
+   }
+  },
+  "AnalyzeCommentsFunctionServiceRoleE070DF8A": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ContentPulseInfraStack/AnalyzeCommentsFunction/ServiceRole/Resource"
+   }
+  },
+  "AnalyzeCommentsFunctionServiceRoleDefaultPolicy2D053AF1": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable",
+        "dynamodb:GetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:PutItem",
+        "dynamodb:Query",
+        "dynamodb:Scan",
+        "dynamodb:UpdateItem"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "AnalysisResultsTable7FFFA52B",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::GetAtt": [
+          "VideoAnalysesTable003E418B",
+          "Arn"
+         ]
+        }
+       ]
+      },
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:DescribeTable",
+        "dynamodb:GetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:Query",
+        "dynamodb:Scan"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::GetAtt": [
+         "CommentsTableBBDBF0A8",
+         "Arn"
+        ]
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "AnalyzeCommentsFunctionServiceRoleDefaultPolicy2D053AF1",
+    "Roles": [
+     {
+      "Ref": "AnalyzeCommentsFunctionServiceRoleE070DF8A"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ContentPulseInfraStack/AnalyzeCommentsFunction/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "AnalyzeCommentsFunctionA6E5D515": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-988182841347-us-east-1",
+     "S3Key": "ca9eab318745fe137db1dbb62ff8d59ddca422a9754b6ed6dc20ddefa5e891d0.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "VIDEO_ANALYSES_TABLE": {
+       "Ref": "VideoAnalysesTable003E418B"
+      },
+      "COMMENTS_TABLE": {
+       "Ref": "CommentsTableBBDBF0A8"
+      },
+      "ANALYSIS_RESULTS_TABLE": {
+       "Ref": "AnalysisResultsTable7FFFA52B"
+      },
+      "GROQ_API_KEY": "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"
+     }
+    },
+    "FunctionName": "AnalyzeCommentsFunction",
+    "Handler": "index.handler",
+    "MemorySize": 1024,
+    "Role": {
+     "Fn::GetAtt": [
+      "AnalyzeCommentsFunctionServiceRoleE070DF8A",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs18.x",
+    "Timeout": 120
+   },
+   "DependsOn": [
+    "AnalyzeCommentsFunctionServiceRoleDefaultPolicy2D053AF1",
+    "AnalyzeCommentsFunctionServiceRoleE070DF8A"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "ContentPulseInfraStack/AnalyzeCommentsFunction/Resource",
+    "aws:asset:path": "asset.ca9eab318745fe137db1dbb62ff8d59ddca422a9754b6ed6dc20ddefa5e891d0",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "FetchCommentsFunctionServiceRoleB1932458": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ContentPulseInfraStack/FetchCommentsFunction/ServiceRole/Resource"
+   }
+  },
+  "FetchCommentsFunctionServiceRoleDefaultPolicyA39AD732": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable",
+        "dynamodb:GetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:PutItem",
+        "dynamodb:Query",
+        "dynamodb:Scan",
+        "dynamodb:UpdateItem"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "CommentsTableBBDBF0A8",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::GetAtt": [
+          "VideoAnalysesTable003E418B",
+          "Arn"
+         ]
+        }
+       ]
+      },
+      {
+       "Action": "lambda:InvokeFunction",
+       "Effect": "Allow",
+       "Resource": "*"
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "FetchCommentsFunctionServiceRoleDefaultPolicyA39AD732",
+    "Roles": [
+     {
+      "Ref": "FetchCommentsFunctionServiceRoleB1932458"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ContentPulseInfraStack/FetchCommentsFunction/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "FetchCommentsFunctionE3203F31": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-988182841347-us-east-1",
+     "S3Key": "c39e6742d7124a67c6f885ec0df2793c5cc870a7d7b89becf2ab76643380a999.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "VIDEO_ANALYSES_TABLE": {
+       "Ref": "VideoAnalysesTable003E418B"
+      },
+      "COMMENTS_TABLE": {
+       "Ref": "CommentsTableBBDBF0A8"
+      },
+      "YOUTUBE_API_KEY": "AIzaSyA4qN1PWNC0NqATQYT9prmyCIFL5gTcKmk",
+      "ANALYZE_LAMBDA_NAME": {
+       "Ref": "AnalyzeCommentsFunctionA6E5D515"
+      }
+     }
+    },
+    "Handler": "index.handler",
+    "MemorySize": 1024,
+    "Role": {
+     "Fn::GetAtt": [
+      "FetchCommentsFunctionServiceRoleB1932458",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs18.x",
+    "Timeout": 300
+   },
+   "DependsOn": [
+    "FetchCommentsFunctionServiceRoleDefaultPolicyA39AD732",
+    "FetchCommentsFunctionServiceRoleB1932458"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "ContentPulseInfraStack/FetchCommentsFunction/Resource",
+    "aws:asset:path": "asset.c39e6742d7124a67c6f885ec0df2793c5cc870a7d7b89becf2ab76643380a999",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "GetStatusFunctionServiceRole5FA5CDEE": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ContentPulseInfraStack/GetStatusFunction/ServiceRole/Resource"
+   }
+  },
+  "GetStatusFunctionServiceRoleDefaultPolicyB690E6F4": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:DescribeTable",
+        "dynamodb:GetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:Query",
+        "dynamodb:Scan"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "AnalysisResultsTable7FFFA52B",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::GetAtt": [
+          "VideoAnalysesTable003E418B",
+          "Arn"
+         ]
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "GetStatusFunctionServiceRoleDefaultPolicyB690E6F4",
+    "Roles": [
+     {
+      "Ref": "GetStatusFunctionServiceRole5FA5CDEE"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "ContentPulseInfraStack/GetStatusFunction/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "GetStatusFunction4DB2BCBB": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-988182841347-us-east-1",
+     "S3Key": "25b84c3f6906d28ac014f4c31f689b48a248d1fdb0825575cc7362a331bfa9fd.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "VIDEO_ANALYSES_TABLE": {
+       "Ref": "VideoAnalysesTable003E418B"
+      },
+      "ANALYSIS_RESULTS_TABLE": {
+       "Ref": "AnalysisResultsTable7FFFA52B"
+      }
+     }
+    },
+    "Handler": "index.handler",
+    "MemorySize": 256,
+    "Role": {
+     "Fn::GetAtt": [
+      "GetStatusFunctionServiceRole5FA5CDEE",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs18.x",
+    "Timeout": 10
+   },
+   "DependsOn": [
+    "GetStatusFunctionServiceRoleDefaultPolicyB690E6F4",
+    "GetStatusFunctionServiceRole5FA5CDEE"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "ContentPulseInfraStack/GetStatusFunction/Resource",
+    "aws:asset:path": "asset.25b84c3f6906d28ac014f4c31f689b48a248d1fdb0825575cc7362a331bfa9fd",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "ContentPulseApiB23AC188": {
+   "Type": "AWS::ApiGateway::RestApi",
+   "Properties": {
+    "Name": "ContentPulse API"
+   },
+   "Metadata": {
+    "aws:cdk:path": "ContentPulseInfraStack/ContentPulseApi/Resource"
+   }
+  },
+  "ContentPulseApiDeployment3ABDD1308ee452a36510cf00a3ececf6a158c9a5": {
+   "Type": "AWS::ApiGateway::Deployment",
+   "Properties": {
+    "Description": "Automatically created by the RestApi construct",
+    "RestApiId": {
+     "Ref": "ContentPulseApiB23AC188"
+    }
+   },
+   "DependsOn": [
+    "ContentPulseApianalysisidGETDE105440",
+    "ContentPulseApianalysisidOPTIONS842B0B4E",
+    "ContentPulseApianalysisidF152B07C",
+    "ContentPulseApianalysisOPTIONSAFCF8FF7",
+    "ContentPulseApianalysis84FE1BE3",
+    "ContentPulseApianalyzeOPTIONSF0AB8F90",
+    "ContentPulseApianalyzePOST4702B35A",
+    "ContentPulseApianalyzeC5B8BC12",
+    "ContentPulseApiOPTIONS5F1E17A4"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "ContentPulseInfraStack/ContentPulseApi/Deployment/Resource",
+    "aws:cdk:do-not-refactor": true
+   }
+  },
+  "ContentPulseApiDeploymentStageprod0BF875DD": {
+   "Type": "AWS::ApiGateway::Stage",
+   "Properties": {
+    "DeploymentId": {
+     "Ref": "ContentPulseApiDeployment3ABDD1308ee452a36510cf00a3ececf6a158c9a5"
+    },
+    "MethodSettings": [
+     {
+      "DataTraceEnabled": false,
+      "HttpMethod": "*",
+      "MetricsEnabled": true,
+      "ResourcePath": "/*"
+     }
+    ],
+    "RestApiId": {
+     "Ref": "ContentPulseApiB23AC188"
+    },
+    "StageName": "prod"
+   },
+   "Metadata": {
+    "aws:cdk:path": "ContentPulseInfraStack/ContentPulseApi/DeploymentStage.prod/Resource"
+   }
+  },
+  "ContentPulseApiOPTIONS5F1E17A4": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "ApiKeyRequired": false,
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,PUT,POST,DELETE,PATCH,HEAD'"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Access-Control-Allow-Methods": true
+      },
+      "StatusCode": "204"
+     }
+    ],
+    "ResourceId": {
+     "Fn::GetAtt": [
+      "ContentPulseApiB23AC188",
+      "RootResourceId"
+     ]
+    },
+    "RestApiId": {
+     "Ref": "ContentPulseApiB23AC188"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ContentPulseInfraStack/ContentPulseApi/Default/OPTIONS/Resource"
+   }
+  },
+  "ContentPulseApianalyzeC5B8BC12": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Fn::GetAtt": [
+      "ContentPulseApiB23AC188",
+      "RootResourceId"
+     ]
+    },
+    "PathPart": "analyze",
+    "RestApiId": {
+     "Ref": "ContentPulseApiB23AC188"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ContentPulseInfraStack/ContentPulseApi/Default/analyze/Resource"
+   }
+  },
+  "ContentPulseApianalyzeOPTIONSF0AB8F90": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "ApiKeyRequired": false,
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,PUT,POST,DELETE,PATCH,HEAD'"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Access-Control-Allow-Methods": true
+      },
+      "StatusCode": "204"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "ContentPulseApianalyzeC5B8BC12"
+    },
+    "RestApiId": {
+     "Ref": "ContentPulseApiB23AC188"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ContentPulseInfraStack/ContentPulseApi/Default/analyze/OPTIONS/Resource"
+   }
+  },
+  "ContentPulseApianalyzePOSTApiPermissionContentPulseInfraStackContentPulseApi05534FA3POSTanalyzeDE569922": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "FetchCommentsFunctionE3203F31",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:aws:execute-api:us-east-1:988182841347:",
+       {
+        "Ref": "ContentPulseApiB23AC188"
+       },
+       "/",
+       {
+        "Ref": "ContentPulseApiDeploymentStageprod0BF875DD"
+       },
+       "/POST/analyze"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ContentPulseInfraStack/ContentPulseApi/Default/analyze/POST/ApiPermission.ContentPulseInfraStackContentPulseApi05534FA3.POST..analyze"
+   }
+  },
+  "ContentPulseApianalyzePOSTApiPermissionTestContentPulseInfraStackContentPulseApi05534FA3POSTanalyze09AEF340": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "FetchCommentsFunctionE3203F31",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:aws:execute-api:us-east-1:988182841347:",
+       {
+        "Ref": "ContentPulseApiB23AC188"
+       },
+       "/test-invoke-stage/POST/analyze"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ContentPulseInfraStack/ContentPulseApi/Default/analyze/POST/ApiPermission.Test.ContentPulseInfraStackContentPulseApi05534FA3.POST..analyze"
+   }
+  },
+  "ContentPulseApianalyzePOST4702B35A": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "POST",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "FetchCommentsFunctionE3203F31",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "ResourceId": {
+     "Ref": "ContentPulseApianalyzeC5B8BC12"
+    },
+    "RestApiId": {
+     "Ref": "ContentPulseApiB23AC188"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ContentPulseInfraStack/ContentPulseApi/Default/analyze/POST/Resource"
+   }
+  },
+  "ContentPulseApianalysis84FE1BE3": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Fn::GetAtt": [
+      "ContentPulseApiB23AC188",
+      "RootResourceId"
+     ]
+    },
+    "PathPart": "analysis",
+    "RestApiId": {
+     "Ref": "ContentPulseApiB23AC188"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ContentPulseInfraStack/ContentPulseApi/Default/analysis/Resource"
+   }
+  },
+  "ContentPulseApianalysisOPTIONSAFCF8FF7": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "ApiKeyRequired": false,
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,PUT,POST,DELETE,PATCH,HEAD'"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Access-Control-Allow-Methods": true
+      },
+      "StatusCode": "204"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "ContentPulseApianalysis84FE1BE3"
+    },
+    "RestApiId": {
+     "Ref": "ContentPulseApiB23AC188"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ContentPulseInfraStack/ContentPulseApi/Default/analysis/OPTIONS/Resource"
+   }
+  },
+  "ContentPulseApianalysisidF152B07C": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "ContentPulseApianalysis84FE1BE3"
+    },
+    "PathPart": "{id}",
+    "RestApiId": {
+     "Ref": "ContentPulseApiB23AC188"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ContentPulseInfraStack/ContentPulseApi/Default/analysis/{id}/Resource"
+   }
+  },
+  "ContentPulseApianalysisidOPTIONS842B0B4E": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "ApiKeyRequired": false,
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,GET,PUT,POST,DELETE,PATCH,HEAD'"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Access-Control-Allow-Methods": true
+      },
+      "StatusCode": "204"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "ContentPulseApianalysisidF152B07C"
+    },
+    "RestApiId": {
+     "Ref": "ContentPulseApiB23AC188"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ContentPulseInfraStack/ContentPulseApi/Default/analysis/{id}/OPTIONS/Resource"
+   }
+  },
+  "ContentPulseApianalysisidGETApiPermissionContentPulseInfraStackContentPulseApi05534FA3GETanalysisidF7092094": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "GetStatusFunction4DB2BCBB",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:aws:execute-api:us-east-1:988182841347:",
+       {
+        "Ref": "ContentPulseApiB23AC188"
+       },
+       "/",
+       {
+        "Ref": "ContentPulseApiDeploymentStageprod0BF875DD"
+       },
+       "/GET/analysis/*"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ContentPulseInfraStack/ContentPulseApi/Default/analysis/{id}/GET/ApiPermission.ContentPulseInfraStackContentPulseApi05534FA3.GET..analysis.{id}"
+   }
+  },
+  "ContentPulseApianalysisidGETApiPermissionTestContentPulseInfraStackContentPulseApi05534FA3GETanalysisid6DDF988C": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "GetStatusFunction4DB2BCBB",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:aws:execute-api:us-east-1:988182841347:",
+       {
+        "Ref": "ContentPulseApiB23AC188"
+       },
+       "/test-invoke-stage/GET/analysis/*"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ContentPulseInfraStack/ContentPulseApi/Default/analysis/{id}/GET/ApiPermission.Test.ContentPulseInfraStackContentPulseApi05534FA3.GET..analysis.{id}"
+   }
+  },
+  "ContentPulseApianalysisidGETDE105440": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "GET",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "GetStatusFunction4DB2BCBB",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "ResourceId": {
+     "Ref": "ContentPulseApianalysisidF152B07C"
+    },
+    "RestApiId": {
+     "Ref": "ContentPulseApiB23AC188"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ContentPulseInfraStack/ContentPulseApi/Default/analysis/{id}/GET/Resource"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/02QyW6EMAyGn2XuwUVMq55npuqti5jekQEPNUuCcChCUd69SqDL6f+8/bacQXafQnrARZKq7pKeS3BXi1WncJHC1avGwdQluA8se1KXm47gVY9DWWOhTU2twGuU51lXlo1WjAO43GwDUd9Nz9Uawo28kmOBImQFTkGUHOE8Vx3ZMwrt9uAuN/3rGoZpGliEjfYKR27Q0oIruJzEnkaO63Z8orE360Dahuy/6GqxiYdtkJOYeaoorn0h+2nqUNzpp7o7R/b+Lx1vD0asm9DzNttxtl6Fv0Ard1/ZAzxCemiFOZlmbXkgyDf9BkjjDXN9AQAA"
+   },
+   "Metadata": {
+    "aws:cdk:path": "ContentPulseInfraStack/CDKMetadata/Default"
+   }
+  }
+ },
+ "Outputs": {
+  "ContentPulseApiEndpoint2D710EA4": {
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "https://",
+      {
+       "Ref": "ContentPulseApiB23AC188"
+      },
+      ".execute-api.us-east-1.",
+      {
+       "Ref": "AWS::URLSuffix"
+      },
+      "/",
+      {
+       "Ref": "ContentPulseApiDeploymentStageprod0BF875DD"
+      },
+      "/"
+     ]
+    ]
+   }
+  },
+  "ApiUrl": {
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "https://",
+      {
+       "Ref": "ContentPulseApiB23AC188"
+      },
+      ".execute-api.us-east-1.",
+      {
+       "Ref": "AWS::URLSuffix"
+      },
+      "/",
+      {
+       "Ref": "ContentPulseApiDeploymentStageprod0BF875DD"
+      },
+      "/"
+     ]
+    ]
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.FlagsMenuOptions = void 0;
+var FlagsMenuOptions;
+(function (FlagsMenuOptions) {
+    FlagsMenuOptions["ALL_TO_RECOMMENDED"] = "Set all flags to recommended values";
+    FlagsMenuOptions["UNCONFIGURED_TO_RECOMMENDED"] = "Set unconfigured flags to recommended values";
+    FlagsMenuOptions["UNCONFIGURED_TO_DEFAULT"] = "Set unconfigured flags to their implied configuration (record current behavior)";
+    FlagsMenuOptions["MODIFY_SPECIFIC_FLAG"] = "Modify a specific flag";
+    FlagsMenuOptions["EXIT"] = "Exit";
+})(FlagsMenuOptions || (exports.FlagsMenuOptions = FlagsMenuOptions = {}));
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidHlwZXMuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJ0eXBlcy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7QUFFQSxJQUFZLGdCQU1YO0FBTkQsV0FBWSxnQkFBZ0I7SUFDMUIsOEVBQTBELENBQUE7SUFDMUQsZ0dBQTRFLENBQUE7SUFDNUUsK0hBQTJHLENBQUE7SUFDM0csbUVBQStDLENBQUE7SUFDL0MsaUNBQWEsQ0FBQTtBQUNmLENBQUMsRUFOVyxnQkFBZ0IsZ0NBQWhCLGdCQUFnQixRQU0zQiIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB0eXBlIHsgRmxhZ3NPcHRpb25zIH0gZnJvbSAnLi4vLi4vY2xpL3VzZXItaW5wdXQnO1xuXG5leHBvcnQgZW51bSBGbGFnc01lbnVPcHRpb25zIHtcbiAgQUxMX1RPX1JFQ09NTUVOREVEID0gJ1NldCBhbGwgZmxhZ3MgdG8gcmVjb21tZW5kZWQgdmFsdWVzJyxcbiAgVU5DT05GSUdVUkVEX1RPX1JFQ09NTUVOREVEID0gJ1NldCB1bmNvbmZpZ3VyZWQgZmxhZ3MgdG8gcmVjb21tZW5kZWQgdmFsdWVzJyxcbiAgVU5DT05GSUdVUkVEX1RPX0RFRkFVTFQgPSAnU2V0IHVuY29uZmlndXJlZCBmbGFncyB0byB0aGVpciBpbXBsaWVkIGNvbmZpZ3VyYXRpb24gKHJlY29yZCBjdXJyZW50IGJlaGF2aW9yKScsXG4gIE1PRElGWV9TUEVDSUZJQ19GTEFHID0gJ01vZGlmeSBhIHNwZWNpZmljIGZsYWcnLFxuICBFWElUID0gJ0V4aXQnLFxufVxuXG5leHBvcnQgaW50ZXJmYWNlIEZsYWdPcGVyYXRpb25zUGFyYW1zIGV4dGVuZHMgRmxhZ3NPcHRpb25zIHtcbiAgLyoqIFVzZXIgcHJvdmlkZWQgLS1hcHAgb3B0aW9uICovXG4gIGFwcD86IHN0cmluZztcbn1cbiJdfQ==

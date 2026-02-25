@@ -1,0 +1,16 @@
+{
+  "targets": {
+    "java": {
+      "package": "software.amazon.awscdk.interfaces.ram"
+    },
+    "dotnet": {
+      "namespace": "Amazon.CDK.Interfaces.RAM"
+    },
+    "python": {
+      "module": "aws_cdk.interfaces.aws_ram"
+    },
+    "go": {
+      "packageName": "interfacesawsram"
+    }
+  }
+}

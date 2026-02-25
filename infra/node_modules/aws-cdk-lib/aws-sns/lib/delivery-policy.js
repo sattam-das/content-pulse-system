@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.BackoffFunction=void 0;var BackoffFunction;(function(BackoffFunction2){BackoffFunction2.ARITHMETIC="ARITHMETIC",BackoffFunction2.EXPONENTIAL="EXPONENTIAL",BackoffFunction2.GEOMETRIC="GEOMETRIC",BackoffFunction2.LINEAR="LINEAR"})(BackoffFunction||(exports.BackoffFunction=BackoffFunction={}));

@@ -1,0 +1,16 @@
+{
+  "targets": {
+    "java": {
+      "package": "software.amazon.awscdk.interfaces.managedblockchain"
+    },
+    "dotnet": {
+      "namespace": "Amazon.CDK.Interfaces.ManagedBlockchain"
+    },
+    "python": {
+      "module": "aws_cdk.interfaces.aws_managedblockchain"
+    },
+    "go": {
+      "packageName": "interfacesawsmanagedblockchain"
+    }
+  }
+}

@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.ImagePullPrincipalType=void 0;var ImagePullPrincipalType;(function(ImagePullPrincipalType2){ImagePullPrincipalType2.CODEBUILD="CODEBUILD",ImagePullPrincipalType2.SERVICE_ROLE="SERVICE_ROLE"})(ImagePullPrincipalType||(exports.ImagePullPrincipalType=ImagePullPrincipalType={}));

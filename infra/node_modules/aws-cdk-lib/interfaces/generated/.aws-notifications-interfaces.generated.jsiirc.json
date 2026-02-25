@@ -1,0 +1,16 @@
+{
+  "targets": {
+    "java": {
+      "package": "software.amazon.awscdk.interfaces.notifications"
+    },
+    "dotnet": {
+      "namespace": "Amazon.CDK.Interfaces.Notifications"
+    },
+    "python": {
+      "module": "aws_cdk.interfaces.aws_notifications"
+    },
+    "go": {
+      "packageName": "interfacesawsnotifications"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "targets": {
+    "java": {
+      "package": "software.amazon.awscdk.interfaces.mediatailor"
+    },
+    "dotnet": {
+      "namespace": "Amazon.CDK.Interfaces.MediaTailor"
+    },
+    "python": {
+      "module": "aws_cdk.interfaces.aws_mediatailor"
+    },
+    "go": {
+      "packageName": "interfacesawsmediatailor"
+    }
+  }
+}

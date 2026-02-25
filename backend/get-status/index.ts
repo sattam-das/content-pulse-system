@@ -45,6 +45,7 @@ export const handler = async (event: any) => {
                     commonQuestions: results.Item.commonQuestions || [],
                     confusionPoints: results.Item.confusionPoints || [],
                     timelineMarkers: results.Item.timelineMarkers || [],
+                    sentimentBreakdown: results.Item.sentimentBreakdown || null,
                     summary: results.Item.summary
                 } as any;
             }

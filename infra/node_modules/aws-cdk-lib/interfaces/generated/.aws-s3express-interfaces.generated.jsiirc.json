@@ -1,0 +1,16 @@
+{
+  "targets": {
+    "java": {
+      "package": "software.amazon.awscdk.interfaces.s3express"
+    },
+    "dotnet": {
+      "namespace": "Amazon.CDK.Interfaces.S3Express"
+    },
+    "python": {
+      "module": "aws_cdk.interfaces.aws_s3express"
+    },
+    "go": {
+      "packageName": "interfacesawss3express"
+    }
+  }
+}

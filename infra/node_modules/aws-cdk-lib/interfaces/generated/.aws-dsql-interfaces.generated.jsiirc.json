@@ -1,0 +1,16 @@
+{
+  "targets": {
+    "java": {
+      "package": "software.amazon.awscdk.interfaces.dsql"
+    },
+    "dotnet": {
+      "namespace": "Amazon.CDK.Interfaces.DSQL"
+    },
+    "python": {
+      "module": "aws_cdk.interfaces.aws_dsql"
+    },
+    "go": {
+      "packageName": "interfacesawsdsql"
+    }
+  }
+}

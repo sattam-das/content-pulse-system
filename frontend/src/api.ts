@@ -31,6 +31,14 @@ export interface TimelineMarker {
   sentiment: string;
 }
 
+export interface SentimentBreakdown {
+  positive: number;
+  negative: number;
+  neutral: number;
+  questions: number;
+  overallSentiment: string;
+}
+
 export interface AnalysisResult {
   analysisId: string;
   videoId: string;
@@ -40,6 +48,7 @@ export interface AnalysisResult {
     commonQuestions: CommonQuestion[];
     confusionPoints: ConfusionPoint[];
     timelineMarkers: TimelineMarker[];
+    sentimentBreakdown?: SentimentBreakdown;
     summary: string;
   } | null;
 }

@@ -1,0 +1,16 @@
+{
+  "targets": {
+    "java": {
+      "package": "software.amazon.awscdk.interfaces.mediapackagev2"
+    },
+    "dotnet": {
+      "namespace": "Amazon.CDK.Interfaces.MediaPackageV2"
+    },
+    "python": {
+      "module": "aws_cdk.interfaces.aws_mediapackagev2"
+    },
+    "go": {
+      "packageName": "interfacesawsmediapackagev2"
+    }
+  }
+}

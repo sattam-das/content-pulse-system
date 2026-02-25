@@ -1,0 +1,16 @@
+{
+  "targets": {
+    "java": {
+      "package": "software.amazon.awscdk.interfaces.mpa"
+    },
+    "dotnet": {
+      "namespace": "Amazon.CDK.Interfaces.MPA"
+    },
+    "python": {
+      "module": "aws_cdk.interfaces.aws_mpa"
+    },
+    "go": {
+      "packageName": "interfacesawsmpa"
+    }
+  }
+}

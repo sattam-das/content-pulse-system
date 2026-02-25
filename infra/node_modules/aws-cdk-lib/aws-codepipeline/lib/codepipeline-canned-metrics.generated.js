@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.CodePipelineMetrics=void 0;class CodePipelineMetrics{static failedPipelineExecutionsSum(dimensions){return{namespace:"AWS/CodePipeline",metricName:"FailedPipelineExecutions",dimensionsMap:dimensions,statistic:"Sum"}}}exports.CodePipelineMetrics=CodePipelineMetrics;

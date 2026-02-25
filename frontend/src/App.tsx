@@ -4,20 +4,36 @@ import { BackgroundOrbs } from './components/BackgroundOrbs';
 import InputScreen from './components/InputScreen';
 import LoadingScreen from './components/LoadingScreen';
 import ResultsDashboard from './components/ResultsDashboard';
+import AboutPage from './components/AboutPage';
+import FAQPage from './components/FAQPage';
 import { startAnalysis, getAnalysisStatus, getMockAnalysisResult } from './api';
 import type { AnalysisResult } from './api';
 
-type AppScreen = 'input' | 'loading' | 'results';
+type AppScreen = 'input' | 'loading' | 'results' | 'about' | 'faq';
 
 // Set to true to use mock data without needing a running backend
-const USE_MOCK = true;
+const USE_MOCK = false;
 
 function App() {
   const [screen, setScreen] = useState<AppScreen>('input');
+  const [previousScreen, setPreviousScreen] = useState<AppScreen>('input');
   const [analysisId, setAnalysisId] = useState<string | null>(null);
   const [analysisResult, setAnalysisResult] = useState<AnalysisResult | null>(null);
   const [commentCount, setCommentCount] = useState<number | undefined>();
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleNavigate = useCallback((target: string) => {
+    if (target === 'about' || target === 'faq') {
+      setPreviousScreen(screen);
+      setScreen(target as AppScreen);
+    } else if (target === 'input') {
+      setScreen('input');
+    }
+  }, [screen]);
+
+  const handleBackFromAbout = useCallback(() => {
+    setScreen(previousScreen);
+  }, [previousScreen]);
 
   const handleSubmit = useCallback(async (url: string) => {
     setIsSubmitting(true);
@@ -108,7 +124,7 @@ function App() {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
             >
-              <InputScreen onSubmit={handleSubmit} isSubmitting={isSubmitting} />
+              <InputScreen onSubmit={handleSubmit} isSubmitting={isSubmitting} onNavigate={handleNavigate} />
             </motion.div>
           )}
 
@@ -132,7 +148,31 @@ function App() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <ResultsDashboard data={analysisResult} onReset={handleReset} />
+              <ResultsDashboard data={analysisResult} onReset={handleReset} onNavigate={handleNavigate} />
+            </motion.div>
+          )}
+
+          {screen === 'about' && (
+            <motion.div
+              key="about"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <AboutPage onBack={handleBackFromAbout} onNavigate={handleNavigate} />
+            </motion.div>
+          )}
+
+          {screen === 'faq' && (
+            <motion.div
+              key="faq"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <FAQPage onBack={handleBackFromAbout} onNavigate={handleNavigate} />
             </motion.div>
           )}
         </AnimatePresence>
@@ -142,3 +182,4 @@ function App() {
 }
 
 export default App;
+

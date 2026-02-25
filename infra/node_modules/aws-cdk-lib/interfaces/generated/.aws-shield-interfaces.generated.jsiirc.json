@@ -1,0 +1,16 @@
+{
+  "targets": {
+    "java": {
+      "package": "software.amazon.awscdk.interfaces.shield"
+    },
+    "dotnet": {
+      "namespace": "Amazon.CDK.Interfaces.Shield"
+    },
+    "python": {
+      "module": "aws_cdk.interfaces.aws_shield"
+    },
+    "go": {
+      "packageName": "interfacesawsshield"
+    }
+  }
+}

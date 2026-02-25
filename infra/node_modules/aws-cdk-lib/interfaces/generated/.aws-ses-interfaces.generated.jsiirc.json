@@ -1,0 +1,16 @@
+{
+  "targets": {
+    "java": {
+      "package": "software.amazon.awscdk.interfaces.ses"
+    },
+    "dotnet": {
+      "namespace": "Amazon.CDK.Interfaces.SES"
+    },
+    "python": {
+      "module": "aws_cdk.interfaces.aws_ses"
+    },
+    "go": {
+      "packageName": "interfacesawsses"
+    }
+  }
+}

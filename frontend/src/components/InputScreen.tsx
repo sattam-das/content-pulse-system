@@ -7,6 +7,7 @@ import { Navbar } from './Navbar';
 interface InputScreenProps {
   onSubmit: (url: string) => void;
   isSubmitting: boolean;
+  onNavigate: (screen: string) => void;
 }
 
 const YOUTUBE_URL_REGEX = /^(https?:\/\/)?(www\.)?(youtube\.com\/(watch\?v=|embed\/|v\/)|youtu\.be\/)[\w-]{11}/;
@@ -39,7 +40,7 @@ const FloatingWidget = ({ title, value, percentage, className }: any) => (
   </motion.div>
 );
 
-export default function InputScreen({ onSubmit, isSubmitting }: InputScreenProps) {
+export default function InputScreen({ onSubmit, isSubmitting, onNavigate }: InputScreenProps) {
   const [url, setUrl] = useState('');
   const [error, setError] = useState('');
 
@@ -62,7 +63,7 @@ export default function InputScreen({ onSubmit, isSubmitting }: InputScreenProps
 
   return (
     <div className="min-h-screen bg-[#020617] text-white relative flex flex-col">
-      <Navbar />
+      <Navbar currentScreen="input" onNavigate={onNavigate} />
       
       {/* Hero Content */}
       <div id="hero" className="relative z-10 flex flex-col items-center justify-center px-6 pt-40 pb-32">
@@ -161,11 +162,11 @@ export default function InputScreen({ onSubmit, isSubmitting }: InputScreenProps
             </p>
             
             <div className="flex flex-wrap gap-4">
-              <button className="px-8 py-4 rounded-full bg-white text-black font-bold hover:bg-slate-200 transition-all">
+              <button
+                onClick={() => document.getElementById('hero')?.scrollIntoView({ behavior: 'smooth' })}
+                className="px-8 py-4 rounded-full bg-white text-black font-bold hover:bg-slate-200 transition-all"
+              >
                 Get Started — For Free!
-              </button>
-              <button className="px-8 py-4 rounded-full border border-white/20 text-white font-bold hover:bg-white/5 transition-all">
-                Book A Demo
               </button>
             </div>
           </motion.div>
@@ -281,7 +282,7 @@ export default function InputScreen({ onSubmit, isSubmitting }: InputScreenProps
       </section>
 
       {/* Features Section */}
-      <section id="about" className="relative z-10 px-6 py-32 max-w-6xl mx-auto w-full">
+      <section id="features" className="relative z-10 px-6 py-32 max-w-6xl mx-auto w-full">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}

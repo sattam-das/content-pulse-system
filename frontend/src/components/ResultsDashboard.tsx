@@ -10,9 +10,10 @@ import type { AnalysisResult } from '../api';
 interface ResultsDashboardProps {
   data: AnalysisResult;
   onReset: () => void;
+  onNavigate: (screen: string) => void;
 }
 
-export default function ResultsDashboard({ data, onReset }: ResultsDashboardProps) {
+export default function ResultsDashboard({ data, onReset, onNavigate }: ResultsDashboardProps) {
   const results = data.results!;
 
   // Transform timelineMarkers into chart data
@@ -24,24 +25,37 @@ export default function ResultsDashboard({ data, onReset }: ResultsDashboardProp
     mentions: marker.mentions,
   }));
 
-  // Calculate stats from real data
+  // Use real sentiment data from AI if available, fallback to timeline-based
   const totalComments = data.commentCount;
-  const positiveMarkers = results.timelineMarkers.filter(m => m.sentiment === 'positive');
-  const totalPositiveMentions = positiveMarkers.reduce((sum, m) => sum + m.mentions, 0);
-  const totalMentions = results.timelineMarkers.reduce((sum, m) => sum + m.mentions, 0);
-  const positivePct = totalMentions > 0 ? Math.round((totalPositiveMentions / totalMentions) * 100) : 0;
+  const sentiment = results.sentimentBreakdown || null;
+  const totalSentimentComments = sentiment
+    ? (sentiment.positive + sentiment.negative + sentiment.neutral + sentiment.questions)
+    : 0;
+
+  const positivePct = sentiment && totalSentimentComments > 0
+    ? Math.round((sentiment.positive / totalSentimentComments) * 100)
+    : 0;
+  const negativePct = sentiment && totalSentimentComments > 0
+    ? Math.round((sentiment.negative / totalSentimentComments) * 100)
+    : 0;
+  const neutralPct = sentiment && totalSentimentComments > 0
+    ? Math.round((sentiment.neutral / totalSentimentComments) * 100)
+    : 0;
+  const questionsPct = sentiment && totalSentimentComments > 0
+    ? Math.round((sentiment.questions / totalSentimentComments) * 100)
+    : 0;
 
   const sentimentStats = [
     { label: 'Total Comments', value: totalComments.toLocaleString(), change: '+5.1%', color: 'text-indigo-400' },
-    { label: 'Positive Sentiment', value: `${positivePct}%`, change: '+12.4%', color: 'text-green-400' },
+    { label: 'Positive Sentiment', value: `${positivePct}%`, change: sentiment?.overallSentiment || '', color: 'text-green-400' },
     { label: 'Questions Found', value: results.commonQuestions.length.toString(), change: `${results.commonQuestions.reduce((s, q) => s + q.count, 0)} total`, color: 'text-pink-400' },
   ];
 
   const categoryBreakdown = [
-    { name: 'Questions', value: results.commonQuestions.length > 0 ? 45 : 0, color: '#6366f1' },
-    { name: 'Confusion', value: results.confusionPoints.length > 0 ? 25 : 0, color: '#ec4899' },
-    { name: 'Positive', value: positiveMarkers.length > 0 ? 20 : 0, color: '#22c55e' },
-    { name: 'Other', value: 10, color: '#64748b' },
+    { name: 'Positive', value: positivePct || 0, color: '#22c55e' },
+    { name: 'Negative', value: negativePct || 0, color: '#ef4444' },
+    { name: 'Neutral', value: neutralPct || 0, color: '#64748b' },
+    { name: 'Questions', value: questionsPct || 0, color: '#6366f1' },
   ];
 
   const healthScore = Math.min(100, Math.max(0, positivePct));
@@ -52,7 +66,7 @@ export default function ResultsDashboard({ data, onReset }: ResultsDashboardProp
 
   return (
     <div className="min-h-screen text-white overflow-y-auto relative flex flex-col">
-      <Navbar />
+      <Navbar currentScreen="results" onNavigate={onNavigate} />
       
       <div className="relative z-10 px-6 pb-6 md:px-12 md:pb-12 pt-28 max-w-7xl mx-auto w-full">
         {/* Header */}

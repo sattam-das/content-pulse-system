@@ -1,7 +1,8 @@
 import * as cdk from "aws-cdk-lib";
 import { Construct } from "constructs";
 import * as dynamodb from "aws-cdk-lib/aws-dynamodb";
-import * as lambda from "aws-cdk-lib/aws-lambda";
+import * as lambda from "aws-cdk-lib/aws-lambda-nodejs";
+import { Runtime } from "aws-cdk-lib/aws-lambda";
 import * as apigateway from "aws-cdk-lib/aws-apigateway";
 import * as iam from "aws-cdk-lib/aws-iam";
 import * as path from "path";
@@ -41,44 +42,65 @@ export class InfraStack extends cdk.Stack {
       },
     );
 
-    // 2. Lambda Functions
-    const fetchCommentsLambda = new lambda.Function(
-      this,
-      "FetchCommentsFunction",
-      {
-        runtime: lambda.Runtime.NODEJS_18_X,
-        handler: "index.handler",
-        code: lambda.Code.fromAsset(
-          path.join(__dirname, "../../backend/fetch-comments"),
-        ),
-        timeout: cdk.Duration.seconds(30),
-        memorySize: 512,
-        environment: {
-          VIDEO_ANALYSES_TABLE: videoAnalysesTable.tableName,
-          COMMENTS_TABLE: commentsTable.tableName,
-          YOUTUBE_API_KEY: process.env.YOUTUBE_API_KEY || "",
-          // The fetch lambda will trigger the analyze lambda asynchronously to avoid blocking the API
-          ANALYZE_LAMBDA_NAME: "AnalyzeCommentsFunction",
-        },
-      },
-    );
-
-    const analyzeCommentsLambda = new lambda.Function(
+    // 2. Lambda Functions (NodejsFunction auto-bundles TypeScript with esbuild)
+    const analyzeCommentsLambda = new lambda.NodejsFunction(
       this,
       "AnalyzeCommentsFunction",
       {
         functionName: "AnalyzeCommentsFunction",
-        runtime: lambda.Runtime.NODEJS_18_X,
-        handler: "index.handler",
-        code: lambda.Code.fromAsset(
-          path.join(__dirname, "../../backend/analyze-comments"),
-        ),
-        timeout: cdk.Duration.seconds(60),
+        runtime: Runtime.NODEJS_18_X,
+        entry: path.join(__dirname, "../../backend/analyze-comments/index.ts"),
+        handler: "handler",
+        timeout: cdk.Duration.seconds(120),
         memorySize: 1024,
         environment: {
           VIDEO_ANALYSES_TABLE: videoAnalysesTable.tableName,
           COMMENTS_TABLE: commentsTable.tableName,
           ANALYSIS_RESULTS_TABLE: analysisResultsTable.tableName,
+          GROQ_API_KEY: process.env.GROQ_API_KEY || "",
+        },
+        bundling: {
+          externalModules: [], // Bundle all dependencies
+        },
+      },
+    );
+
+    const fetchCommentsLambda = new lambda.NodejsFunction(
+      this,
+      "FetchCommentsFunction",
+      {
+        runtime: Runtime.NODEJS_18_X,
+        entry: path.join(__dirname, "../../backend/fetch-comments/index.ts"),
+        handler: "handler",
+        timeout: cdk.Duration.seconds(300),
+        memorySize: 1024,
+        environment: {
+          VIDEO_ANALYSES_TABLE: videoAnalysesTable.tableName,
+          COMMENTS_TABLE: commentsTable.tableName,
+          YOUTUBE_API_KEY: process.env.YOUTUBE_API_KEY || "",
+          ANALYZE_LAMBDA_NAME: analyzeCommentsLambda.functionName,
+        },
+        bundling: {
+          externalModules: [],
+        },
+      },
+    );
+
+    const getStatusLambda = new lambda.NodejsFunction(
+      this,
+      "GetStatusFunction",
+      {
+        runtime: Runtime.NODEJS_18_X,
+        entry: path.join(__dirname, "../../backend/get-status/index.ts"),
+        handler: "handler",
+        timeout: cdk.Duration.seconds(10),
+        memorySize: 256,
+        environment: {
+          VIDEO_ANALYSES_TABLE: videoAnalysesTable.tableName,
+          ANALYSIS_RESULTS_TABLE: analysisResultsTable.tableName,
+        },
+        bundling: {
+          externalModules: [],
         },
       },
     );
@@ -91,16 +113,18 @@ export class InfraStack extends cdk.Stack {
     commentsTable.grantReadData(analyzeCommentsLambda);
     analysisResultsTable.grantReadWriteData(analyzeCommentsLambda);
 
-    // Grant fetch comments lambda permission to invoke the analyze lambda
-    analyzeCommentsLambda.grantInvoke(fetchCommentsLambda);
+    videoAnalysesTable.grantReadData(getStatusLambda);
+    analysisResultsTable.grantReadData(getStatusLambda);
 
-    // Grant Bedrock access to the analyze lambda
-    analyzeCommentsLambda.addToRolePolicy(
+    // Grant fetch comments lambda permission to invoke itself (worker pattern) and the analyze lambda
+    fetchCommentsLambda.addToRolePolicy(
       new iam.PolicyStatement({
-        actions: ["bedrock:InvokeModel"],
-        resources: ["*"], // In production, restrict to specific model ARN
+        actions: ["lambda:InvokeFunction"],
+        resources: ["*"], // Allows invoking itself and the analyze lambda
       }),
     );
+
+    // Note: Bedrock IAM policy removed — now using Gemini API via HTTP
 
     // 3. API Gateway
     const api = new apigateway.RestApi(this, "ContentPulseApi", {
@@ -124,24 +148,6 @@ export class InfraStack extends cdk.Stack {
     const analysisIdResource = api.root
       .addResource("analysis")
       .addResource("{id}");
-    // We reuse fetchCommentsLambda just to route the GET request, or we could create a third lambda.
-    // Let's create a dedicated GET lambda or route it to analyzeCommentsLambda. Let's create a small lambda for GET status.
-    const getStatusLambda = new lambda.Function(this, "GetStatusFunction", {
-      runtime: lambda.Runtime.NODEJS_18_X,
-      handler: "index.handler",
-      code: lambda.Code.fromAsset(
-        path.join(__dirname, "../../backend/get-status"),
-      ),
-      timeout: cdk.Duration.seconds(10),
-      memorySize: 256,
-      environment: {
-        VIDEO_ANALYSES_TABLE: videoAnalysesTable.tableName,
-        ANALYSIS_RESULTS_TABLE: analysisResultsTable.tableName,
-      },
-    });
-    videoAnalysesTable.grantReadData(getStatusLambda);
-    analysisResultsTable.grantReadData(getStatusLambda);
-
     analysisIdResource.addMethod(
       "GET",
       new apigateway.LambdaIntegration(getStatusLambda),

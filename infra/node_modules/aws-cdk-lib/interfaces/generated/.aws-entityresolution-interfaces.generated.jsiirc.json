@@ -1,0 +1,16 @@
+{
+  "targets": {
+    "java": {
+      "package": "software.amazon.awscdk.interfaces.entityresolution"
+    },
+    "dotnet": {
+      "namespace": "Amazon.CDK.Interfaces.EntityResolution"
+    },
+    "python": {
+      "module": "aws_cdk.interfaces.aws_entityresolution"
+    },
+    "go": {
+      "packageName": "interfacesawsentityresolution"
+    }
+  }
+}

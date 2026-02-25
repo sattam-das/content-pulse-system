@@ -1,0 +1,16 @@
+{
+  "targets": {
+    "java": {
+      "package": "software.amazon.awscdk.interfaces.devopsagent"
+    },
+    "dotnet": {
+      "namespace": "Amazon.CDK.Interfaces.DevOpsAgent"
+    },
+    "python": {
+      "module": "aws_cdk.interfaces.aws_devopsagent"
+    },
+    "go": {
+      "packageName": "interfacesawsdevopsagent"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "targets": {
+    "java": {
+      "package": "software.amazon.awscdk.interfaces.cases"
+    },
+    "dotnet": {
+      "namespace": "Amazon.CDK.Interfaces.Cases"
+    },
+    "python": {
+      "module": "aws_cdk.interfaces.aws_cases"
+    },
+    "go": {
+      "packageName": "interfacesawscases"
+    }
+  }
+}

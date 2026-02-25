@@ -1,0 +1,16 @@
+{
+  "targets": {
+    "java": {
+      "package": "software.amazon.awscdk.interfaces.backupgateway"
+    },
+    "dotnet": {
+      "namespace": "Amazon.CDK.Interfaces.BackupGateway"
+    },
+    "python": {
+      "module": "aws_cdk.interfaces.aws_backupgateway"
+    },
+    "go": {
+      "packageName": "interfacesawsbackupgateway"
+    }
+  }
+}

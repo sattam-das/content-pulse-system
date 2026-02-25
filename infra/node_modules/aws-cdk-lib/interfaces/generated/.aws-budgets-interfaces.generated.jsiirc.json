@@ -1,0 +1,16 @@
+{
+  "targets": {
+    "java": {
+      "package": "software.amazon.awscdk.interfaces.budgets"
+    },
+    "dotnet": {
+      "namespace": "Amazon.CDK.Interfaces.Budgets"
+    },
+    "python": {
+      "module": "aws_cdk.interfaces.aws_budgets"
+    },
+    "go": {
+      "packageName": "interfacesawsbudgets"
+    }
+  }
+}

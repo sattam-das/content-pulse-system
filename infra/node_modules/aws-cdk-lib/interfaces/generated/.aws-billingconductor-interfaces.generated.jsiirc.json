@@ -1,0 +1,16 @@
+{
+  "targets": {
+    "java": {
+      "package": "software.amazon.awscdk.interfaces.billingconductor"
+    },
+    "dotnet": {
+      "namespace": "Amazon.CDK.Interfaces.BillingConductor"
+    },
+    "python": {
+      "module": "aws_cdk.interfaces.aws_billingconductor"
+    },
+    "go": {
+      "packageName": "interfacesawsbillingconductor"
+    }
+  }
+}

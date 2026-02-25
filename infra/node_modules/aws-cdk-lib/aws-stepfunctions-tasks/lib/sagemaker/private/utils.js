@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.renderTags=renderTags,exports.renderEnvironment=renderEnvironment;function renderTags(tags){return tags?{Tags:Object.keys(tags).map(key=>({Key:key,Value:tags[key]}))}:{}}function renderEnvironment(environment){return environment?{Environment:environment}:{}}

@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.undefinedIfNoKeys=undefinedIfNoKeys;function undefinedIfNoKeys(obj){return Object.values(obj).every(val=>val===void 0)?void 0:obj}

@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.DatabaseInsightsMode=void 0;var DatabaseInsightsMode;(function(DatabaseInsightsMode2){DatabaseInsightsMode2.STANDARD="standard",DatabaseInsightsMode2.ADVANCED="advanced"})(DatabaseInsightsMode||(exports.DatabaseInsightsMode=DatabaseInsightsMode={}));

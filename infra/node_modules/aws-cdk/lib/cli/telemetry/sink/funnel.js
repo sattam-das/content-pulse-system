@@ -1,0 +1,29 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Funnel = void 0;
+const toolkit_lib_1 = require("@aws-cdk/toolkit-lib");
+/**
+ * A funnel is a combination of one or more sinks.
+ * The sink functions are executed in parallel, and a maximum of 5
+ * sinks are supported per funnel.
+ */
+class Funnel {
+    constructor(props) {
+        if (props.sinks.length > 5) {
+            throw new toolkit_lib_1.ToolkitError(`Funnel class supports a maximum of 5 parallel sinks, got ${props.sinks.length} sinks.`);
+        }
+        this.sinks = props.sinks;
+    }
+    async emit(event) {
+        // Funnel class enforces a maximum of 5 parallel sinks
+        // eslint-disable-next-line @cdklabs/promiseall-no-unbounded-parallelism
+        await Promise.all(this.sinks.map(sink => sink.emit(event)));
+    }
+    async flush() {
+        // Funnel class enforces a maximum of 5 parallel sinks
+        // eslint-disable-next-line @cdklabs/promiseall-no-unbounded-parallelism
+        await Promise.all(this.sinks.map(sink => sink.flush()));
+    }
+}
+exports.Funnel = Funnel;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZnVubmVsLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiZnVubmVsLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7OztBQUFBLHNEQUFvRDtBQVFwRDs7OztHQUlHO0FBQ0gsTUFBYSxNQUFNO0lBR2pCLFlBQVksS0FBa0I7UUFDNUIsSUFBSSxLQUFLLENBQUMsS0FBSyxDQUFDLE1BQU0sR0FBRyxDQUFDLEVBQUUsQ0FBQztZQUMzQixNQUFNLElBQUksMEJBQVksQ0FBQyw0REFBNEQsS0FBSyxDQUFDLEtBQUssQ0FBQyxNQUFNLFNBQVMsQ0FBQyxDQUFDO1FBQ2xILENBQUM7UUFFRCxJQUFJLENBQUMsS0FBSyxHQUFHLEtBQUssQ0FBQyxLQUFLLENBQUM7SUFDM0IsQ0FBQztJQUVNLEtBQUssQ0FBQyxJQUFJLENBQUMsS0FBc0I7UUFDdEMsc0RBQXNEO1FBQ3RELHdFQUF3RTtRQUN4RSxNQUFNLE9BQU8sQ0FBQyxHQUFHLENBQUMsSUFBSSxDQUFDLEtBQUssQ0FBQyxHQUFHLENBQUMsSUFBSSxDQUFDLEVBQUUsQ0FBQyxJQUFJLENBQUMsSUFBSSxDQUFDLEtBQUssQ0FBQyxDQUFDLENBQUMsQ0FBQztJQUM5RCxDQUFDO0lBRU0sS0FBSyxDQUFDLEtBQUs7UUFDaEIsc0RBQXNEO1FBQ3RELHdFQUF3RTtRQUN4RSxNQUFNLE9BQU8sQ0FBQyxHQUFHLENBQUMsSUFBSSxDQUFDLEtBQUssQ0FBQyxHQUFHLENBQUMsSUFBSSxDQUFDLEVBQUUsQ0FBQyxJQUFJLENBQUMsS0FBSyxFQUFFLENBQUMsQ0FBQyxDQUFDO0lBQzFELENBQUM7Q0FDRjtBQXRCRCx3QkFzQkMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBUb29sa2l0RXJyb3IgfSBmcm9tICdAYXdzLWNkay90b29sa2l0LWxpYic7XG5pbXBvcnQgdHlwZSB7IFRlbGVtZXRyeVNjaGVtYSB9IGZyb20gJy4uL3NjaGVtYSc7XG5pbXBvcnQgdHlwZSB7IElUZWxlbWV0cnlTaW5rIH0gZnJvbSAnLi9zaW5rLWludGVyZmFjZSc7XG5cbmV4cG9ydCBpbnRlcmZhY2UgRnVubmVsUHJvcHMge1xuICByZWFkb25seSBzaW5rczogSVRlbGVtZXRyeVNpbmtbXTtcbn1cblxuLyoqXG4gKiBBIGZ1bm5lbCBpcyBhIGNvbWJpbmF0aW9uIG9mIG9uZSBvciBtb3JlIHNpbmtzLlxuICogVGhlIHNpbmsgZnVuY3Rpb25zIGFyZSBleGVjdXRlZCBpbiBwYXJhbGxlbCwgYW5kIGEgbWF4aW11bSBvZiA1XG4gKiBzaW5rcyBhcmUgc3VwcG9ydGVkIHBlciBmdW5uZWwuXG4gKi9cbmV4cG9ydCBjbGFzcyBGdW5uZWwge1xuICBwcml2YXRlIHJlYWRvbmx5IHNpbmtzOiBJVGVsZW1ldHJ5U2lua1tdO1xuXG4gIGNvbnN0cnVjdG9yKHByb3BzOiBGdW5uZWxQcm9wcykge1xuICAgIGlmIChwcm9wcy5zaW5rcy5sZW5ndGggPiA1KSB7XG4gICAgICB0aHJvdyBuZXcgVG9vbGtpdEVycm9yKGBGdW5uZWwgY2xhc3Mgc3VwcG9ydHMgYSBtYXhpbXVtIG9mIDUgcGFyYWxsZWwgc2lua3MsIGdvdCAke3Byb3BzLnNpbmtzLmxlbmd0aH0gc2lua3MuYCk7XG4gICAgfVxuXG4gICAgdGhpcy5zaW5rcyA9IHByb3BzLnNpbmtzO1xuICB9XG5cbiAgcHVibGljIGFzeW5jIGVtaXQoZXZlbnQ6IFRlbGVtZXRyeVNjaGVtYSk6IFByb21pc2U8dm9pZD4ge1xuICAgIC8vIEZ1bm5lbCBjbGFzcyBlbmZvcmNlcyBhIG1heGltdW0gb2YgNSBwYXJhbGxlbCBzaW5rc1xuICAgIC8vIGVzbGludC1kaXNhYmxlLW5leHQtbGluZSBAY2RrbGFicy9wcm9taXNlYWxsLW5vLXVuYm91bmRlZC1wYXJhbGxlbGlzbVxuICAgIGF3YWl0IFByb21pc2UuYWxsKHRoaXMuc2lua3MubWFwKHNpbmsgPT4gc2luay5lbWl0KGV2ZW50KSkpO1xuICB9XG5cbiAgcHVibGljIGFzeW5jIGZsdXNoKCk6IFByb21pc2U8dm9pZD4ge1xuICAgIC8vIEZ1bm5lbCBjbGFzcyBlbmZvcmNlcyBhIG1heGltdW0gb2YgNSBwYXJhbGxlbCBzaW5rc1xuICAgIC8vIGVzbGludC1kaXNhYmxlLW5leHQtbGluZSBAY2RrbGFicy9wcm9taXNlYWxsLW5vLXVuYm91bmRlZC1wYXJhbGxlbGlzbVxuICAgIGF3YWl0IFByb21pc2UuYWxsKHRoaXMuc2lua3MubWFwKHNpbmsgPT4gc2luay5mbHVzaCgpKSk7XG4gIH1cbn1cbiJdfQ==

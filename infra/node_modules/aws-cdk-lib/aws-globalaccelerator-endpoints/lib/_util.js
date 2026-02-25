@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.validateWeight=validateWeight;var core_1=()=>{var tmp=require("../../core");return core_1=()=>tmp,tmp};function validateWeight(scope,x){if(x!==void 0&&!core_1().Token.isUnresolved(x)&&(x<0||x>255))throw new(core_1()).ValidationError(`'weight' must be between 0 and 255, got: ${x}`,scope)}

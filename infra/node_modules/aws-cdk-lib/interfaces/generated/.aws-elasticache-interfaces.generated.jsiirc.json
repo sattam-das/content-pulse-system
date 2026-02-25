@@ -1,0 +1,16 @@
+{
+  "targets": {
+    "java": {
+      "package": "software.amazon.awscdk.interfaces.elasticache"
+    },
+    "dotnet": {
+      "namespace": "Amazon.CDK.Interfaces.ElastiCache"
+    },
+    "python": {
+      "module": "aws_cdk.interfaces.aws_elasticache"
+    },
+    "go": {
+      "packageName": "interfacesawselasticache"
+    }
+  }
+}

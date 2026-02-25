@@ -1,0 +1,16 @@
+{
+  "targets": {
+    "java": {
+      "package": "software.amazon.awscdk.interfaces.rtbfabric"
+    },
+    "dotnet": {
+      "namespace": "Amazon.CDK.Interfaces.RTBFabric"
+    },
+    "python": {
+      "module": "aws_cdk.interfaces.aws_rtbfabric"
+    },
+    "go": {
+      "packageName": "interfacesawsrtbfabric"
+    }
+  }
+}

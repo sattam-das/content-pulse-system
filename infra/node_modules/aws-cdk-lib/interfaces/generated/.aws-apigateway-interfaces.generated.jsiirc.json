@@ -1,0 +1,16 @@
+{
+  "targets": {
+    "java": {
+      "package": "software.amazon.awscdk.interfaces.apigateway"
+    },
+    "dotnet": {
+      "namespace": "Amazon.CDK.Interfaces.APIGateway"
+    },
+    "python": {
+      "module": "aws_cdk.interfaces.aws_apigateway"
+    },
+    "go": {
+      "packageName": "interfacesawsapigateway"
+    }
+  }
+}

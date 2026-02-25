@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.quiet=quiet,exports.reset=reset;function quiet(){const deprecated=process.env.JSII_DEPRECATED;return process.env.JSII_DEPRECATED="quiet",deprecated}function reset(deprecated){deprecated===void 0?delete process.env.JSII_DEPRECATED:process.env.JSII_DEPRECATED=deprecated}

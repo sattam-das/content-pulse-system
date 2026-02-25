@@ -1,0 +1,16 @@
+{
+  "targets": {
+    "java": {
+      "package": "software.amazon.awscdk.interfaces.finspace"
+    },
+    "dotnet": {
+      "namespace": "Amazon.CDK.Interfaces.FinSpace"
+    },
+    "python": {
+      "module": "aws_cdk.interfaces.aws_finspace"
+    },
+    "go": {
+      "packageName": "interfacesawsfinspace"
+    }
+  }
+}

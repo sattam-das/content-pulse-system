@@ -1,0 +1,16 @@
+{
+  "targets": {
+    "java": {
+      "package": "software.amazon.awscdk.interfaces.securityhub"
+    },
+    "dotnet": {
+      "namespace": "Amazon.CDK.Interfaces.SecurityHub"
+    },
+    "python": {
+      "module": "aws_cdk.interfaces.aws_securityhub"
+    },
+    "go": {
+      "packageName": "interfacesawssecurityhub"
+    }
+  }
+}

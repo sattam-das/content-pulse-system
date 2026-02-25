@@ -1,0 +1,16 @@
+{
+  "targets": {
+    "java": {
+      "package": "software.amazon.awscdk.interfaces.arczonalshift"
+    },
+    "dotnet": {
+      "namespace": "Amazon.CDK.Interfaces.ARCZonalShift"
+    },
+    "python": {
+      "module": "aws_cdk.interfaces.aws_arczonalshift"
+    },
+    "go": {
+      "packageName": "interfacesawsarczonalshift"
+    }
+  }
+}

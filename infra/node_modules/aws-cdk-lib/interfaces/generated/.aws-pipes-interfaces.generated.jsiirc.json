@@ -1,0 +1,16 @@
+{
+  "targets": {
+    "java": {
+      "package": "software.amazon.awscdk.interfaces.pipes"
+    },
+    "dotnet": {
+      "namespace": "Amazon.CDK.Interfaces.Pipes"
+    },
+    "python": {
+      "module": "aws_cdk.interfaces.aws_pipes"
+    },
+    "go": {
+      "packageName": "interfacesawspipes"
+    }
+  }
+}

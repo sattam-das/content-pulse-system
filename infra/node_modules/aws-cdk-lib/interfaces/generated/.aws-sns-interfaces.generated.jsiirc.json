@@ -1,0 +1,16 @@
+{
+  "targets": {
+    "java": {
+      "package": "software.amazon.awscdk.interfaces.sns"
+    },
+    "dotnet": {
+      "namespace": "Amazon.CDK.Interfaces.SNS"
+    },
+    "python": {
+      "module": "aws_cdk.interfaces.aws_sns"
+    },
+    "go": {
+      "packageName": "interfacesawssns"
+    }
+  }
+}

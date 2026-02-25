@@ -1,0 +1,16 @@
+{
+  "targets": {
+    "java": {
+      "package": "software.amazon.awscdk.interfaces.sqs"
+    },
+    "dotnet": {
+      "namespace": "Amazon.CDK.Interfaces.SQS"
+    },
+    "python": {
+      "module": "aws_cdk.interfaces.aws_sqs"
+    },
+    "go": {
+      "packageName": "interfacesawssqs"
+    }
+  }
+}

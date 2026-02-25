@@ -1,0 +1,16 @@
+{
+  "targets": {
+    "java": {
+      "package": "software.amazon.awscdk.interfaces.workspacesweb"
+    },
+    "dotnet": {
+      "namespace": "Amazon.CDK.Interfaces.WorkSpacesWeb"
+    },
+    "python": {
+      "module": "aws_cdk.interfaces.aws_workspacesweb"
+    },
+    "go": {
+      "packageName": "interfacesawsworkspacesweb"
+    }
+  }
+}

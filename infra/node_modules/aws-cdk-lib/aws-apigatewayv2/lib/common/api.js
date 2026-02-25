@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.IpAddressType=void 0;var IpAddressType;(function(IpAddressType2){IpAddressType2.IPV4="ipv4",IpAddressType2.DUAL_STACK="dualstack"})(IpAddressType||(exports.IpAddressType=IpAddressType={}));

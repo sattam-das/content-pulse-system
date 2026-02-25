@@ -1,0 +1,16 @@
+{
+  "targets": {
+    "java": {
+      "package": "software.amazon.awscdk.interfaces.quicksight"
+    },
+    "dotnet": {
+      "namespace": "Amazon.CDK.Interfaces.QuickSight"
+    },
+    "python": {
+      "module": "aws_cdk.interfaces.aws_quicksight"
+    },
+    "go": {
+      "packageName": "interfacesawsquicksight"
+    }
+  }
+}

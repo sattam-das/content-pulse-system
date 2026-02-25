@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.isLambdaComputeType=isLambdaComputeType;var compute_type_1=()=>{var tmp=require("./compute-type");return compute_type_1=()=>tmp,tmp};function isLambdaComputeType(computeType){return Object.values(compute_type_1().ComputeType).filter(value=>value.startsWith("BUILD_LAMBDA")).includes(computeType)}

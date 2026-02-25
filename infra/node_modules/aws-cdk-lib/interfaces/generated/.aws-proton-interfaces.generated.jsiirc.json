@@ -1,0 +1,16 @@
+{
+  "targets": {
+    "java": {
+      "package": "software.amazon.awscdk.interfaces.proton"
+    },
+    "dotnet": {
+      "namespace": "Amazon.CDK.Interfaces.Proton"
+    },
+    "python": {
+      "module": "aws_cdk.interfaces.aws_proton"
+    },
+    "go": {
+      "packageName": "interfacesawsproton"
+    }
+  }
+}

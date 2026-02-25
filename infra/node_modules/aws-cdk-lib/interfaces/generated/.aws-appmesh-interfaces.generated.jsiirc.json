@@ -1,0 +1,16 @@
+{
+  "targets": {
+    "java": {
+      "package": "software.amazon.awscdk.interfaces.appmesh"
+    },
+    "dotnet": {
+      "namespace": "Amazon.CDK.Interfaces.AppMesh"
+    },
+    "python": {
+      "module": "aws_cdk.interfaces.aws_appmesh"
+    },
+    "go": {
+      "packageName": "interfacesawsappmesh"
+    }
+  }
+}

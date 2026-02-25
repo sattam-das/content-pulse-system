@@ -1,0 +1,16 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.cdkCliErrorName = cdkCliErrorName;
+const schema_1 = require("./schema");
+function cdkCliErrorName(name) {
+    // We only record error names that we control. Errors coming from dependencies
+    // contain text that we have no control over so it is safer to not send it.
+    if (!isKnownErrorName(name)) {
+        return schema_1.ErrorName.UNKNOWN_ERROR;
+    }
+    return name;
+}
+function isKnownErrorName(name) {
+    return Object.values(schema_1.ErrorName).includes(name);
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZXJyb3IuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJlcnJvci50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUVBLDBDQU9DO0FBVEQscUNBQXFDO0FBRXJDLFNBQWdCLGVBQWUsQ0FBQyxJQUFZO0lBQzFDLDhFQUE4RTtJQUM5RSwyRUFBMkU7SUFDM0UsSUFBSSxDQUFDLGdCQUFnQixDQUFDLElBQUksQ0FBQyxFQUFFLENBQUM7UUFDNUIsT0FBTyxrQkFBUyxDQUFDLGFBQWEsQ0FBQztJQUNqQyxDQUFDO0lBQ0QsT0FBTyxJQUFJLENBQUM7QUFDZCxDQUFDO0FBRUQsU0FBUyxnQkFBZ0IsQ0FBQyxJQUFZO0lBQ3BDLE9BQU8sTUFBTSxDQUFDLE1BQU0sQ0FBQyxrQkFBUyxDQUFDLENBQUMsUUFBUSxDQUFDLElBQWlCLENBQUMsQ0FBQztBQUM5RCxDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgRXJyb3JOYW1lIH0gZnJvbSAnLi9zY2hlbWEnO1xuXG5leHBvcnQgZnVuY3Rpb24gY2RrQ2xpRXJyb3JOYW1lKG5hbWU6IHN0cmluZyk6IEVycm9yTmFtZSB7XG4gIC8vIFdlIG9ubHkgcmVjb3JkIGVycm9yIG5hbWVzIHRoYXQgd2UgY29udHJvbC4gRXJyb3JzIGNvbWluZyBmcm9tIGRlcGVuZGVuY2llc1xuICAvLyBjb250YWluIHRleHQgdGhhdCB3ZSBoYXZlIG5vIGNvbnRyb2wgb3ZlciBzbyBpdCBpcyBzYWZlciB0byBub3Qgc2VuZCBpdC5cbiAgaWYgKCFpc0tub3duRXJyb3JOYW1lKG5hbWUpKSB7XG4gICAgcmV0dXJuIEVycm9yTmFtZS5VTktOT1dOX0VSUk9SO1xuICB9XG4gIHJldHVybiBuYW1lO1xufVxuXG5mdW5jdGlvbiBpc0tub3duRXJyb3JOYW1lKG5hbWU6IHN0cmluZyk6IG5hbWUgaXMgRXJyb3JOYW1lIHtcbiAgcmV0dXJuIE9iamVjdC52YWx1ZXMoRXJyb3JOYW1lKS5pbmNsdWRlcyhuYW1lIGFzIEVycm9yTmFtZSk7XG59XG4iXX0=

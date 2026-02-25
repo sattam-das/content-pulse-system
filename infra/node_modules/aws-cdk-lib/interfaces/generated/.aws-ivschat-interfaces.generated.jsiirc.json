@@ -1,0 +1,16 @@
+{
+  "targets": {
+    "java": {
+      "package": "software.amazon.awscdk.interfaces.ivschat"
+    },
+    "dotnet": {
+      "namespace": "Amazon.CDK.Interfaces.IVSChat"
+    },
+    "python": {
+      "module": "aws_cdk.interfaces.aws_ivschat"
+    },
+    "go": {
+      "packageName": "interfacesawsivschat"
+    }
+  }
+}

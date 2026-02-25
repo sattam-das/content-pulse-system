@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.renderTable = renderTable;
+const cfnDiff = require("@aws-cdk/cloudformation-diff");
+function renderTable(cells, columns) {
+    // The cfnDiff module has logic for terminal-width aware table
+    // formatting (and nice colors), let's just reuse that.
+    return cfnDiff.formatTable(cells, columns);
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidGFibGVzLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsidGFibGVzLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBRUEsa0NBSUM7QUFORCx3REFBd0Q7QUFFeEQsU0FBZ0IsV0FBVyxDQUFDLEtBQWlCLEVBQUUsT0FBZ0I7SUFDN0QsOERBQThEO0lBQzlELHVEQUF1RDtJQUN2RCxPQUFPLE9BQU8sQ0FBQyxXQUFXLENBQUMsS0FBSyxFQUFFLE9BQU8sQ0FBQyxDQUFDO0FBQzdDLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgKiBhcyBjZm5EaWZmIGZyb20gJ0Bhd3MtY2RrL2Nsb3VkZm9ybWF0aW9uLWRpZmYnO1xuXG5leHBvcnQgZnVuY3Rpb24gcmVuZGVyVGFibGUoY2VsbHM6IHN0cmluZ1tdW10sIGNvbHVtbnM/OiBudW1iZXIpIHtcbiAgLy8gVGhlIGNmbkRpZmYgbW9kdWxlIGhhcyBsb2dpYyBmb3IgdGVybWluYWwtd2lkdGggYXdhcmUgdGFibGVcbiAgLy8gZm9ybWF0dGluZyAoYW5kIG5pY2UgY29sb3JzKSwgbGV0J3MganVzdCByZXVzZSB0aGF0LlxuICByZXR1cm4gY2ZuRGlmZi5mb3JtYXRUYWJsZShjZWxscywgY29sdW1ucyk7XG59XG4iXX0=
