@@ -19,7 +19,6 @@ function App() {
   const [previousScreen, setPreviousScreen] = useState<AppScreen>('input');
   const [analysisId, setAnalysisId] = useState<string | null>(null);
   const [analysisResult, setAnalysisResult] = useState<AnalysisResult | null>(null);
-  const [commentCount, setCommentCount] = useState<number | undefined>();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleNavigate = useCallback((target: string) => {
@@ -67,24 +66,18 @@ function App() {
       // Simulate a loading delay then show mock results
       const timer = setTimeout(() => {
         const mockData = getMockAnalysisResult();
-        setCommentCount(mockData.commentCount);
         setAnalysisResult(mockData);
         setScreen('results');
       }, 6000); // 6 seconds to show the nice loading animation
       
-      // Update comment count partway through
-      const countTimer = setTimeout(() => setCommentCount(247), 2000);
-      
       return () => {
         clearTimeout(timer);
-        clearTimeout(countTimer);
       };
     }
 
     const interval = setInterval(async () => {
       try {
         const result = await getAnalysisStatus(analysisId);
-        setCommentCount(result.commentCount);
 
         if (result.status === 'completed') {
           setAnalysisResult(result);
@@ -107,7 +100,6 @@ function App() {
     setScreen('input');
     setAnalysisId(null);
     setAnalysisResult(null);
-    setCommentCount(undefined);
   };
 
   return (
@@ -136,7 +128,7 @@ function App() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <LoadingScreen commentCount={commentCount} />
+              <LoadingScreen />
             </motion.div>
           )}
 

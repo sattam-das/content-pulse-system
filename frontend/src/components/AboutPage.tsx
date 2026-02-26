@@ -97,17 +97,18 @@ export default function AboutPage({ onBack, onNavigate }: AboutPageProps) {
 
               <h2 className="text-2xl font-bold text-white mb-4">Our Technology</h2>
               <p className="text-slate-400 leading-relaxed mb-4">
-                ContentPulse is built entirely on AWS cloud infrastructure, leveraging cutting-edge AI to transform raw comment data into actionable intelligence:
+                ContentPulse is built on a modern, scalable architecture, leveraging cutting-edge AI and robust cloud infrastructure:
               </p>
               <ul className="list-disc list-inside text-slate-400 leading-relaxed mb-4 space-y-2">
-                <li><span className="text-indigo-400 font-semibold">Amazon Bedrock</span> powers our natural language understanding, reading comments the way humans do—detecting patterns, grouping similar questions, identifying confusion points</li>
-                <li><span className="text-indigo-400 font-semibold">AWS Lambda</span> handles serverless processing, scaling instantly whether you have 50 comments or 5,000</li>
-                <li><span className="text-indigo-400 font-semibold">Amazon DynamoDB</span> stores and structures your audience insights for lightning-fast retrieval</li>
-                <li><span className="text-indigo-400 font-semibold">AWS Amplify</span> delivers a seamless web experience that works anywhere</li>
-                <li><span className="text-indigo-400 font-semibold">API Gateway and EventBridge</span> orchestrate the entire workflow automatically</li>
+                <li><span className="text-indigo-400 font-semibold">Groq (Llama 3.1)</span> powers our ultra-fast natural language understanding, processing thousands of comments in seconds to detect patterns, group similar questions, and identify confusion points</li>
+                <li><span className="text-indigo-400 font-semibold">YouTube Data API</span> extracts deep structured comment data instantly directly from the source</li>
+                <li><span className="text-indigo-400 font-semibold">AWS Lambda</span> handles serverless processing on the backend, scaling instantly whether a video has 50 comments or 2,500</li>
+                <li><span className="text-indigo-400 font-semibold">Amazon DynamoDB</span> stores and structures your audience insights and extracted comments for lightning-fast retrieval</li>
+                <li><span className="text-indigo-400 font-semibold">AWS Amplify</span> completely hosts and delivers our seamless, responsive React/Vite web experience that works anywhere</li>
+                <li><span className="text-indigo-400 font-semibold">AWS API Gateway</span> securely orchestrates the entire workflow between the frontend and the cloud</li>
               </ul>
               <p className="text-slate-400 leading-relaxed mb-8">
-                We chose AWS because it gives us enterprise-grade AI capabilities that scale with creators as they grow—from their first video to their millionth view.
+                This powerful combination of AWS serverless infrastructure and Groq's low-latency AI inference allows us to deliver enterprise-grade analytics in seconds.
               </p>
 
               <h2 className="text-2xl font-bold text-white mb-4">The Team</h2>
@@ -117,23 +118,23 @@ export default function AboutPage({ onBack, onNavigate }: AboutPageProps) {
               <div className="space-y-4 mb-6">
                 <div className="p-4 rounded-xl bg-white/[0.03] border border-white/5">
                   <div className="text-white font-bold">Sattam Das</div>
-                  <div className="text-indigo-400 text-sm font-semibold mb-1">Team Leader, AI Web Developer & ML Builder</div>
-                  <p className="text-slate-500 text-sm">Leads technical architecture and AI model integration. Brought the initial vision to life.</p>
+                  <div className="text-indigo-400 text-sm font-semibold mb-1">Team Leader, Lead Architect & Full-Stack AI Developer</div>
+                  <p className="text-slate-500 text-sm">Leads the entire technical development from architecture design to deployment. Built and integrated the AI models, developed both frontend and backend systems, and orchestrated the AWS infrastructure that powers ContentPulse.</p>
                 </div>
                 <div className="p-4 rounded-xl bg-white/[0.03] border border-white/5">
-                  <div className="text-white font-bold">Saptarshi Mukherjee</div>
-                  <div className="text-indigo-400 text-sm font-semibold mb-1">AI Web Developer</div>
-                  <p className="text-slate-500 text-sm">Builds the intelligence layer and frontend experience. Makes complex AI feel simple.</p>
+                  <div className="text-white font-bold">Saptarshi Mukhopadhyay</div>
+                  <div className="text-indigo-400 text-sm font-semibold mb-1">Research & Development Lead, Supporting AI Developer</div>
+                  <p className="text-slate-500 text-sm">Drives innovation by continuously exploring new ideas and gathering insights. Supports AI development and ensures the platform stays ahead with cutting-edge features and improvements.</p>
                 </div>
                 <div className="p-4 rounded-xl bg-white/[0.03] border border-white/5">
                   <div className="text-white font-bold">Swarnavo Bagchi</div>
-                  <div className="text-indigo-400 text-sm font-semibold mb-1">Project Manager</div>
-                  <p className="text-slate-500 text-sm">Keeps the team organized, timelines on track, and ensures we're building what creators actually need.</p>
+                  <div className="text-indigo-400 text-sm font-semibold mb-1">Project Coordinator & Operations Manager</div>
+                  <p className="text-slate-500 text-sm">Keeps the team synchronized and on track. Manages timelines, coordinates workflows, and ensures every component comes together seamlessly from concept to deployment.</p>
                 </div>
                 <div className="p-4 rounded-xl bg-white/[0.03] border border-white/5">
                   <div className="text-white font-bold">Priyangshu Ghorai</div>
-                  <div className="text-indigo-400 text-sm font-semibold mb-1">Research & Development</div>
-                  <p className="text-slate-500 text-sm">Explores new possibilities, tests features, and investigates what makes content analysis truly useful.</p>
+                  <div className="text-indigo-400 text-sm font-semibold mb-1">Quality Assurance & User Testing Lead</div>
+                  <p className="text-slate-500 text-sm">Ensures ContentPulse delivers a flawless user experience. Conducts rigorous testing, identifies issues before they reach users, and validates that every feature works as intended.</p>
                 </div>
               </div>
               <p className="text-slate-400 leading-relaxed mb-8">

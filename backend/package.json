@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-bedrock-runtime": "^3.996.0",
+    "@aws-sdk/client-cloudwatch-logs": "^3.998.0",
     "@aws-sdk/client-dynamodb": "^3.996.0",
     "@aws-sdk/client-lambda": "^3.997.0",
     "@aws-sdk/lib-dynamodb": "^3.996.0",

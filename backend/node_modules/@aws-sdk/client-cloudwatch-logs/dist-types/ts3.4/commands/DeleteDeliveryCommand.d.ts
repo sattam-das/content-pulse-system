@@ -1,0 +1,45 @@
+import { Command as $Command } from "@smithy/smithy-client";
+import { MetadataBearer as __MetadataBearer } from "@smithy/types";
+import {
+  CloudWatchLogsClientResolvedConfig,
+  ServiceInputTypes,
+  ServiceOutputTypes,
+} from "../CloudWatchLogsClient";
+import { DeleteDeliveryRequest } from "../models/models_0";
+export { __MetadataBearer };
+export { $Command };
+export interface DeleteDeliveryCommandInput extends DeleteDeliveryRequest {}
+export interface DeleteDeliveryCommandOutput extends __MetadataBearer {}
+declare const DeleteDeliveryCommand_base: {
+  new (
+    input: DeleteDeliveryCommandInput
+  ): import("@smithy/smithy-client").CommandImpl<
+    DeleteDeliveryCommandInput,
+    DeleteDeliveryCommandOutput,
+    CloudWatchLogsClientResolvedConfig,
+    ServiceInputTypes,
+    ServiceOutputTypes
+  >;
+  new (
+    input: DeleteDeliveryCommandInput
+  ): import("@smithy/smithy-client").CommandImpl<
+    DeleteDeliveryCommandInput,
+    DeleteDeliveryCommandOutput,
+    CloudWatchLogsClientResolvedConfig,
+    ServiceInputTypes,
+    ServiceOutputTypes
+  >;
+  getEndpointParameterInstructions(): import("@smithy/middleware-endpoint").EndpointParameterInstructions;
+};
+export declare class DeleteDeliveryCommand extends DeleteDeliveryCommand_base {
+  protected static __types: {
+    api: {
+      input: DeleteDeliveryRequest;
+      output: {};
+    };
+    sdk: {
+      input: DeleteDeliveryCommandInput;
+      output: DeleteDeliveryCommandOutput;
+    };
+  };
+}

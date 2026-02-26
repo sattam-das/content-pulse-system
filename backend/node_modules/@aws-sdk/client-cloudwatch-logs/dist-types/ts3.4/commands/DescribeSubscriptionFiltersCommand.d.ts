@@ -1,0 +1,51 @@
+import { Command as $Command } from "@smithy/smithy-client";
+import { MetadataBearer as __MetadataBearer } from "@smithy/types";
+import {
+  CloudWatchLogsClientResolvedConfig,
+  ServiceInputTypes,
+  ServiceOutputTypes,
+} from "../CloudWatchLogsClient";
+import {
+  DescribeSubscriptionFiltersRequest,
+  DescribeSubscriptionFiltersResponse,
+} from "../models/models_0";
+export { __MetadataBearer };
+export { $Command };
+export interface DescribeSubscriptionFiltersCommandInput
+  extends DescribeSubscriptionFiltersRequest {}
+export interface DescribeSubscriptionFiltersCommandOutput
+  extends DescribeSubscriptionFiltersResponse,
+    __MetadataBearer {}
+declare const DescribeSubscriptionFiltersCommand_base: {
+  new (
+    input: DescribeSubscriptionFiltersCommandInput
+  ): import("@smithy/smithy-client").CommandImpl<
+    DescribeSubscriptionFiltersCommandInput,
+    DescribeSubscriptionFiltersCommandOutput,
+    CloudWatchLogsClientResolvedConfig,
+    ServiceInputTypes,
+    ServiceOutputTypes
+  >;
+  new (
+    input: DescribeSubscriptionFiltersCommandInput
+  ): import("@smithy/smithy-client").CommandImpl<
+    DescribeSubscriptionFiltersCommandInput,
+    DescribeSubscriptionFiltersCommandOutput,
+    CloudWatchLogsClientResolvedConfig,
+    ServiceInputTypes,
+    ServiceOutputTypes
+  >;
+  getEndpointParameterInstructions(): import("@smithy/middleware-endpoint").EndpointParameterInstructions;
+};
+export declare class DescribeSubscriptionFiltersCommand extends DescribeSubscriptionFiltersCommand_base {
+  protected static __types: {
+    api: {
+      input: DescribeSubscriptionFiltersRequest;
+      output: DescribeSubscriptionFiltersResponse;
+    };
+    sdk: {
+      input: DescribeSubscriptionFiltersCommandInput;
+      output: DescribeSubscriptionFiltersCommandOutput;
+    };
+  };
+}

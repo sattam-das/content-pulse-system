@@ -1,0 +1,46 @@
+import { Command as $Command } from "@smithy/smithy-client";
+import { MetadataBearer as __MetadataBearer } from "@smithy/types";
+import {
+  CloudWatchLogsClientResolvedConfig,
+  ServiceInputTypes,
+  ServiceOutputTypes,
+} from "../CloudWatchLogsClient";
+import { PutRetentionPolicyRequest } from "../models/models_0";
+export { __MetadataBearer };
+export { $Command };
+export interface PutRetentionPolicyCommandInput
+  extends PutRetentionPolicyRequest {}
+export interface PutRetentionPolicyCommandOutput extends __MetadataBearer {}
+declare const PutRetentionPolicyCommand_base: {
+  new (
+    input: PutRetentionPolicyCommandInput
+  ): import("@smithy/smithy-client").CommandImpl<
+    PutRetentionPolicyCommandInput,
+    PutRetentionPolicyCommandOutput,
+    CloudWatchLogsClientResolvedConfig,
+    ServiceInputTypes,
+    ServiceOutputTypes
+  >;
+  new (
+    input: PutRetentionPolicyCommandInput
+  ): import("@smithy/smithy-client").CommandImpl<
+    PutRetentionPolicyCommandInput,
+    PutRetentionPolicyCommandOutput,
+    CloudWatchLogsClientResolvedConfig,
+    ServiceInputTypes,
+    ServiceOutputTypes
+  >;
+  getEndpointParameterInstructions(): import("@smithy/middleware-endpoint").EndpointParameterInstructions;
+};
+export declare class PutRetentionPolicyCommand extends PutRetentionPolicyCommand_base {
+  protected static __types: {
+    api: {
+      input: PutRetentionPolicyRequest;
+      output: {};
+    };
+    sdk: {
+      input: PutRetentionPolicyCommandInput;
+      output: PutRetentionPolicyCommandOutput;
+    };
+  };
+}

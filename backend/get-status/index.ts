@@ -1,11 +1,12 @@
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
-import { DynamoDBDocumentClient, GetCommand } from '@aws-sdk/lib-dynamodb';
+import { DynamoDBDocumentClient, GetCommand, QueryCommand } from '@aws-sdk/lib-dynamodb';
 
 const client = new DynamoDBClient({});
 const docClient = DynamoDBDocumentClient.from(client);
 
 const VIDEO_ANALYSES_TABLE = process.env.VIDEO_ANALYSES_TABLE;
 const ANALYSIS_RESULTS_TABLE = process.env.ANALYSIS_RESULTS_TABLE;
+const COMMENTS_TABLE = process.env.COMMENTS_TABLE;
 
 export const handler = async (event: any) => {
     try {
@@ -25,11 +26,12 @@ export const handler = async (event: any) => {
             return { statusCode: 404, body: JSON.stringify({ error: 'Analysis not found' }) };
         }
 
-        const analysisData = {
+        const analysisData: any = {
             analysisId: statusResult.Item.analysisId,
             videoId: statusResult.Item.videoId,
             status: statusResult.Item.status,
             commentCount: statusResult.Item.commentCount || 0,
+            comments: [],
             results: null
         };
 
@@ -46,8 +48,29 @@ export const handler = async (event: any) => {
                     confusionPoints: results.Item.confusionPoints || [],
                     timelineMarkers: results.Item.timelineMarkers || [],
                     sentimentBreakdown: results.Item.sentimentBreakdown || null,
+                    executiveSummary: results.Item.executiveSummary || '',
+                    engagementMetrics: results.Item.engagementMetrics || null,
                     summary: results.Item.summary
                 } as any;
+            }
+
+            // 3. Fetch individual comments (limit 200 for the browser)
+            try {
+                const commentsResult = await docClient.send(new QueryCommand({
+                    TableName: COMMENTS_TABLE,
+                    KeyConditionExpression: 'analysisId = :aid',
+                    ExpressionAttributeValues: { ':aid': analysisId },
+                    Limit: 200
+                }));
+                analysisData.comments = (commentsResult.Items || []).map((item: any) => ({
+                    commentId: item.commentId,
+                    text: item.text,
+                    author: item.author,
+                    publishedAt: item.publishedAt,
+                    likeCount: item.likeCount || 0
+                }));
+            } catch (commentError) {
+                console.warn('Failed to fetch comments:', commentError);
             }
         }
 

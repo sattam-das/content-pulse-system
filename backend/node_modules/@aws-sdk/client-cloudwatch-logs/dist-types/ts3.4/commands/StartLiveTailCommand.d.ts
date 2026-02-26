@@ -1,0 +1,50 @@
+import { Command as $Command } from "@smithy/smithy-client";
+import { MetadataBearer as __MetadataBearer } from "@smithy/types";
+import {
+  CloudWatchLogsClientResolvedConfig,
+  ServiceInputTypes,
+  ServiceOutputTypes,
+} from "../CloudWatchLogsClient";
+import {
+  StartLiveTailRequest,
+  StartLiveTailResponse,
+} from "../models/models_0";
+export { __MetadataBearer };
+export { $Command };
+export interface StartLiveTailCommandInput extends StartLiveTailRequest {}
+export interface StartLiveTailCommandOutput
+  extends StartLiveTailResponse,
+    __MetadataBearer {}
+declare const StartLiveTailCommand_base: {
+  new (
+    input: StartLiveTailCommandInput
+  ): import("@smithy/smithy-client").CommandImpl<
+    StartLiveTailCommandInput,
+    StartLiveTailCommandOutput,
+    CloudWatchLogsClientResolvedConfig,
+    ServiceInputTypes,
+    ServiceOutputTypes
+  >;
+  new (
+    input: StartLiveTailCommandInput
+  ): import("@smithy/smithy-client").CommandImpl<
+    StartLiveTailCommandInput,
+    StartLiveTailCommandOutput,
+    CloudWatchLogsClientResolvedConfig,
+    ServiceInputTypes,
+    ServiceOutputTypes
+  >;
+  getEndpointParameterInstructions(): import("@smithy/middleware-endpoint").EndpointParameterInstructions;
+};
+export declare class StartLiveTailCommand extends StartLiveTailCommand_base {
+  protected static __types: {
+    api: {
+      input: StartLiveTailRequest;
+      output: StartLiveTailResponse;
+    };
+    sdk: {
+      input: StartLiveTailCommandInput;
+      output: StartLiveTailCommandOutput;
+    };
+  };
+}

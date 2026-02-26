@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { RefreshCcw, MessageSquare, HelpCircle, AlertCircle, ArrowUpRight, Target, Zap, CheckCircle2 } from 'lucide-react';
 import { Navbar } from './Navbar';
+import CommentBrowser from './CommentBrowser';
 import { 
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, 
   PieChart, Pie, Cell 
@@ -16,14 +17,24 @@ interface ResultsDashboardProps {
 export default function ResultsDashboard({ data, onReset, onNavigate }: ResultsDashboardProps) {
   const results = data.results!;
 
-  // Transform timelineMarkers into chart data
-  const chartData = results.timelineMarkers.map((marker) => ({
-    time: marker.timestamp,
-    positive: marker.sentiment === 'positive' ? marker.mentions : 0,
-    confusion: marker.sentiment === 'confusion' ? marker.mentions : 0,
-    negative: marker.sentiment === 'negative' ? marker.mentions : 0,
-    mentions: marker.mentions,
-  }));
+  // Convert timestamp string (e.g. "3:42") to total seconds for sorting
+  const timestampToSeconds = (ts: string): number => {
+    const parts = ts.split(':').map(Number);
+    if (parts.length === 3) return parts[0] * 3600 + parts[1] * 60 + parts[2];
+    if (parts.length === 2) return parts[0] * 60 + parts[1];
+    return parts[0] || 0;
+  };
+
+  // Transform timelineMarkers into chart data, sorted chronologically
+  const chartData = [...results.timelineMarkers]
+    .sort((a, b) => timestampToSeconds(a.timestamp) - timestampToSeconds(b.timestamp))
+    .map((marker) => ({
+      time: marker.timestamp,
+      positive: marker.sentiment === 'positive' ? marker.mentions : 0,
+      confusion: marker.sentiment === 'confusion' ? marker.mentions : 0,
+      negative: marker.sentiment === 'negative' ? marker.mentions : 0,
+      mentions: marker.mentions,
+    }));
 
   // Use real sentiment data from AI if available, fallback to timeline-based
   const totalComments = data.commentCount;
@@ -46,9 +57,9 @@ export default function ResultsDashboard({ data, onReset, onNavigate }: ResultsD
     : 0;
 
   const sentimentStats = [
-    { label: 'Total Comments', value: totalComments.toLocaleString(), change: '+5.1%', color: 'text-indigo-400' },
-    { label: 'Positive Sentiment', value: `${positivePct}%`, change: sentiment?.overallSentiment || '', color: 'text-green-400' },
-    { label: 'Questions Found', value: results.commonQuestions.length.toString(), change: `${results.commonQuestions.reduce((s, q) => s + q.count, 0)} total`, color: 'text-pink-400' },
+    { label: 'Total Comments', value: totalComments.toLocaleString(), subtitle: 'Based on raw extraction', icon: MessageSquare, color: 'text-indigo-400', bgColor: 'bg-indigo-500/10' },
+    { label: 'Positive Sentiment', value: `${positivePct}%`, subtitle: 'Audience approval rating', icon: Zap, color: 'text-green-400', bgColor: 'bg-green-500/10' },
+    { label: 'Questions Found', value: results.commonQuestions.length.toString(), subtitle: 'High priority inquiries', icon: HelpCircle, color: 'text-pink-400', bgColor: 'bg-pink-500/10' },
   ];
 
   const categoryBreakdown = [
@@ -149,10 +160,15 @@ export default function ResultsDashboard({ data, onReset, onNavigate }: ResultsD
                 transition={{ delay: i * 0.1 }}
                 className="glass-card p-6 flex flex-col justify-between"
               >
-                <div className="text-sm font-bold text-slate-500 uppercase tracking-widest mb-2">{stat.label}</div>
-                <div className="text-3xl font-bold mb-2">{stat.value}</div>
-                <div className={`text-xs font-bold flex items-center gap-1 ${stat.color}`}>
-                  <ArrowUpRight className="w-3 h-3" /> {stat.change} <span className="text-slate-600 ml-1">from last video</span>
+                <div className="flex items-center gap-3 mb-2">
+                  <div className={`w-8 h-8 rounded-lg ${stat.bgColor} flex items-center justify-center`}>
+                    <stat.icon className={`w-4 h-4 ${stat.color}`} />
+                  </div>
+                  <div className="text-sm font-bold text-slate-500 uppercase tracking-widest">{stat.label}</div>
+                </div>
+                <div className="text-3xl font-bold mb-1">{stat.value}</div>
+                <div className="text-xs text-slate-500 mt-auto pt-2 border-t border-white/5">
+                  {stat.subtitle}
                 </div>
               </motion.div>
             ))}
@@ -334,7 +350,7 @@ export default function ResultsDashboard({ data, onReset, onNavigate }: ResultsD
               {[
                 { label: 'Reply to top questions', progress: Math.min(100, results.commonQuestions.length * 25), icon: MessageSquare, color: 'bg-indigo-500' },
                 { label: 'Address confusion points', progress: Math.min(100, results.confusionPoints.length * 20), icon: AlertCircle, color: 'bg-pink-500' },
-                { label: 'Pin top feedback', progress: 100, icon: CheckCircle2, color: 'bg-green-500' },
+                { label: 'Pin top feedback', progress: results.engagementMetrics ? Math.min(100, results.engagementMetrics.positiveFeedbackCount * 5) : 0, icon: CheckCircle2, color: 'bg-green-500' },
               ].map((goal, i) => (
                 <div key={i} className="flex items-center gap-4">
                   <div className={`w-10 h-10 rounded-xl ${goal.color}/10 flex items-center justify-center flex-shrink-0`}>
@@ -360,8 +376,13 @@ export default function ResultsDashboard({ data, onReset, onNavigate }: ResultsD
           </motion.div>
         </div>
 
+        {/* Comment Browser */}
+        {data.comments && data.comments.length > 0 && (
+          <CommentBrowser comments={data.comments} />
+        )}
+
         {/* Executive Summary */}
-        {results.summary && (
+        {(results.executiveSummary || results.summary) && (
           <motion.section
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -371,8 +392,27 @@ export default function ResultsDashboard({ data, onReset, onNavigate }: ResultsD
           >
             <h3 className="text-lg font-bold gradient-text mb-4 uppercase tracking-widest">Executive Summary</h3>
             <p className="text-slate-300 leading-relaxed">
-              {results.summary}
+              {results.executiveSummary || results.summary}
             </p>
+            {results.engagementMetrics?.topPositiveComment && (
+              <div className="mt-6 p-4 rounded-xl bg-green-500/5 border border-green-500/10">
+                <div className="text-xs font-bold text-green-400 uppercase tracking-widest mb-2">💬 Top Positive Comment</div>
+                <p className="text-sm text-slate-300 italic">"{results.engagementMetrics.topPositiveComment}"</p>
+              </div>
+            )}
+            {results.engagementMetrics?.actionItems && results.engagementMetrics.actionItems.length > 0 && (
+              <div className="mt-4">
+                <div className="text-xs font-bold text-indigo-400 uppercase tracking-widest mb-2">🎯 Recommended Actions</div>
+                <ul className="space-y-1">
+                  {results.engagementMetrics.actionItems.map((item, i) => (
+                    <li key={i} className="text-sm text-slate-400 flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-indigo-500 flex-shrink-0" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </motion.section>
         )}
 

@@ -1,0 +1,2742 @@
+INIT_START Runtime Version: nodejs:18.v100	Runtime Version ARN: arn:aws:lambda:us-east-1::runtime:9a9659568bf79d197303268f6f12daf1b07196863769ffdfec56057ebf0b0553
+
+2026-02-26T08:31:17.439Z	undefined	ERROR	(node:2) Warning: NodeDeprecationWarning: The AWS SDK for JavaScript (v3) will
+no longer support Node.js v18.20.8 in January 2026.
+
+To continue receiving updates to AWS services, bug fixes, and security
+updates please upgrade to a supported Node.js LTS version.
+
+More information can be found at: https://a.co/c895JFp
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+START RequestId: e389ebd3-ce57-4c64-aab2-7dd311e96976 Version: $LATEST
+
+2026-02-26T08:31:17.548Z	e389ebd3-ce57-4c64-aab2-7dd311e96976	INFO	Analyzing 264 comments for analysisId: 1ed06ab8-5bde-41fa-acb3-aec910a8eb18
+
+2026-02-26T08:31:19.034Z	e389ebd3-ce57-4c64-aab2-7dd311e96976	INFO	Groq response received, length: 3136
+
+2026-02-26T08:31:19.068Z	e389ebd3-ce57-4c64-aab2-7dd311e96976	INFO	Analysis completed for analysisId: 1ed06ab8-5bde-41fa-acb3-aec910a8eb18
+
+END RequestId: e389ebd3-ce57-4c64-aab2-7dd311e96976
+
+REPORT RequestId: e389ebd3-ce57-4c64-aab2-7dd311e96976	Duration: 1624.03 ms	Billed Duration: 1972 ms	Memory Size: 1024 MB	Max Memory Used: 103 MB	Init Duration: 347.80 ms	
+
+START RequestId: d7313eac-6328-4d4f-8d7e-8bdffb234b3b Version: $LATEST
+
+2026-02-26T08:31:59.405Z	d7313eac-6328-4d4f-8d7e-8bdffb234b3b	INFO	Analyzing 118 comments for analysisId: 587350e6-73be-4af9-9a6e-a6bb087c1a4c
+
+2026-02-26T08:32:01.405Z	d7313eac-6328-4d4f-8d7e-8bdffb234b3b	INFO	Groq response received, length: 4183
+
+2026-02-26T08:32:01.423Z	d7313eac-6328-4d4f-8d7e-8bdffb234b3b	INFO	Analysis completed for analysisId: 587350e6-73be-4af9-9a6e-a6bb087c1a4c
+
+END RequestId: d7313eac-6328-4d4f-8d7e-8bdffb234b3b
+
+REPORT RequestId: d7313eac-6328-4d4f-8d7e-8bdffb234b3b	Duration: 2077.75 ms	Billed Duration: 2078 ms	Memory Size: 1024 MB	Max Memory Used: 103 MB	
+
+START RequestId: cd71635e-465c-4ec5-8877-60ca85cc1f0f Version: $LATEST
+
+2026-02-26T08:33:09.043Z	cd71635e-465c-4ec5-8877-60ca85cc1f0f	INFO	Analyzing 2500 comments for analysisId: d204933b-d3e8-41d6-b55b-a5c83ab8c7d8
+
+2026-02-26T08:33:11.646Z	cd71635e-465c-4ec5-8877-60ca85cc1f0f	INFO	Groq response received, length: 7789
+
+2026-02-26T08:33:11.663Z	cd71635e-465c-4ec5-8877-60ca85cc1f0f	INFO	Analysis completed for analysisId: d204933b-d3e8-41d6-b55b-a5c83ab8c7d8
+
+END RequestId: cd71635e-465c-4ec5-8877-60ca85cc1f0f
+
+REPORT RequestId: cd71635e-465c-4ec5-8877-60ca85cc1f0f	Duration: 2962.35 ms	Billed Duration: 2963 ms	Memory Size: 1024 MB	Max Memory Used: 113 MB	
+
+START RequestId: e1a8c0fc-7861-46fa-a026-5b202d8b4912 Version: $LATEST
+
+2026-02-26T08:33:43.097Z	e1a8c0fc-7861-46fa-a026-5b202d8b4912	INFO	Analyzing 264 comments for analysisId: 613d1eb6-25d3-4ce5-851b-b9848880bf75
+
+2026-02-26T08:33:43.162Z	e1a8c0fc-7861-46fa-a026-5b202d8b4912	ERROR	Analysis Failed: _AxiosError: Request failed with status code 429
+    at settle (/var/task/index.js:45224:12)
+    at IncomingMessage.handleStreamEnd (/var/task/index.js:46287:11)
+    at IncomingMessage.emit (node:events:529:35)
+    at endReadableNT (node:internal/streams/readable:1400:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+    at Axios.request (/var/task/index.js:47188:41)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Runtime.handler (/var/task/index.js:47650:26) {
+  isAxiosError: true,
+  code: 'ERR_BAD_REQUEST',
+  config: {
+    transitional: {
+      silentJSONParsing: true,
+      forcedJSONParsing: true,
+      clarifyTimeoutError: false,
+      legacyInterceptorReqResOrdering: true
+    },
+    adapter: [ 'xhr', 'http', 'fetch' ],
+    transformRequest: [ [Function: transformRequest] ],
+    transformResponse: [ [Function: transformResponse] ],
+    timeout: 50000,
+    xsrfCookieName: 'XSRF-TOKEN',
+    xsrfHeaderName: 'X-XSRF-TOKEN',
+    maxContentLength: -1,
+    maxBodyLength: -1,
+    env: { FormData: [Function], Blob: [class Blob] },
+    validateStatus: [Function: validateStatus],
+    headers: Object [AxiosHeaders] {
+      Accept: 'application/json, text/plain, */*',
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer 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',
+      'User-Agent': 'axios/1.13.5',
+      'Content-Length': '17838',
+      'Accept-Encoding': 'gzip, compress, deflate, br'
+    },
+    method: 'post',
+    url: 'https://api.groq.com/openai/v1/chat/completions',
+    data: `{"model":"llama-3.1-8b-instant","messages":[{"role":"system","content":"You are a YouTube comment analysis engine. You MUST respond with ONLY valid JSON, no markdown, no code fences, no explanation."},{"role":"user","content":"Analyze these YouTube video comments (sampled from 264 total comments) and provide insights:\\n\\n[COMMENTS DATA]\\nSo.... it's basically google translate with a faster processor? What am I missing here? If we are trying to compete with chatGPT remember that chatGPT can basically write software with a prompt. It could write a powerful version of google translate in 5 minutes.\\n---\\n​@alakshieConsider reading about the Dunning Kreuger effect. You seem to be a poor sufferer\\n---\\nHow can I use sarvam.m\\n---\\nHopefully they add it soon\\n---\\nwhere is the link to try bro?... nothing in description...how can people believe without any proof to try...just a pretty AD thats it?\\n---\\nPlease add dark theme and upload file feature 👍🏻\\n---\\nAI race is test cricket not T20\\n---\\nDark mode pls\\n---\\n@blackcatpirates8134 How is this tricking people? I need to know\\n---\\nFree करोगे की जियो की  तरह लूट लोगे 😅\\n---\\nNow it's an ai chatbot​@MAHI-fo5sr\\n---\\nNha bro it's not an ai chat bot\\n---\\nPajeet music😂😂\\n---\\nWe have integrated Sarvam AI in our Web App. Kindly collaborate with us.\\n---\\nThanks for trying to end language war in india thanks guys love you 🙏\\n---\\nThey translated Union Budget speech of FM Nirmala Sitaraman live in Kannada language for Republic channel, the comments below are saying 'amazing kannada madam' so it passed the turing test. It is definitely revolutionary.\\n---\\n​@d_roy_ they might hallucinate for 'marathi-gujrathi' task. But the original comment was talking about english-indian languages. And they don't hallucinate that often. I know because we have lambda functions set up for automatic internationalisation. You are being defensive for no reason. The future of all LLMs is local.\\n---\\nThere are open source models to do that already\\n---\\nGo to their website?\\n---\\n@MAHI-fo5sr Aa jaega kuch din mein ,inki site par diya h 30B aur 105B mode coming soon for chats\\n---\\nApp kab aayegi\\n---\\nYou guys are awesomee!!! Please release paid products so we can pay somehow and contribute\\n---\\nWorld class presentation.\\n---\\n@MAHI-fo5sr It is an ai chatbot as well\\n---\\nCan we get the benchmark results\\n---\\nneeds as much funding as possible from government ngl\\n---\\n@massiah1298 this generic norm also most indian competitors cant replicate 😂 so atleast they standing on business\\n---\\n​@Prashant_Pandey4app bhi laa rhe hai ye log\\n---\\nLet's make saravam a world class ai model....Made in India makes us proud ❤❤\\nPlease make this available for the Indian public as soon as possible...we can definitely beat chatgpt and Gemini❤\\nAlways with you guys\\n---\\nAll the best\\n---\\n​@EndianCitizen108I see, well I still need to see more because tricking people isn't as impressive as it used to seem nowadays, people get tricked by many things lol. But yeah, it's definitely a good news.\\n---\\nBrilliant work guys✌️🇮🇳. Keep going🔱\\n---\\nFeedback: i used the TTS but it breaks and is inconsistent many times, also hinglish should be added as a language\\n---\\nWe need a full featured app like Chatgpt and Gemini. And there should also be free use options for students in addition to paid. 👍\\n---\\nFor gods sake please send some of your UX/UI designers to the government departments  to make their websites and save us from unbearable embarassment🙏🙏\\n---\\nsanskrit hai kya\\n---\\nRooting for you guys(developers). Really hoping for Sarvam's sucess!! Keep working hard and do great research, you all got this. Make us proud!\\n\\n-from an aspiring kid who aims to build and grow INDIA\\n---\\nMotion graphics is too generic...do  new and give us new experience.... mujhe aisa lag rha tha jaise main Google Gemini ki ad dekh raha hu... Bhai indian aise hi badnaam hei copy karne aur labour work karne mei...\\nSo hire creative design Thinkers... Jo apko better ideas and inovative visual and composition k liye suggestions de sake...\\nFocus on design and branding....yeh koi inovative tool ni hei already copy paste hei bas context indian hei...\\nHire inovative kids, gaon dihat mei jao waha milega apko inovative childs IIT, NID jaise design certificate ab old school ho chuke hei...😅😅\\n\\nAur specially India ka 99% private universities, institute are same As the fraud Galgotiya University. (Gala_Ghot_Diya)...\\n\\nAise aap kabhi Na Chat Gpt ko compete kar paoge na hi aur koi peer ko...We are already too late in this race... because hum bas service dene mei busy the Infosys aur TCS ban ke...😂😂😂 Innovative toh hamare khoon mei hi ni hei...bas copy paste copy paste and copy paste\\n---\\nIt's already launched named (Indus chatbot by Sarvam)\\n---\\nGonna give it a try and check if it really works for me\\n---\\n@tidehunter-r4v obviously there are open source ones already that hallucinate 100x more. That's a given. Your point?\\n---\\nI am from Kolkata\\n---\\nLook. I really want India to make great strides in AI. But, let's be honest. This is most likely a wrapper around Claude or ChatGPT. If not, can you tell me which data center in India has the capability for running LLMs at scale?\\n---\\nPrathyush kumar\\n---\\nAb kon bolega.l :  india= astrotalk 😂\\n---\\nI don’t know why you’re impressed. I’m questioning your skills as a designer.\\nThe font used is literally Google sans- Google’s own font \\nThe cursor used here is a blatant copy of figma’s cursor design. \\nThe design is very generic and overused no originality and doesn’t feel “indian” which everyone seems to ravaging about.\\n---\\nIts childs play with Higgsfield Vibe motion AI.\\n---\\nImprove Lip sink and European and Asian languages\\n---\\nThey are only targeting major languages which are used in India mostly for now. They will slowly integrate every language and dialects. India has too many languages and it is hard to integrate them all at once. It will be a long process and can take upto many years even\\n---\\nAdd plug and play pipelines practices in studio\\n---\\ncould have done better sound design like clicking effects\\n---\\nInvideo bhi india ka\\n---\\nWhat about coding? That's the real benchmark. Language is the easiest frontier with LLMs. ChatGPT did it 4 years ago\\n---\\nYeah, I don't understand why others can't see that\\n---\\nଓଡ଼ିଆ ଭାଷା?\\n---\\nNow we can proudly say that Sarvam is India's answer to ChatGPTs and Deepseek's of the World 🇮🇳\\n---\\nRemove \\"build for India\\", make it build for the world.\\n---\\nIt's nice to see that India is trying not to be far away from US and China! IMHO India is doing better than Europe with exception of Mistral\\n---\\n@DeepSpaceDock now go check\\n---\\nWhat's that banger of a  background music\\n---\\nWhere's the product demo?\\n---\\nWell Done SARVAM AI ❤💪🇮🇳\\n---\\n​@bhootkimkcyeah\\n---\\nThis can either be revolutionary or overhyped, I'm betting towards the former.\\n---\\nIs Sarvam AI giving API? \\nIs it free?\\n---\\nNeed photo generation / background changing as per the requirements/ photo editing too....\\nChecked sarvam ai....but there is no any option...and should have to be unlimited.....\\nDetailed information regarding anything...\\nJust because of that gemini is still far ahead to evert platform...\\nWant sarvam to implement these things\\n---\\nIm still not satisfied why didn you put my tribs language ik from arunachalpradesh I want adi(abhor) language and translations too just putting mainland languages won't work. If it has to be it must evn put all tribal languages from northeast as well that's justice and equality\\n---\\nWhy continue with google or continue with Microsoft only, why there is no option to continue with email id ?\\n---\\nGreat work.\\n---\\nHi, if you can build a product to understand dog language, every pet lover will buy your product. Same with cat, cow! GCC in no time\\n---\\ndo this provide embedding models, can someone provide me support\\n---\\nAnother wrapper hoax\\n---\\n​@MAHI-fo5srhogaya bhai search Indus by sarvam.\\nUse it's good but I think thoda server issue hai because bahut ne download Kiya hai\\n---\\n​@editingstyle-i2jit has become a norm... Ui seems generic..\\n---\\nI keep coming back to listen the background music\\n---\\nA browser extension for yt, fb, insta would be great as well\\n---\\nSeems to be good ..nice all the best\\n---\\nplz add text to image and video feature also...like seedance\\n---\\nMake target audience as content creators is good but increasing audience is important\\n---\\n@bhootkimkc We need a revolution like Nepal. System won't change that easily.\\n---\\nPlease fix the careers page.\\n---\\nDoes your ai support Sanskrit?\\n---\\nhmm who's your designer. using google sans, and js straight up copying Figma's cursor design. why cant anything that comes out of our country feel authentic\\n---\\nHe has no idea about UX/UI that's why impressed.😂Also take a good look at their pricing 😅\\n---\\nUr very close to agentic AI..we would like to see it soon\\n---\\nPlease need app 🙏\\nFrom Nepal \\nSupporting Indian 😊\\n---\\nTarget entire world not india specific\\n---\\nWill it generate photos?\\n---\\n@tidehunter-r4vapparently this is the most accurate one for indian language.\\n---\\nHogya hai Indus ai by sarvam abhi beta form me hai download it\\n---\\nWe need to change the leaders first. The current ones are totally uneducated. Even if they reach out to masses they spew venom only.\\n---\\nApp kab launch hoga ?\\n---\\nUse Indus chatbot by Sarvam.\\n---\\nProud of india\\n---\\n​@aryansrivastava3029 is it confirmed?\\n---\\nPls release an application for this\\n---\\nNo pictures upload options & pictures generation options😢\\n---\\nIt should be open source\\n---\\n​@SUNs1591We will see\\n---\\nHow many languages and dialects does it handle? Anyone can answer please.\\n---\\nPlayStore par kab available hoga ?\\n---\\nI was waiting, thanks 🥺\\n---\\nTheir own platform\\n---\\nAUM AUM AUM\\n---\\nCinema dubbing while retaining original actors voice would be good . \\nGe`... 7526 more characters,
+    allowAbsoluteUrls: true
+  },
+  request: <ref *1> ClientRequest {
+    _events: [Object: null prototype] {
+      abort: [Function (anonymous)],
+      aborted: [Function (anonymous)],
+      connect: [Function (anonymous)],
+      error: [Function (anonymous)],
+      socket: [Function (anonymous)],
+      timeout: [Function (anonymous)],
+      finish: [Function: requestOnFinish]
+    },
+    _eventsCount: 7,
+    _maxListeners: undefined,
+    outputData: [],
+    outputSize: 0,
+    writable: true,
+    destroyed: false,
+    _last: true,
+    chunkedEncoding: false,
+    shouldKeepAlive: false,
+    maxRequestsOnConnectionReached: false,
+    _defaultKeepAlive: true,
+    useChunkedEncodingByDefault: true,
+    sendDate: false,
+    _removedConnection: false,
+    _removedContLen: false,
+    _removedTE: false,
+    strictContentLength: false,
+    _contentLength: '17838',
+    _hasBody: true,
+    _trailer: '',
+    finished: true,
+    _headerSent: true,
+    _closed: false,
+    socket: TLSSocket {
+      _tlsOptions: [Object],
+      _secureEstablished: true,
+      _securePending: false,
+      _newSessionPending: false,
+      _controlReleased: true,
+      secureConnecting: false,
+      _SNICallback: null,
+      servername: 'api.groq.com',
+      alpnProtocol: false,
+      authorized: true,
+      authorizationError: null,
+      encrypted: true,
+      _events: [Object: null prototype],
+      _eventsCount: 10,
+      connecting: false,
+      _hadError: false,
+      _parent: null,
+      _host: 'api.groq.com',
+      _closeAfterHandlingError: false,
+      _readableState: [ReadableState],
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: false,
+      _sockname: null,
+      _pendingData: null,
+      _pendingEncoding: '',
+      server: undefined,
+      _server: null,
+      ssl: [TLSWrap],
+      _requestCert: true,
+      _rejectUnauthorized: true,
+      parser: null,
+      _httpMessage: [Circular *1],
+      timeout: 50000,
+      [Symbol(alpncallback)]: null,
+      [Symbol(res)]: [TLSWrap],
+      [Symbol(verified)]: true,
+      [Symbol(pendingSession)]: null,
+      [Symbol(async_id_symbol)]: 1124,
+      [Symbol(kHandle)]: [TLSWrap],
+      [Symbol(lastWriteQueueSize)]: 0,
+      [Symbol(timeout)]: Timeout {
+        _idleTimeout: 50000,
+        _idlePrev: [TimersList],
+        _idleNext: [TimersList],
+        _idleStart: 145975,
+        _onTimeout: [Function: bound ],
+        _timerArgs: undefined,
+        _repeat: null,
+        _destroyed: false,
+        [Symbol(refed)]: false,
+        [Symbol(kHasPrimitive)]: false,
+        [Symbol(asyncId)]: 1132,
+        [Symbol(triggerId)]: 1127
+      },
+      [Symbol(kBuffer)]: null,
+      [Symbol(kBufferCb)]: null,
+      [Symbol(kBufferGen)]: null,
+      [Symbol(kCapture)]: false,
+      [Symbol(kSetNoDelay)]: false,
+      [Symbol(kSetKeepAlive)]: true,
+      [Symbol(kSetKeepAliveInitialDelay)]: 60,
+      [Symbol(kBytesRead)]: 0,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(connect-options)]: [Object]
+    },
+    _header: 'POST /openai/v1/chat/completions HTTP/1.1\r\n' +
+      'Accept: application/json, text/plain, */*\r\n' +
+      'Content-Type: application/json\r\n' +
+      'Authorization: Bearer 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\r\n' +
+      'User-Agent: axios/1.13.5\r\n' +
+      'Content-Length: 17838\r\n' +
+      'Accept-Encoding: gzip, compress, deflate, br\r\n' +
+      'Host: api.groq.com\r\n' +
+      'Connection: close\r\n' +
+      '\r\n',
+    _keepAliveTimeout: 0,
+    _onPendingData: [Function: nop],
+    agent: Agent {
+      _events: [Object: null prototype],
+      _eventsCount: 2,
+      _maxListeners: undefined,
+      defaultPort: 443,
+      protocol: 'https:',
+      options: [Object: null prototype],
+      requests: [Object: null prototype] {},
+      sockets: [Object: null prototype],
+      freeSockets: [Object: null prototype] {},
+      keepAliveMsecs: 1000,
+      keepAlive: false,
+      maxSockets: Infinity,
+      maxFreeSockets: 256,
+      scheduling: 'lifo',
+      maxTotalSockets: Infinity,
+      totalSocketCount: 1,
+      maxCachedSessions: 100,
+      _sessionCache: [Object],
+      [Symbol(kCapture)]: false
+    },
+    socketPath: undefined,
+    method: 'POST',
+    maxHeaderSize: undefined,
+    insecureHTTPParser: undefined,
+    joinDuplicateHeaders: undefined,
+    path: '/openai/v1/chat/completions',
+    _ended: true,
+    res: IncomingMessage {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      socket: [TLSSocket],
+      httpVersionMajor: 1,
+      httpVersionMinor: 1,
+      httpVersion: '1.1',
+      complete: true,
+      rawHeaders: [Array],
+      rawTrailers: [],
+      joinDuplicateHeaders: undefined,
+      aborted: false,
+      upgrade: false,
+      url: '',
+      method: null,
+      statusCode: 429,
+      statusMessage: 'Too Many Requests',
+      client: [TLSSocket],
+      _consuming: false,
+      _dumped: false,
+      req: [Circular *1],
+      responseUrl: 'https://api.groq.com/openai/v1/chat/completions',
+      redirects: [],
+      [Symbol(kCapture)]: false,
+      [Symbol(kHeaders)]: [Object],
+      [Symbol(kHeadersCount)]: 42,
+      [Symbol(kTrailers)]: null,
+      [Symbol(kTrailersCount)]: 0
+    },
+    aborted: false,
+    timeoutCb: null,
+    upgradeOrConnect: false,
+    parser: null,
+    maxHeadersCount: null,
+    reusedSocket: false,
+    host: 'api.groq.com',
+    protocol: 'https:',
+    _redirectable: Writable {
+      _writableState: [WritableState],
+      _events: [Object: null prototype],
+      _eventsCount: 3,
+      _maxListeners: undefined,
+      _options: [Object],
+      _ended: true,
+      _ending: true,
+      _redirectCount: 0,
+      _redirects: [],
+      _requestBodyLength: 17838,
+      _requestBodyBuffers: [],
+      _onNativeResponse: [Function (anonymous)],
+      _currentRequest: [Circular *1],
+      _currentUrl: 'https://api.groq.com/openai/v1/chat/completions',
+      _timeout: null,
+      [Symbol(kCapture)]: false
+    },
+    [Symbol(kCapture)]: false,
+    [Symbol(kBytesWritten)]: 0,
+    [Symbol(kNeedDrain)]: true,
+    [Symbol(corked)]: 0,
+    [Symbol(kOutHeaders)]: [Object: null prototype] {
+      accept: [Array],
+      'content-type': [Array],
+      authorization: [Array],
+      'user-agent': [Array],
+      'content-length': [Array],
+      'accept-encoding': [Array],
+      host: [Array]
+    },
+    [Symbol(errored)]: null,
+    [Symbol(kHighWaterMark)]: 16384,
+    [Symbol(kRejectNonStandardBodyWrites)]: false,
+    [Symbol(kUniqueHeaders)]: null
+  },
+  response: {
+    status: 429,
+    statusText: 'Too Many Requests',
+    headers: Object [AxiosHeaders] {
+      date: 'Thu, 26 Feb 2026 08:33:43 GMT',
+      'content-type': 'application/json',
+      'content-length': '378',
+      connection: 'close',
+      'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate',
+      'retry-after': '10',
+      server: 'cloudflare',
+      vary: 'Origin',
+      'x-groq-region': 'yul',
+      'x-ratelimit-limit-requests': '14400',
+      'x-ratelimit-limit-tokens': '6000',
+      'x-ratelimit-remaining-requests': '14400',
+      'x-ratelimit-remaining-tokens': '3323',
+      'x-ratelimit-reset-requests': '1ms',
+      'x-ratelimit-reset-tokens': '26.77s',
+      'x-request-id': 'req_01kjcha6q7fz8vtyd6pwcv0y5e',
+      'cf-cache-status': 'DYNAMIC',
+      'set-cookie': [Array],
+      'strict-transport-security': 'max-age=15552000',
+      'cf-ray': '9d3e19647c0f3946-IAD',
+      'alt-svc': 'h3=":443"; ma=86400'
+    },
+    config: {
+      transitional: [Object],
+      adapter: [Array],
+      transformRequest: [Array],
+      transformResponse: [Array],
+      timeout: 50000,
+      xsrfCookieName: 'XSRF-TOKEN',
+      xsrfHeaderName: 'X-XSRF-TOKEN',
+      maxContentLength: -1,
+      maxBodyLength: -1,
+      env: [Object],
+      validateStatus: [Function: validateStatus],
+      headers: [Object [AxiosHeaders]],
+      method: 'post',
+      url: 'https://api.groq.com/openai/v1/chat/completions',
+      data: `{"model":"llama-3.1-8b-instant","messages":[{"role":"system","content":"You are a YouTube comment analysis engine. You MUST respond with ONLY valid JSON, no markdown, no code fences, no explanation."},{"role":"user","content":"Analyze these YouTube video comments (sampled from 264 total comments) and provide insights:\\n\\n[COMMENTS DATA]\\nSo.... it's basically google translate with a faster processor? What am I missing here? If we are trying to compete with chatGPT remember that chatGPT can basically write software with a prompt. It could write a powerful version of google translate in 5 minutes.\\n---\\n​@alakshieConsider reading about the Dunning Kreuger effect. You seem to be a poor sufferer\\n---\\nHow can I use sarvam.m\\n---\\nHopefully they add it soon\\n---\\nwhere is the link to try bro?... nothing in description...how can people believe without any proof to try...just a pretty AD thats it?\\n---\\nPlease add dark theme and upload file feature 👍🏻\\n---\\nAI race is test cricket not T20\\n---\\nDark mode pls\\n---\\n@blackcatpirates8134 How is this tricking people? I need to know\\n---\\nFree करोगे की जियो की  तरह लूट लोगे 😅\\n---\\nNow it's an ai chatbot​@MAHI-fo5sr\\n---\\nNha bro it's not an ai chat bot\\n---\\nPajeet music😂😂\\n---\\nWe have integrated Sarvam AI in our Web App. Kindly collaborate with us.\\n---\\nThanks for trying to end language war in india thanks guys love you 🙏\\n---\\nThey translated Union Budget speech of FM Nirmala Sitaraman live in Kannada language for Republic channel, the comments below are saying 'amazing kannada madam' so it passed the turing test. It is definitely revolutionary.\\n---\\n​@d_roy_ they might hallucinate for 'marathi-gujrathi' task. But the original comment was talking about english-indian languages. And they don't hallucinate that often. I know because we have lambda functions set up for automatic internationalisation. You are being defensive for no reason. The future of all LLMs is local.\\n---\\nThere are open source models to do that already\\n---\\nGo to their website?\\n---\\n@MAHI-fo5sr Aa jaega kuch din mein ,inki site par diya h 30B aur 105B mode coming soon for chats\\n---\\nApp kab aayegi\\n---\\nYou guys are awesomee!!! Please release paid products so we can pay somehow and contribute\\n---\\nWorld class presentation.\\n---\\n@MAHI-fo5sr It is an ai chatbot as well\\n---\\nCan we get the benchmark results\\n---\\nneeds as much funding as possible from government ngl\\n---\\n@massiah1298 this generic norm also most indian competitors cant replicate 😂 so atleast they standing on business\\n---\\n​@Prashant_Pandey4app bhi laa rhe hai ye log\\n---\\nLet's make saravam a world class ai model....Made in India makes us proud ❤❤\\nPlease make this available for the Indian public as soon as possible...we can definitely beat chatgpt and Gemini❤\\nAlways with you guys\\n---\\nAll the best\\n---\\n​@EndianCitizen108I see, well I still need to see more because tricking people isn't as impressive as it used to seem nowadays, people get tricked by many things lol. But yeah, it's definitely a good news.\\n---\\nBrilliant work guys✌️🇮🇳. Keep going🔱\\n---\\nFeedback: i used the TTS but it breaks and is inconsistent many times, also hinglish should be added as a language\\n---\\nWe need a full featured app like Chatgpt and Gemini. And there should also be free use options for students in addition to paid. 👍\\n---\\nFor gods sake please send some of your UX/UI designers to the government departments  to make their websites and save us from unbearable embarassment🙏🙏\\n---\\nsanskrit hai kya\\n---\\nRooting for you guys(developers). Really hoping for Sarvam's sucess!! Keep working hard and do great research, you all got this. Make us proud!\\n\\n-from an aspiring kid who aims to build and grow INDIA\\n---\\nMotion graphics is too generic...do  new and give us new experience.... mujhe aisa lag rha tha jaise main Google Gemini ki ad dekh raha hu... Bhai indian aise hi badnaam hei copy karne aur labour work karne mei...\\nSo hire creative design Thinkers... Jo apko better ideas and inovative visual and composition k liye suggestions de sake...\\nFocus on design and branding....yeh koi inovative tool ni hei already copy paste hei bas context indian hei...\\nHire inovative kids, gaon dihat mei jao waha milega apko inovative childs IIT, NID jaise design certificate ab old school ho chuke hei...😅😅\\n\\nAur specially India ka 99% private universities, institute are same As the fraud Galgotiya University. (Gala_Ghot_Diya)...\\n\\nAise aap kabhi Na Chat Gpt ko compete kar paoge na hi aur koi peer ko...We are already too late in this race... because hum bas service dene mei busy the Infosys aur TCS ban ke...😂😂😂 Innovative toh hamare khoon mei hi ni hei...bas copy paste copy paste and copy paste\\n---\\nIt's already launched named (Indus chatbot by Sarvam)\\n---\\nGonna give it a try and check if it really works for me\\n---\\n@tidehunter-r4v obviously there are open source ones already that hallucinate 100x more. That's a given. Your point?\\n---\\nI am from Kolkata\\n---\\nLook. I really want India to make great strides in AI. But, let's be honest. This is most likely a wrapper around Claude or ChatGPT. If not, can you tell me which data center in India has the capability for running LLMs at scale?\\n---\\nPrathyush kumar\\n---\\nAb kon bolega.l :  india= astrotalk 😂\\n---\\nI don’t know why you’re impressed. I’m questioning your skills as a designer.\\nThe font used is literally Google sans- Google’s own font \\nThe cursor used here is a blatant copy of figma’s cursor design. \\nThe design is very generic and overused no originality and doesn’t feel “indian” which everyone seems to ravaging about.\\n---\\nIts childs play with Higgsfield Vibe motion AI.\\n---\\nImprove Lip sink and European and Asian languages\\n---\\nThey are only targeting major languages which are used in India mostly for now. They will slowly integrate every language and dialects. India has too many languages and it is hard to integrate them all at once. It will be a long process and can take upto many years even\\n---\\nAdd plug and play pipelines practices in studio\\n---\\ncould have done better sound design like clicking effects\\n---\\nInvideo bhi india ka\\n---\\nWhat about coding? That's the real benchmark. Language is the easiest frontier with LLMs. ChatGPT did it 4 years ago\\n---\\nYeah, I don't understand why others can't see that\\n---\\nଓଡ଼ିଆ ଭାଷା?\\n---\\nNow we can proudly say that Sarvam is India's answer to ChatGPTs and Deepseek's of the World 🇮🇳\\n---\\nRemove \\"build for India\\", make it build for the world.\\n---\\nIt's nice to see that India is trying not to be far away from US and China! IMHO India is doing better than Europe with exception of Mistral\\n---\\n@DeepSpaceDock now go check\\n---\\nWhat's that banger of a  background music\\n---\\nWhere's the product demo?\\n---\\nWell Done SARVAM AI ❤💪🇮🇳\\n---\\n​@bhootkimkcyeah\\n---\\nThis can either be revolutionary or overhyped, I'm betting towards the former.\\n---\\nIs Sarvam AI giving API? \\nIs it free?\\n---\\nNeed photo generation / background changing as per the requirements/ photo editing too....\\nChecked sarvam ai....but there is no any option...and should have to be unlimited.....\\nDetailed information regarding anything...\\nJust because of that gemini is still far ahead to evert platform...\\nWant sarvam to implement these things\\n---\\nIm still not satisfied why didn you put my tribs language ik from arunachalpradesh I want adi(abhor) language and translations too just putting mainland languages won't work. If it has to be it must evn put all tribal languages from northeast as well that's justice and equality\\n---\\nWhy continue with google or continue with Microsoft only, why there is no option to continue with email id ?\\n---\\nGreat work.\\n---\\nHi, if you can build a product to understand dog language, every pet lover will buy your product. Same with cat, cow! GCC in no time\\n---\\ndo this provide embedding models, can someone provide me support\\n---\\nAnother wrapper hoax\\n---\\n​@MAHI-fo5srhogaya bhai search Indus by sarvam.\\nUse it's good but I think thoda server issue hai because bahut ne download Kiya hai\\n---\\n​@editingstyle-i2jit has become a norm... Ui seems generic..\\n---\\nI keep coming back to listen the background music\\n---\\nA browser extension for yt, fb, insta would be great as well\\n---\\nSeems to be good ..nice all the best\\n---\\nplz add text to image and video feature also...like seedance\\n---\\nMake target audience as content creators is good but increasing audience is important\\n---\\n@bhootkimkc We need a revolution like Nepal. System won't change that easily.\\n---\\nPlease fix the careers page.\\n---\\nDoes your ai support Sanskrit?\\n---\\nhmm who's your designer. using google sans, and js straight up copying Figma's cursor design. why cant anything that comes out of our country feel authentic\\n---\\nHe has no idea about UX/UI that's why impressed.😂Also take a good look at their pricing 😅\\n---\\nUr very close to agentic AI..we would like to see it soon\\n---\\nPlease need app 🙏\\nFrom Nepal \\nSupporting Indian 😊\\n---\\nTarget entire world not india specific\\n---\\nWill it generate photos?\\n---\\n@tidehunter-r4vapparently this is the most accurate one for indian language.\\n---\\nHogya hai Indus ai by sarvam abhi beta form me hai download it\\n---\\nWe need to change the leaders first. The current ones are totally uneducated. Even if they reach out to masses they spew venom only.\\n---\\nApp kab launch hoga ?\\n---\\nUse Indus chatbot by Sarvam.\\n---\\nProud of india\\n---\\n​@aryansrivastava3029 is it confirmed?\\n---\\nPls release an application for this\\n---\\nNo pictures upload options & pictures generation options😢\\n---\\nIt should be open source\\n---\\n​@SUNs1591We will see\\n---\\nHow many languages and dialects does it handle? Anyone can answer please.\\n---\\nPlayStore par kab available hoga ?\\n---\\nI was waiting, thanks 🥺\\n---\\nTheir own platform\\n---\\nAUM AUM AUM\\n---\\nCinema dubbing while retaining original actors voice would be good . \\nGe`... 7526 more characters,
+      allowAbsoluteUrls: true
+    },
+    request: <ref *1> ClientRequest {
+      _events: [Object: null prototype],
+      _eventsCount: 7,
+      _maxListeners: undefined,
+      outputData: [],
+      outputSize: 0,
+      writable: true,
+      destroyed: false,
+      _last: true,
+      chunkedEncoding: false,
+      shouldKeepAlive: false,
+      maxRequestsOnConnectionReached: false,
+      _defaultKeepAlive: true,
+      useChunkedEncodingByDefault: true,
+      sendDate: false,
+      _removedConnection: false,
+      _removedContLen: false,
+      _removedTE: false,
+      strictContentLength: false,
+      _contentLength: '17838',
+      _hasBody: true,
+      _trailer: '',
+      finished: true,
+      _headerSent: true,
+      _closed: false,
+      socket: [TLSSocket],
+      _header: 'POST /openai/v1/chat/completions HTTP/1.1\r\n' +
+        'Accept: application/json, text/plain, */*\r\n' +
+        'Content-Type: application/json\r\n' +
+        'Authorization: Bearer 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\r\n' +
+        'User-Agent: axios/1.13.5\r\n' +
+        'Content-Length: 17838\r\n' +
+        'Accept-Encoding: gzip, compress, deflate, br\r\n' +
+        'Host: api.groq.com\r\n' +
+        'Connection: close\r\n' +
+        '\r\n',
+      _keepAliveTimeout: 0,
+      _onPendingData: [Function: nop],
+      agent: [Agent],
+      socketPath: undefined,
+      method: 'POST',
+      maxHeaderSize: undefined,
+      insecureHTTPParser: undefined,
+      joinDuplicateHeaders: undefined,
+      path: '/openai/v1/chat/completions',
+      _ended: true,
+      res: [IncomingMessage],
+      aborted: false,
+      timeoutCb: null,
+      upgradeOrConnect: false,
+      parser: null,
+      maxHeadersCount: null,
+      reusedSocket: false,
+      host: 'api.groq.com',
+      protocol: 'https:',
+      _redirectable: [Writable],
+      [Symbol(kCapture)]: false,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(kNeedDrain)]: true,
+      [Symbol(corked)]: 0,
+      [Symbol(kOutHeaders)]: [Object: null prototype],
+      [Symbol(errored)]: null,
+      [Symbol(kHighWaterMark)]: 16384,
+      [Symbol(kRejectNonStandardBodyWrites)]: false,
+      [Symbol(kUniqueHeaders)]: null
+    },
+    data: { error: [Object] }
+  },
+  status: 429
+}
+
+END RequestId: e1a8c0fc-7861-46fa-a026-5b202d8b4912
+
+REPORT RequestId: e1a8c0fc-7861-46fa-a026-5b202d8b4912	Duration: 100.99 ms	Billed Duration: 101 ms	Memory Size: 1024 MB	Max Memory Used: 113 MB	
+
+START RequestId: 209de84a-5f6a-4fc9-857e-c55cfeced8cc Version: $LATEST
+
+2026-02-26T08:34:04.674Z	209de84a-5f6a-4fc9-857e-c55cfeced8cc	INFO	Analyzing 208 comments for analysisId: a4b48623-1d06-42d0-aa95-c23c5d3ed16c
+
+2026-02-26T08:34:06.817Z	209de84a-5f6a-4fc9-857e-c55cfeced8cc	INFO	Groq response received, length: 4626
+
+2026-02-26T08:34:06.834Z	209de84a-5f6a-4fc9-857e-c55cfeced8cc	INFO	Analysis completed for analysisId: a4b48623-1d06-42d0-aa95-c23c5d3ed16c
+
+END RequestId: 209de84a-5f6a-4fc9-857e-c55cfeced8cc
+
+REPORT RequestId: 209de84a-5f6a-4fc9-857e-c55cfeced8cc	Duration: 2175.22 ms	Billed Duration: 2176 ms	Memory Size: 1024 MB	Max Memory Used: 113 MB	
+
+START RequestId: 67d7e11d-ef9a-495f-8e75-c6475fd7729d Version: $LATEST
+
+2026-02-26T08:34:35.741Z	67d7e11d-ef9a-495f-8e75-c6475fd7729d	INFO	Analyzing 142 comments for analysisId: 3f76cd31-55a1-44ee-889a-74c81bd1f83b
+
+2026-02-26T08:34:35.801Z	67d7e11d-ef9a-495f-8e75-c6475fd7729d	ERROR	Analysis Failed: _AxiosError: Request failed with status code 429
+    at settle (/var/task/index.js:45224:12)
+    at IncomingMessage.handleStreamEnd (/var/task/index.js:46287:11)
+    at IncomingMessage.emit (node:events:529:35)
+    at endReadableNT (node:internal/streams/readable:1400:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+    at Axios.request (/var/task/index.js:47188:41)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Runtime.handler (/var/task/index.js:47650:26) {
+  isAxiosError: true,
+  code: 'ERR_BAD_REQUEST',
+  config: {
+    transitional: {
+      silentJSONParsing: true,
+      forcedJSONParsing: true,
+      clarifyTimeoutError: false,
+      legacyInterceptorReqResOrdering: true
+    },
+    adapter: [ 'xhr', 'http', 'fetch' ],
+    transformRequest: [ [Function: transformRequest] ],
+    transformResponse: [ [Function: transformResponse] ],
+    timeout: 50000,
+    xsrfCookieName: 'XSRF-TOKEN',
+    xsrfHeaderName: 'X-XSRF-TOKEN',
+    maxContentLength: -1,
+    maxBodyLength: -1,
+    env: { FormData: [Function], Blob: [class Blob] },
+    validateStatus: [Function: validateStatus],
+    headers: Object [AxiosHeaders] {
+      Accept: 'application/json, text/plain, */*',
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer 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',
+      'User-Agent': 'axios/1.13.5',
+      'Content-Length': '17494',
+      'Accept-Encoding': 'gzip, compress, deflate, br'
+    },
+    method: 'post',
+    url: 'https://api.groq.com/openai/v1/chat/completions',
+    data: `{"model":"llama-3.1-8b-instant","messages":[{"role":"system","content":"You are a YouTube comment analysis engine. You MUST respond with ONLY valid JSON, no markdown, no code fences, no explanation."},{"role":"user","content":"Analyze these YouTube video comments (sampled from 142 total comments) and provide insights:\\n\\n[COMMENTS DATA]\\nSuper interesting ! my understanding is that this should be seen across all projects, so tom if am building a new project and asked to use one of the sikills would it be able to recognize, or is that done per each project? thank you\\n---\\n@ansab5164 Howdy brother check my response above.\\n---\\nClaude skills also include code\\n---\\nYou should be able to add skills globally, so you should be able to call upon them in any environment. But if you're unsure, just import the skills to the project and you'll be golden.\\n---\\nJack, love the videos..but slow down and stick to 1 thing per video. I'll get 5 mins into your video, and already things aren't working right. My GitHub doesn't like to work with aistudios so I can't pull my repo into aistudio after I make the rough draft\\n---\\n@jaybeatz8084The comment was about how they handle skills specifically, not the general differences in CC vs. Antigravity.\\n---\\nhmmm ok nahh.\\n---\\nwhere is free trial? i tried and still say 77 usd\\n---\\nI noticed you’re using that speech-to-text tool in your video, but is it only available for Apple and not for Windows?\\n---\\nPlease tell me how you get your mouse pointer to slightly reduce its size when you click or hold on something and then it jumps back into place \\n\\nBeen trying to get it for long, but dont know how or where, And ChatGPT doesn't understand me when I ask it🙏🏻\\n---\\nYo! Looking to pay someone for cold Email help. \\n\\nEasy gig. Already have paying clients. Too many. I’ll hand you lists, AI personalization, as much intel as you need to do your job. \\n\\nyou’ll never have to get onto a client meeting.. you don’t even have to answer replies. And you definitely don’t need to build your own list.\\n\\nI build scrapers and AI systems for a living. Personalization, hyper targeting, whatever you need.\\n\\nI need someone who can simply hop in and write some campaigns, iterate on analytics and responses, and own the performance of the \\"interested reply rate.\\"\\n\\njust need to hop on a call with me once a month, and put a few hours in twice a month. \\n\\nCopy, strategy, analysis. \\n\\nPaid gig. it’s literally that simple. If this works out and everything is good, easy route to more stuff.\\n\\nfor context, I sell intelligence and data mining to a few niches. It’s an easy upsell to cold email if they happen to be looking for opportunities. I’ve done well with it but now it’s more than I can handle.\\n\\nIf you’re interested, let m know.\\n---\\nJack, as much as I appreciate your videos and your hard work and effort put into it.\\nWe need to understand:\\n\\n- How do you use these skills\\n- Why do we need them and how do they compare to personas, rules, workflows\\n- When do you need them? to run MCPs?\\n\\nI think this video is great but ALOT of confusion is around antigravitys ecosystem and its use-cases and how you verify and trigger them.\\n---\\nWhere can I get the Skills/see your slides? The links don't work (the paperform ones)? Thanks\\n---\\nFor creating projects, is the change worth it, going from Cursor which is already proven to work for full project development or migrate to AntiGravity agents developments platform? I am a pure vibe coder building a SaaS business right now. Greatly appreciate a straightforward answer\\n---\\nclaude code is paid, antigravity is free\\n---\\nYou can do the same in Claude.\\n---\\ni still dont know the difference between claude and antigravity skills. My cli claude creates its own script to streamline skill usage without me telling it to.\\n---\\nHowdy Brother 💪\\n\\n🤔 How to use Skills\\n1) Create a skill for anything that you use frequently (Publishing to a service, design work, research, scraping, etc)\\n2) test the skill and make sure it does exactly what you want\\n3) When you ask anti-gravity to do that thing, it will automatically use the skill (meaning you get high quality output every time)\\n4) Add the skills to any project you want. \\n\\n💪 Why you need them (and how the compare)\\n1) Persona = how the agent behaves. Rules = constraints. Workflows = pipelines.\\n2) Skills = reusable abilities the agent can invoke when it detects intent \\n3) TL;DR: You teach it ONCE how to do a task properly, and it becomes muscle memory.\\n4) Value: you get consistency, speed, and portability across every project.\\n\\n\\n⚡ When do you need them? (MCPs)\\n1) MCPs give AntiGravity data and the ability to connect to anything\\n2) You do not need skills to use your MCP\\n3) You will use the skills anytime you want the outcome for the skill. So for example, if I created a skill for scraping reddit, anytime I ask anti-gravity scraping reddit it will activate the skill. Meaning I don't have to explain in great detail how to do it and it doesn't need to figure out anymore because it's a predefined skill. \\n\\nI hope that makes sense. I'm going to be doing a full anti-gravity masterclass where I'll go into more detail or you can join me for the catch up on Friday if you're in the community. Let me know if you have any further questions 🙏\\n---\\nHahahaha 1000%\\n---\\nJust keep in mind that you are sharing everything from your project with google, probably the worst company when it comes to privacy protection.\\n---\\ndidnt knew antigravity updated this much, tried it after it came out and it was mehh\\n---\\nLink in bio, its working now broski 💪\\n---\\n\\"Imagine if you could build anything faster...\\"  - A.I.\\n---\\nHow is this different with Cursor's skills?\\n---\\nYo buddy, the skills file isnt working :(. Amazing video tho\\n---\\nwhats the pay tho\\n---\\nHey, thank you so much for this great video!\\n\\nQuick question, in order for me to use all the skills in every project, do I need to pull them up or use that same folder I created (the Skills Master folder), or does it automatically use all the skills I created?\\n---\\n👀 I also find it really helpful to use Notebook LM as a research agent, gather all my specs, identify deprecated packages that will likely create trouble, compatibility and integration guides, etc... You get a wonder result every time. 😁 It's a great time to be alive!\\n---\\nits okay.. i already build one for windows in 1 day\\n---\\n​@ReelsbroughttoyoubyRiolawhy do you think there is something wrong with yours?\\n---\\n#gnote anti-gravity skills\\n---\\ncursor is paid, antigravity is free\\n---\\nHey!\\nReally interesting video!\\nIt would be nice that you make another video after few weeks of using this skills method and show us a more-in-depth tutorial on how to use them, for example orchestating different skills all at once (maybe an orchestator skill to decide the better skill for each job you ask to be done).\\nAlso when asking for more complex solutions, how would they perform.\\n\\nYou make a really good job, i discovered you recently and you're becoming one of my top AI dev content creators :D\\n---\\nSame thought I had\\n---\\nHi, i am a little bit of a noob in this whole thing, but i have been getting lots of erros. What do you mean by that?\\n---\\nThanks for not showing any of what the skills do nice waste of time\\n---\\nI’m using a similar process to attach AI automations deployed in Google cloud run or Cloudflare directly to my website as an added utility or tool. It’s been amazing.\\n---\\nAs some have responded.\\nNeed more info.\\nSlow down your delivery! \\nExample of needed context.\\nSkills. Why not create a custom Agent Folder with all skills and then this is dropped in per project? Or better to put onto global or workflow rules? Which brings me to how do skills work with MCP context7 and Gemini Conductor? Have you used conductor workflows? Would love more input and again slow down the delivery.\\n---\\nNew but full of bug's\\n---\\nThanks for the information video, it's really help a lot\\n---\\nThis is some software about cooking food?\\n---\\nSomeone doesn't bother comparing to claude. skipped ads.\\n---\\nYour videos are so informative. Thank you!\\n---\\nCan you do that Firecrawl brand extraction thing within Antigravity? Like a skill or something\\n---\\nclaude code is paid, antigravity is free\\n---\\ninteresting video\\n---\\nwhat is it ?\\n---\\nThank you brother 💪\\n---\\nAntigravity sux.  it has rate limits worse than Anthropic.  Dont waste your time using it.  you wont be able to finish a project.\\n---\\nAntigravity skills are subroutines/functions/methods whatever you want to call them these days\\n---\\nGood morning,\\r\\n\\r\\nI found the topic very interesting, but I didn't see where you put the prompt text. Could you add it to the comments or the video description?\\n---\\nAre you sure Antigravity Skills are different from Claude Code skills? They both seem to be based on the open Agent Skills specification\\n---\\nThank you so much Jack 🙏\\n---\\nUpdated, will work now\\n---\\nThis video was so incredibly helpful, I can't thank you enough. I'm less likely to run into token limits now. I don't have to do the same things over and over again, solve the same problems. You might have guaranteed yourself a place in heaven for making this video. :)\\n---\\nAside from eating massive amounts of tokens, do you have any evidence of how effective the things you are teaching actually are? You must have some evidence or even data that proves your techniques are effective?\\n---\\nDiscord for us to start a community???\\n---\\nIs it working well cause mine isnt ?\\n---\\nThanks Jack, after discovering Anti gravity I feel I'm only limited by my ideas.\\n---\\nso its justa function of a promt kinda that the ai learns it and makes the code\\n---\\nFrom a creator standpoint, a “10/10 YouTube video” is probably not what you were trying to create.😅  That said, the content here is genuinely excellent and very useful.\\n---\\nNot available in my region , fud`... 7426 more characters,
+    allowAbsoluteUrls: true
+  },
+  request: <ref *1> ClientRequest {
+    _events: [Object: null prototype] {
+      abort: [Function (anonymous)],
+      aborted: [Function (anonymous)],
+      connect: [Function (anonymous)],
+      error: [Function (anonymous)],
+      socket: [Function (anonymous)],
+      timeout: [Function (anonymous)],
+      finish: [Function: requestOnFinish]
+    },
+    _eventsCount: 7,
+    _maxListeners: undefined,
+    outputData: [],
+    outputSize: 0,
+    writable: true,
+    destroyed: false,
+    _last: true,
+    chunkedEncoding: false,
+    shouldKeepAlive: false,
+    maxRequestsOnConnectionReached: false,
+    _defaultKeepAlive: true,
+    useChunkedEncodingByDefault: true,
+    sendDate: false,
+    _removedConnection: false,
+    _removedContLen: false,
+    _removedTE: false,
+    strictContentLength: false,
+    _contentLength: '17494',
+    _hasBody: true,
+    _trailer: '',
+    finished: true,
+    _headerSent: true,
+    _closed: false,
+    socket: TLSSocket {
+      _tlsOptions: [Object],
+      _secureEstablished: true,
+      _securePending: false,
+      _newSessionPending: false,
+      _controlReleased: true,
+      secureConnecting: false,
+      _SNICallback: null,
+      servername: 'api.groq.com',
+      alpnProtocol: false,
+      authorized: true,
+      authorizationError: null,
+      encrypted: true,
+      _events: [Object: null prototype],
+      _eventsCount: 10,
+      connecting: false,
+      _hadError: false,
+      _parent: null,
+      _host: 'api.groq.com',
+      _closeAfterHandlingError: false,
+      _readableState: [ReadableState],
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: false,
+      _sockname: null,
+      _pendingData: null,
+      _pendingEncoding: '',
+      server: undefined,
+      _server: null,
+      ssl: [TLSWrap],
+      _requestCert: true,
+      _rejectUnauthorized: true,
+      parser: null,
+      _httpMessage: [Circular *1],
+      timeout: 50000,
+      [Symbol(alpncallback)]: null,
+      [Symbol(res)]: [TLSWrap],
+      [Symbol(verified)]: true,
+      [Symbol(pendingSession)]: null,
+      [Symbol(async_id_symbol)]: 1368,
+      [Symbol(kHandle)]: [TLSWrap],
+      [Symbol(lastWriteQueueSize)]: 0,
+      [Symbol(timeout)]: Timeout {
+        _idleTimeout: 50000,
+        _idlePrev: [TimersList],
+        _idleNext: [TimersList],
+        _idleStart: 198617,
+        _onTimeout: [Function: bound ],
+        _timerArgs: undefined,
+        _repeat: null,
+        _destroyed: false,
+        [Symbol(refed)]: false,
+        [Symbol(kHasPrimitive)]: false,
+        [Symbol(asyncId)]: 1376,
+        [Symbol(triggerId)]: 1371
+      },
+      [Symbol(kBuffer)]: null,
+      [Symbol(kBufferCb)]: null,
+      [Symbol(kBufferGen)]: null,
+      [Symbol(kCapture)]: false,
+      [Symbol(kSetNoDelay)]: false,
+      [Symbol(kSetKeepAlive)]: true,
+      [Symbol(kSetKeepAliveInitialDelay)]: 60,
+      [Symbol(kBytesRead)]: 0,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(connect-options)]: [Object]
+    },
+    _header: 'POST /openai/v1/chat/completions HTTP/1.1\r\n' +
+      'Accept: application/json, text/plain, */*\r\n' +
+      'Content-Type: application/json\r\n' +
+      'Authorization: Bearer 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\r\n' +
+      'User-Agent: axios/1.13.5\r\n' +
+      'Content-Length: 17494\r\n' +
+      'Accept-Encoding: gzip, compress, deflate, br\r\n' +
+      'Host: api.groq.com\r\n' +
+      'Connection: close\r\n' +
+      '\r\n',
+    _keepAliveTimeout: 0,
+    _onPendingData: [Function: nop],
+    agent: Agent {
+      _events: [Object: null prototype],
+      _eventsCount: 2,
+      _maxListeners: undefined,
+      defaultPort: 443,
+      protocol: 'https:',
+      options: [Object: null prototype],
+      requests: [Object: null prototype] {},
+      sockets: [Object: null prototype],
+      freeSockets: [Object: null prototype] {},
+      keepAliveMsecs: 1000,
+      keepAlive: false,
+      maxSockets: Infinity,
+      maxFreeSockets: 256,
+      scheduling: 'lifo',
+      maxTotalSockets: Infinity,
+      totalSocketCount: 1,
+      maxCachedSessions: 100,
+      _sessionCache: [Object],
+      [Symbol(kCapture)]: false
+    },
+    socketPath: undefined,
+    method: 'POST',
+    maxHeaderSize: undefined,
+    insecureHTTPParser: undefined,
+    joinDuplicateHeaders: undefined,
+    path: '/openai/v1/chat/completions',
+    _ended: true,
+    res: IncomingMessage {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      socket: [TLSSocket],
+      httpVersionMajor: 1,
+      httpVersionMinor: 1,
+      httpVersion: '1.1',
+      complete: true,
+      rawHeaders: [Array],
+      rawTrailers: [],
+      joinDuplicateHeaders: undefined,
+      aborted: false,
+      upgrade: false,
+      url: '',
+      method: null,
+      statusCode: 429,
+      statusMessage: 'Too Many Requests',
+      client: [TLSSocket],
+      _consuming: false,
+      _dumped: false,
+      req: [Circular *1],
+      responseUrl: 'https://api.groq.com/openai/v1/chat/completions',
+      redirects: [],
+      [Symbol(kCapture)]: false,
+      [Symbol(kHeaders)]: [Object],
+      [Symbol(kHeadersCount)]: 42,
+      [Symbol(kTrailers)]: null,
+      [Symbol(kTrailersCount)]: 0
+    },
+    aborted: false,
+    timeoutCb: null,
+    upgradeOrConnect: false,
+    parser: null,
+    maxHeadersCount: null,
+    reusedSocket: false,
+    host: 'api.groq.com',
+    protocol: 'https:',
+    _redirectable: Writable {
+      _writableState: [WritableState],
+      _events: [Object: null prototype],
+      _eventsCount: 3,
+      _maxListeners: undefined,
+      _options: [Object],
+      _ended: true,
+      _ending: true,
+      _redirectCount: 0,
+      _redirects: [],
+      _requestBodyLength: 17494,
+      _requestBodyBuffers: [],
+      _onNativeResponse: [Function (anonymous)],
+      _currentRequest: [Circular *1],
+      _currentUrl: 'https://api.groq.com/openai/v1/chat/completions',
+      _timeout: null,
+      [Symbol(kCapture)]: false
+    },
+    [Symbol(kCapture)]: false,
+    [Symbol(kBytesWritten)]: 0,
+    [Symbol(kNeedDrain)]: true,
+    [Symbol(corked)]: 0,
+    [Symbol(kOutHeaders)]: [Object: null prototype] {
+      accept: [Array],
+      'content-type': [Array],
+      authorization: [Array],
+      'user-agent': [Array],
+      'content-length': [Array],
+      'accept-encoding': [Array],
+      host: [Array]
+    },
+    [Symbol(errored)]: null,
+    [Symbol(kHighWaterMark)]: 16384,
+    [Symbol(kRejectNonStandardBodyWrites)]: false,
+    [Symbol(kUniqueHeaders)]: null
+  },
+  response: {
+    status: 429,
+    statusText: 'Too Many Requests',
+    headers: Object [AxiosHeaders] {
+      date: 'Thu, 26 Feb 2026 08:34:35 GMT',
+      'content-type': 'application/json',
+      'content-length': '378',
+      connection: 'close',
+      'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate',
+      'retry-after': '9',
+      server: 'cloudflare',
+      vary: 'Origin',
+      'x-groq-region': 'yul',
+      'x-ratelimit-limit-requests': '14400',
+      'x-ratelimit-limit-tokens': '6000',
+      'x-ratelimit-remaining-requests': '14400',
+      'x-ratelimit-remaining-tokens': '3106',
+      'x-ratelimit-reset-requests': '1ms',
+      'x-ratelimit-reset-tokens': '28.94s',
+      'x-request-id': 'req_01kjchbt44eazs5pqrx3h2x3ef',
+      'cf-cache-status': 'DYNAMIC',
+      'set-cookie': [Array],
+      'strict-transport-security': 'max-age=15552000',
+      'cf-ray': '9d3e1aad7caf07f2-IAD',
+      'alt-svc': 'h3=":443"; ma=86400'
+    },
+    config: {
+      transitional: [Object],
+      adapter: [Array],
+      transformRequest: [Array],
+      transformResponse: [Array],
+      timeout: 50000,
+      xsrfCookieName: 'XSRF-TOKEN',
+      xsrfHeaderName: 'X-XSRF-TOKEN',
+      maxContentLength: -1,
+      maxBodyLength: -1,
+      env: [Object],
+      validateStatus: [Function: validateStatus],
+      headers: [Object [AxiosHeaders]],
+      method: 'post',
+      url: 'https://api.groq.com/openai/v1/chat/completions',
+      data: `{"model":"llama-3.1-8b-instant","messages":[{"role":"system","content":"You are a YouTube comment analysis engine. You MUST respond with ONLY valid JSON, no markdown, no code fences, no explanation."},{"role":"user","content":"Analyze these YouTube video comments (sampled from 142 total comments) and provide insights:\\n\\n[COMMENTS DATA]\\nSuper interesting ! my understanding is that this should be seen across all projects, so tom if am building a new project and asked to use one of the sikills would it be able to recognize, or is that done per each project? thank you\\n---\\n@ansab5164 Howdy brother check my response above.\\n---\\nClaude skills also include code\\n---\\nYou should be able to add skills globally, so you should be able to call upon them in any environment. But if you're unsure, just import the skills to the project and you'll be golden.\\n---\\nJack, love the videos..but slow down and stick to 1 thing per video. I'll get 5 mins into your video, and already things aren't working right. My GitHub doesn't like to work with aistudios so I can't pull my repo into aistudio after I make the rough draft\\n---\\n@jaybeatz8084The comment was about how they handle skills specifically, not the general differences in CC vs. Antigravity.\\n---\\nhmmm ok nahh.\\n---\\nwhere is free trial? i tried and still say 77 usd\\n---\\nI noticed you’re using that speech-to-text tool in your video, but is it only available for Apple and not for Windows?\\n---\\nPlease tell me how you get your mouse pointer to slightly reduce its size when you click or hold on something and then it jumps back into place \\n\\nBeen trying to get it for long, but dont know how or where, And ChatGPT doesn't understand me when I ask it🙏🏻\\n---\\nYo! Looking to pay someone for cold Email help. \\n\\nEasy gig. Already have paying clients. Too many. I’ll hand you lists, AI personalization, as much intel as you need to do your job. \\n\\nyou’ll never have to get onto a client meeting.. you don’t even have to answer replies. And you definitely don’t need to build your own list.\\n\\nI build scrapers and AI systems for a living. Personalization, hyper targeting, whatever you need.\\n\\nI need someone who can simply hop in and write some campaigns, iterate on analytics and responses, and own the performance of the \\"interested reply rate.\\"\\n\\njust need to hop on a call with me once a month, and put a few hours in twice a month. \\n\\nCopy, strategy, analysis. \\n\\nPaid gig. it’s literally that simple. If this works out and everything is good, easy route to more stuff.\\n\\nfor context, I sell intelligence and data mining to a few niches. It’s an easy upsell to cold email if they happen to be looking for opportunities. I’ve done well with it but now it’s more than I can handle.\\n\\nIf you’re interested, let m know.\\n---\\nJack, as much as I appreciate your videos and your hard work and effort put into it.\\nWe need to understand:\\n\\n- How do you use these skills\\n- Why do we need them and how do they compare to personas, rules, workflows\\n- When do you need them? to run MCPs?\\n\\nI think this video is great but ALOT of confusion is around antigravitys ecosystem and its use-cases and how you verify and trigger them.\\n---\\nWhere can I get the Skills/see your slides? The links don't work (the paperform ones)? Thanks\\n---\\nFor creating projects, is the change worth it, going from Cursor which is already proven to work for full project development or migrate to AntiGravity agents developments platform? I am a pure vibe coder building a SaaS business right now. Greatly appreciate a straightforward answer\\n---\\nclaude code is paid, antigravity is free\\n---\\nYou can do the same in Claude.\\n---\\ni still dont know the difference between claude and antigravity skills. My cli claude creates its own script to streamline skill usage without me telling it to.\\n---\\nHowdy Brother 💪\\n\\n🤔 How to use Skills\\n1) Create a skill for anything that you use frequently (Publishing to a service, design work, research, scraping, etc)\\n2) test the skill and make sure it does exactly what you want\\n3) When you ask anti-gravity to do that thing, it will automatically use the skill (meaning you get high quality output every time)\\n4) Add the skills to any project you want. \\n\\n💪 Why you need them (and how the compare)\\n1) Persona = how the agent behaves. Rules = constraints. Workflows = pipelines.\\n2) Skills = reusable abilities the agent can invoke when it detects intent \\n3) TL;DR: You teach it ONCE how to do a task properly, and it becomes muscle memory.\\n4) Value: you get consistency, speed, and portability across every project.\\n\\n\\n⚡ When do you need them? (MCPs)\\n1) MCPs give AntiGravity data and the ability to connect to anything\\n2) You do not need skills to use your MCP\\n3) You will use the skills anytime you want the outcome for the skill. So for example, if I created a skill for scraping reddit, anytime I ask anti-gravity scraping reddit it will activate the skill. Meaning I don't have to explain in great detail how to do it and it doesn't need to figure out anymore because it's a predefined skill. \\n\\nI hope that makes sense. I'm going to be doing a full anti-gravity masterclass where I'll go into more detail or you can join me for the catch up on Friday if you're in the community. Let me know if you have any further questions 🙏\\n---\\nHahahaha 1000%\\n---\\nJust keep in mind that you are sharing everything from your project with google, probably the worst company when it comes to privacy protection.\\n---\\ndidnt knew antigravity updated this much, tried it after it came out and it was mehh\\n---\\nLink in bio, its working now broski 💪\\n---\\n\\"Imagine if you could build anything faster...\\"  - A.I.\\n---\\nHow is this different with Cursor's skills?\\n---\\nYo buddy, the skills file isnt working :(. Amazing video tho\\n---\\nwhats the pay tho\\n---\\nHey, thank you so much for this great video!\\n\\nQuick question, in order for me to use all the skills in every project, do I need to pull them up or use that same folder I created (the Skills Master folder), or does it automatically use all the skills I created?\\n---\\n👀 I also find it really helpful to use Notebook LM as a research agent, gather all my specs, identify deprecated packages that will likely create trouble, compatibility and integration guides, etc... You get a wonder result every time. 😁 It's a great time to be alive!\\n---\\nits okay.. i already build one for windows in 1 day\\n---\\n​@ReelsbroughttoyoubyRiolawhy do you think there is something wrong with yours?\\n---\\n#gnote anti-gravity skills\\n---\\ncursor is paid, antigravity is free\\n---\\nHey!\\nReally interesting video!\\nIt would be nice that you make another video after few weeks of using this skills method and show us a more-in-depth tutorial on how to use them, for example orchestating different skills all at once (maybe an orchestator skill to decide the better skill for each job you ask to be done).\\nAlso when asking for more complex solutions, how would they perform.\\n\\nYou make a really good job, i discovered you recently and you're becoming one of my top AI dev content creators :D\\n---\\nSame thought I had\\n---\\nHi, i am a little bit of a noob in this whole thing, but i have been getting lots of erros. What do you mean by that?\\n---\\nThanks for not showing any of what the skills do nice waste of time\\n---\\nI’m using a similar process to attach AI automations deployed in Google cloud run or Cloudflare directly to my website as an added utility or tool. It’s been amazing.\\n---\\nAs some have responded.\\nNeed more info.\\nSlow down your delivery! \\nExample of needed context.\\nSkills. Why not create a custom Agent Folder with all skills and then this is dropped in per project? Or better to put onto global or workflow rules? Which brings me to how do skills work with MCP context7 and Gemini Conductor? Have you used conductor workflows? Would love more input and again slow down the delivery.\\n---\\nNew but full of bug's\\n---\\nThanks for the information video, it's really help a lot\\n---\\nThis is some software about cooking food?\\n---\\nSomeone doesn't bother comparing to claude. skipped ads.\\n---\\nYour videos are so informative. Thank you!\\n---\\nCan you do that Firecrawl brand extraction thing within Antigravity? Like a skill or something\\n---\\nclaude code is paid, antigravity is free\\n---\\ninteresting video\\n---\\nwhat is it ?\\n---\\nThank you brother 💪\\n---\\nAntigravity sux.  it has rate limits worse than Anthropic.  Dont waste your time using it.  you wont be able to finish a project.\\n---\\nAntigravity skills are subroutines/functions/methods whatever you want to call them these days\\n---\\nGood morning,\\r\\n\\r\\nI found the topic very interesting, but I didn't see where you put the prompt text. Could you add it to the comments or the video description?\\n---\\nAre you sure Antigravity Skills are different from Claude Code skills? They both seem to be based on the open Agent Skills specification\\n---\\nThank you so much Jack 🙏\\n---\\nUpdated, will work now\\n---\\nThis video was so incredibly helpful, I can't thank you enough. I'm less likely to run into token limits now. I don't have to do the same things over and over again, solve the same problems. You might have guaranteed yourself a place in heaven for making this video. :)\\n---\\nAside from eating massive amounts of tokens, do you have any evidence of how effective the things you are teaching actually are? You must have some evidence or even data that proves your techniques are effective?\\n---\\nDiscord for us to start a community???\\n---\\nIs it working well cause mine isnt ?\\n---\\nThanks Jack, after discovering Anti gravity I feel I'm only limited by my ideas.\\n---\\nso its justa function of a promt kinda that the ai learns it and makes the code\\n---\\nFrom a creator standpoint, a “10/10 YouTube video” is probably not what you were trying to create.😅  That said, the content here is genuinely excellent and very useful.\\n---\\nNot available in my region , fud`... 7426 more characters,
+      allowAbsoluteUrls: true
+    },
+    request: <ref *1> ClientRequest {
+      _events: [Object: null prototype],
+      _eventsCount: 7,
+      _maxListeners: undefined,
+      outputData: [],
+      outputSize: 0,
+      writable: true,
+      destroyed: false,
+      _last: true,
+      chunkedEncoding: false,
+      shouldKeepAlive: false,
+      maxRequestsOnConnectionReached: false,
+      _defaultKeepAlive: true,
+      useChunkedEncodingByDefault: true,
+      sendDate: false,
+      _removedConnection: false,
+      _removedContLen: false,
+      _removedTE: false,
+      strictContentLength: false,
+      _contentLength: '17494',
+      _hasBody: true,
+      _trailer: '',
+      finished: true,
+      _headerSent: true,
+      _closed: false,
+      socket: [TLSSocket],
+      _header: 'POST /openai/v1/chat/completions HTTP/1.1\r\n' +
+        'Accept: application/json, text/plain, */*\r\n' +
+        'Content-Type: application/json\r\n' +
+        'Authorization: Bearer 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\r\n' +
+        'User-Agent: axios/1.13.5\r\n' +
+        'Content-Length: 17494\r\n' +
+        'Accept-Encoding: gzip, compress, deflate, br\r\n' +
+        'Host: api.groq.com\r\n' +
+        'Connection: close\r\n' +
+        '\r\n',
+      _keepAliveTimeout: 0,
+      _onPendingData: [Function: nop],
+      agent: [Agent],
+      socketPath: undefined,
+      method: 'POST',
+      maxHeaderSize: undefined,
+      insecureHTTPParser: undefined,
+      joinDuplicateHeaders: undefined,
+      path: '/openai/v1/chat/completions',
+      _ended: true,
+      res: [IncomingMessage],
+      aborted: false,
+      timeoutCb: null,
+      upgradeOrConnect: false,
+      parser: null,
+      maxHeadersCount: null,
+      reusedSocket: false,
+      host: 'api.groq.com',
+      protocol: 'https:',
+      _redirectable: [Writable],
+      [Symbol(kCapture)]: false,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(kNeedDrain)]: true,
+      [Symbol(corked)]: 0,
+      [Symbol(kOutHeaders)]: [Object: null prototype],
+      [Symbol(errored)]: null,
+      [Symbol(kHighWaterMark)]: 16384,
+      [Symbol(kRejectNonStandardBodyWrites)]: false,
+      [Symbol(kUniqueHeaders)]: null
+    },
+    data: { error: [Object] }
+  },
+  status: 429
+}
+
+END RequestId: 67d7e11d-ef9a-495f-8e75-c6475fd7729d
+
+REPORT RequestId: 67d7e11d-ef9a-495f-8e75-c6475fd7729d	Duration: 79.97 ms	Billed Duration: 80 ms	Memory Size: 1024 MB	Max Memory Used: 113 MB	
+
+START RequestId: eb70ac53-3956-4090-a390-a469ccb48431 Version: $LATEST
+
+2026-02-26T08:34:56.446Z	eb70ac53-3956-4090-a390-a469ccb48431	INFO	Analyzing 208 comments for analysisId: 9012a51c-e80d-4887-b89e-f4a4cc6b996e
+
+2026-02-26T08:34:57.757Z	eb70ac53-3956-4090-a390-a469ccb48431	INFO	Groq response received, length: 2505
+
+2026-02-26T08:34:57.770Z	eb70ac53-3956-4090-a390-a469ccb48431	INFO	Analysis completed for analysisId: 9012a51c-e80d-4887-b89e-f4a4cc6b996e
+
+END RequestId: eb70ac53-3956-4090-a390-a469ccb48431
+
+REPORT RequestId: eb70ac53-3956-4090-a390-a469ccb48431	Duration: 1336.94 ms	Billed Duration: 1337 ms	Memory Size: 1024 MB	Max Memory Used: 113 MB	
+
+START RequestId: a37e269b-0910-4b52-9566-1c0856a07817 Version: $LATEST
+
+2026-02-26T08:35:39.632Z	a37e269b-0910-4b52-9566-1c0856a07817	INFO	Analyzing 2500 comments for analysisId: a5a3157b-6813-4063-8056-bd6280a029f1
+
+2026-02-26T08:35:39.713Z	a37e269b-0910-4b52-9566-1c0856a07817	ERROR	Analysis Failed: _AxiosError: Request failed with status code 429
+    at settle (/var/task/index.js:45224:12)
+    at IncomingMessage.handleStreamEnd (/var/task/index.js:46287:11)
+    at IncomingMessage.emit (node:events:529:35)
+    at endReadableNT (node:internal/streams/readable:1400:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+    at Axios.request (/var/task/index.js:47188:41)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Runtime.handler (/var/task/index.js:47650:26) {
+  isAxiosError: true,
+  code: 'ERR_BAD_REQUEST',
+  config: {
+    transitional: {
+      silentJSONParsing: true,
+      forcedJSONParsing: true,
+      clarifyTimeoutError: false,
+      legacyInterceptorReqResOrdering: true
+    },
+    adapter: [ 'xhr', 'http', 'fetch' ],
+    transformRequest: [ [Function: transformRequest] ],
+    transformResponse: [ [Function: transformResponse] ],
+    timeout: 50000,
+    xsrfCookieName: 'XSRF-TOKEN',
+    xsrfHeaderName: 'X-XSRF-TOKEN',
+    maxContentLength: -1,
+    maxBodyLength: -1,
+    env: { FormData: [Function], Blob: [class Blob] },
+    validateStatus: [Function: validateStatus],
+    headers: Object [AxiosHeaders] {
+      Accept: 'application/json, text/plain, */*',
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer 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',
+      'User-Agent': 'axios/1.13.5',
+      'Content-Length': '18136',
+      'Accept-Encoding': 'gzip, compress, deflate, br'
+    },
+    method: 'post',
+    url: 'https://api.groq.com/openai/v1/chat/completions',
+    data: `{"model":"llama-3.1-8b-instant","messages":[{"role":"system","content":"You are a YouTube comment analysis engine. You MUST respond with ONLY valid JSON, no markdown, no code fences, no explanation."},{"role":"user","content":"Analyze these YouTube video comments (sampled from 2500 total comments) and provide insights:\\n\\n[COMMENTS DATA]\\nBig fan of mortal kombat\\n---\\nGoosebumps! I can’t wait!\\n---\\nThis looks breathtaking.\\n---\\nLet's hope we see an MC Liu Kang who could go toe to toe with Shao Kahn.\\n---\\nTHIS LOOKS SO GOOD!!!!🥲🥲🥲\\n---\\nBooking it! Lifelong mk fan....\\n---\\nKarl Urban is fine but...that role doesn't suit him anymore. Man, it really should have been The Miz\\n---\\nRaiden: Billy Butcher, you have been chosen for Mortal Ko--\\n\\nButcher: Ye ye ye, fork off there, sunshine\\n---\\nMortal Kombat II: A Johnny Cage Story\\n---\\nAll you have to do is have scorpion saying \\"Get over here\\" for me to watch\\n---\\nJohnny is definitely about to hit that glow kick at the end of the trailer. I can’t wait\\n---\\nSo happy can’t wait just 3 months away\\n---\\nOne of the best instant recharge music\\n---\\nOi hughie im in mortal kombat\\n---\\nAbsolutely Brutality❤ Nostalgic Fatality❤….\\n---\\nDamm the music and the VFX looks amazing!\\n---\\nWhere tf sub zero?\\n---\\nThis is going to be incredible 😳👏🔥\\n---\\nCritics can go watch The Sheep Detectives - this one right here is for the fans🤜🏼🤛🏼\\n---\\nab maaza aayega\\n---\\nIs joe taslim still being the subzero?\\n---\\nI've been sold on this movie ever since they cast Karl Urban as Johnny Cage. This is gonna be great!\\n---\\nThis looks absolutely dope!!!\\nThis is the Mortal Kombat we've been waiting for since the first Mortal Kombat movie in 1996!!\\n\\n*Still not sure if they chose the right Johnny Cage, (he was good in The Boys tho) but I'm still on board. \\nLet's go!!!\\n---\\nNeeds way more Kano.\\n---\\nStill will never understand why they turned the most beautiful women in the history of MK into Brown Caillou\\n---\\nThe only thing that bothers me is that there's over 100 characters and they choose Johnny Cage and Katana as the main ones I hope the movie does justice no hate on Karl Urban I love his energy imo his character is boring I'm talking too soon maybe I'm wrong and it'll satisfy me 😂\\n---\\nI'm so glad they kept going with this version despite the nay sayers after the first movie.  It wasn't good, there's no denying that, but it was enjoyable but it had so much potential.  It's good they're leaning into that potential.\\n---\\nmy idol is Scorpion.. 🥰RIP to Cary-Hiroyuki Tagawa aka. Shang Tsun 🙏\\n---\\nThey better not save the shadow kick for the very end 😂\\n---\\nI love it ❤\\n---\\nbeautiful 2001 visual effects <3\\n---\\nWhere is Cole Young?\\n---\\nGoosebumps!\\n---\\noh ok, this fan made still lit\\n---\\nwhy was scott adkins not johnny cage...?\\n---\\nyh cole is dying\\n---\\nTrailer's good 👍\\n---\\nfinish hii*crack voice*mm\\n---\\nCharlie the Unicorn as Johnny Cage\\n---\\nI liked cole. I hope he plays a bignpart in this.\\n---\\nflawless victory\\n---\\n- I want to hear \\"COME HEREEE!!!\\"\\n- The fight scene motions are a little slow.\\n- Did I just see Raiden do his tackle fly, love it. He better yell \\"GeT BaCK iN tHe Caaar\\" and do the flip after it. I don't know what he really says either, lol.\\n- Did I wish the whole cast would be in their late 20's-early 30's? Yes but, I guess this series is about maturing with us the players, we got older so did they. And plus if you had the chance to play as one of your influential figures from your youth. Would you pass that up and not honor a game that formed friendships?\\n- I would love to hear \\"Immortal by Adema\\" playing on with someone working out or one of the fighters saying \\"You can't kill me. I'm Immortal\\" then boom the song starts playing.\\n---\\nhe’s never gonna kill bloody homelander\\n---\\nLooks wild. The nostalgic game just keeps on going. Blessings to you all on your journeys! - John 11:25-26\\n---\\nWhere is vidhut jamwal ??\\n---\\nSaibot better get justice\\n---\\nThat was a very epic sounding trailer. Even the visuals look a lot better.\\n---\\nYour soul is forever. Rest in Peace Our Real Tsung, CARY-HIROYUKI-TAGAWA!\\n---\\nSoundtrack still hits hard\\n---\\n@dsitan1900 That’s stupid, how can you have Mortal Kombat without Sub Zero\\n---\\nCan't wait to watch it on the big screens\\n---\\nTest your might...\\nKano\\nLiu Kang\\nRaiden\\nJohnny Cage\\nScorpion\\nSub-Zero\\nSonya\\nMORTAL KOMBAT!\\n---\\nDidn't we already do this already in the 90s?\\n---\\nDamn we got some good movies coming this summer can't wait\\n---\\nVeronica Vaughan is my Sonia Blade.\\n---\\nMORTAL KOMBAT! BYE SUCKERS! 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋\\n---\\n1995 mortal kombat i saw theatre with my father my childhood chennai india\\n---\\nJade still bald... Like come on in the game she's not bald bro make it accurate\\n---\\nPlease let this be Good\\n---\\nIt is so stupid and so good at the same time. It is Mortal Combat!\\n---\\nGod Dman!!!!!\\n---\\nRidiculous and 30 years late\\n---\\nYOU GUYS  ARE DOING INCREDIBLY GREAT ❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤\\n---\\n....so are we skipping over Kung Lao still alive after dying??\\n---\\nGood riddance on Cole Young\\n---\\nStreet fighter where😂\\n---\\nwhere is sindel??😌\\n---\\ni feel like the main character from the first movie was just a bad choice. shouldve had jonny cage this looks way too hype\\n---\\nGet over here giving goosebumps\\n---\\nМне 40, но жду фильма, как ребенком ждал оригинальный фильм!\\n---\\nI seen the first one in theaters with my coworker. We was In there floating! Im probably going to go back to the theaters for the 2nd.\\n---\\nI have goosebumps right now😂\\n---\\nSo what happened to the protag from the first movie? Wasn't he the one going to recruit Johnny at the end of the first?\\u0004 He's nowhere to be seen. \\nNot complaining. Just a little confused.\\n---\\nScott adkins should have been johnny cage.\\n---\\nCompare this to the 1995 trailer lol😂😂\\n---\\nSomebody please re edit this with the actual mortal kombat theme! Come on Internet\\n---\\nAt least we have this to look forward to this movie right here is definitely going to bring everybody back to the theater especially if they do it like how they had annihilation in the theaters❤\\n---\\nYou know it's good when it's New Line Cinema\\n---\\nI thought Cole was a cool addition personally, but I'm glad Cage is taking center stage\\n---\\nFirst Mortal Kombat 11,\\nThen video game reboot :mortal Kombat 1 \\nNow ! live action movie Mortal Kombat 2\\n---\\nI am ready for this movie!\\n---\\nWe all feel like that. \\"I'm no hero, I'm no chosen one-\\" but when fate is at your doorstep, you answer. Because that's real responsibility.\\n---\\ni thought kung lao died?\\n---\\nWait for part 3, which features the killer robot Cyrax Sektor from Linkue.\\n---\\nIt's Time For KOMBAT ❤ LFG!!\\n---\\nNowadays\\nGames>movies\\n---\\nPost credit scene they open a new realm and find Orochi from kof....one can dream\\n---\\n... there was a first one?\\n---\\nAnd to think, this movie was suppose to come out last year in October.\\n---\\nI don't know if this movie is gonna be good. But it sure is gonna be fun!\\n---\\nUnbelievable ❤❤!!! They nailed it !!! Can’t wait !!\\n---\\nFirst trailer in the History of Mortal Kombat where the Music was not played for the entirety of the trailer.\\n---\\nMortal Kombat vs street fighter vs tekken. Maybe in the future?\\n---\\nI'm just a Mortal, Hughie. Now lets have a Kombat with 'omelander.\\n---\\nOnly Here for scorpion\\n---\\n@connor-g4r- Tron-Ares was that bad?\\n---\\nlet's abusing 1 hit over and over  again\\n---\\nNOOB SAIBOT????\\n---\\nBilly what are side-quest you takin this time\\n---\\nWhy didn’t they just use Brendan Frazier\\n---\\nDoes Lui Kang actually do any martial arts in this movie or is he just gonna keep throwin fire over and over again? I need to see my boy put hands and feet on someone this time around...\\n---\\nIdc what people say about any of the movies good or bad ones that fact that this arcade game has gotten to this lvl of even getting movies is enough for me. I love mortal kombat.\\n---\\ndamn...this looks so much better than pt. 1\\n---\\nThank God it's still finish him!\\n---\\nDear May 8, GET OVER HERE!\\n---\\nBrooooo this is what the fans want omg I’m so keen for this 🎉🎉🎉🎉\\n---\\nSO glad the focus is taken away from the random NPC from the first film\\n---\\nwhy is billy butcher in mortal kombat\\n---\\nTHIS WILL BE PEAKK 🎉🎉\\n---\\nThe wait was over but am happy to seen sindel was in side the mortal combat 2\\n---\\nWhere's the Citizen Cage 4k steelbook?\\n---\\nThey're going for a reverse MK Annihilation and I'm definitely here for it.\\n---\\nShao Khan looks siiiick\\n---\\nI can't wait to see Shao Kahn point and laugh at people\\n---\\nI am ready for mortal kombat 2 movie\\n---\\nNo Cole young, very wise\\n---\\nDang they straight up dropped Cole Young.\\n---\\nHe's going to scorch earth\\n---\\nAfter the first one I didn't really care for the sequel. Getting Karl Urban definitely brought me back.\\n---\\nOMGGGG I CAN'T WAITTT\\n---\\nErmmm I’m sorry, where’s sub zero?\\n---\\ncharacters Confirmed \\n*Liu Kang \\n*Kung Lao\\n*Jade\\n*Mileena\\n*Kitana\\n*Raiden\\n*Jax\\n*Kintaro\\n*Ermac\\n*Quan Chi \\n*Shang Tsung \\n*Shinnok\\n*Shao Khan \\n*Noob Saibot \\n*Scorpion \\n*Sub-Zero \\n*Kano\\n*Cole Young \\n*Li Mei \\n*Sindel \\n*Sonya\\n*Baraka\\n*Johnny Cage\\n---\\nThis looks better than the first one. Seemingly they introduce A LOT characters too. Expectations is high, but I hope the final product won't be underwhelming.\\n\\nAlso, they seemingly put aside the made up protagonist from the first one, it might be a sign that they listening to the fans.\\n---\\nJade looks bad\\n---\\nYea. I’m wondering which mk this is a sequel to\\n---\\nPick a better JC 😂. All them are clumsy 😂 why the main character always has to be a WHITE MAN 😂. Weak asf\\n---\\nR.I.P`... 7667 more characters,
+    allowAbsoluteUrls: true
+  },
+  request: <ref *1> ClientRequest {
+    _events: [Object: null prototype] {
+      abort: [Function (anonymous)],
+      aborted: [Function (anonymous)],
+      connect: [Function (anonymous)],
+      error: [Function (anonymous)],
+      socket: [Function (anonymous)],
+      timeout: [Function (anonymous)],
+      finish: [Function: requestOnFinish]
+    },
+    _eventsCount: 7,
+    _maxListeners: undefined,
+    outputData: [],
+    outputSize: 0,
+    writable: true,
+    destroyed: false,
+    _last: true,
+    chunkedEncoding: false,
+    shouldKeepAlive: false,
+    maxRequestsOnConnectionReached: false,
+    _defaultKeepAlive: true,
+    useChunkedEncodingByDefault: true,
+    sendDate: false,
+    _removedConnection: false,
+    _removedContLen: false,
+    _removedTE: false,
+    strictContentLength: false,
+    _contentLength: '18136',
+    _hasBody: true,
+    _trailer: '',
+    finished: true,
+    _headerSent: true,
+    _closed: false,
+    socket: TLSSocket {
+      _tlsOptions: [Object],
+      _secureEstablished: true,
+      _securePending: false,
+      _newSessionPending: false,
+      _controlReleased: true,
+      secureConnecting: false,
+      _SNICallback: null,
+      servername: 'api.groq.com',
+      alpnProtocol: false,
+      authorized: true,
+      authorizationError: null,
+      encrypted: true,
+      _events: [Object: null prototype],
+      _eventsCount: 10,
+      connecting: false,
+      _hadError: false,
+      _parent: null,
+      _host: 'api.groq.com',
+      _closeAfterHandlingError: false,
+      _readableState: [ReadableState],
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: false,
+      _sockname: null,
+      _pendingData: null,
+      _pendingEncoding: '',
+      server: undefined,
+      _server: null,
+      ssl: [TLSWrap],
+      _requestCert: true,
+      _rejectUnauthorized: true,
+      parser: null,
+      _httpMessage: [Circular *1],
+      timeout: 50000,
+      [Symbol(alpncallback)]: null,
+      [Symbol(res)]: [TLSWrap],
+      [Symbol(verified)]: true,
+      [Symbol(pendingSession)]: null,
+      [Symbol(async_id_symbol)]: 2134,
+      [Symbol(kHandle)]: [TLSWrap],
+      [Symbol(lastWriteQueueSize)]: 0,
+      [Symbol(timeout)]: Timeout {
+        _idleTimeout: 50000,
+        _idlePrev: [TimersList],
+        _idleNext: [TimersList],
+        _idleStart: 262528,
+        _onTimeout: [Function: bound ],
+        _timerArgs: undefined,
+        _repeat: null,
+        _destroyed: false,
+        [Symbol(refed)]: false,
+        [Symbol(kHasPrimitive)]: false,
+        [Symbol(asyncId)]: 2142,
+        [Symbol(triggerId)]: 2137
+      },
+      [Symbol(kBuffer)]: null,
+      [Symbol(kBufferCb)]: null,
+      [Symbol(kBufferGen)]: null,
+      [Symbol(kCapture)]: false,
+      [Symbol(kSetNoDelay)]: false,
+      [Symbol(kSetKeepAlive)]: true,
+      [Symbol(kSetKeepAliveInitialDelay)]: 60,
+      [Symbol(kBytesRead)]: 0,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(connect-options)]: [Object]
+    },
+    _header: 'POST /openai/v1/chat/completions HTTP/1.1\r\n' +
+      'Accept: application/json, text/plain, */*\r\n' +
+      'Content-Type: application/json\r\n' +
+      'Authorization: Bearer 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\r\n' +
+      'User-Agent: axios/1.13.5\r\n' +
+      'Content-Length: 18136\r\n' +
+      'Accept-Encoding: gzip, compress, deflate, br\r\n' +
+      'Host: api.groq.com\r\n' +
+      'Connection: close\r\n' +
+      '\r\n',
+    _keepAliveTimeout: 0,
+    _onPendingData: [Function: nop],
+    agent: Agent {
+      _events: [Object: null prototype],
+      _eventsCount: 2,
+      _maxListeners: undefined,
+      defaultPort: 443,
+      protocol: 'https:',
+      options: [Object: null prototype],
+      requests: [Object: null prototype] {},
+      sockets: [Object: null prototype],
+      freeSockets: [Object: null prototype] {},
+      keepAliveMsecs: 1000,
+      keepAlive: false,
+      maxSockets: Infinity,
+      maxFreeSockets: 256,
+      scheduling: 'lifo',
+      maxTotalSockets: Infinity,
+      totalSocketCount: 1,
+      maxCachedSessions: 100,
+      _sessionCache: [Object],
+      [Symbol(kCapture)]: false
+    },
+    socketPath: undefined,
+    method: 'POST',
+    maxHeaderSize: undefined,
+    insecureHTTPParser: undefined,
+    joinDuplicateHeaders: undefined,
+    path: '/openai/v1/chat/completions',
+    _ended: true,
+    res: IncomingMessage {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      socket: [TLSSocket],
+      httpVersionMajor: 1,
+      httpVersionMinor: 1,
+      httpVersion: '1.1',
+      complete: true,
+      rawHeaders: [Array],
+      rawTrailers: [],
+      joinDuplicateHeaders: undefined,
+      aborted: false,
+      upgrade: false,
+      url: '',
+      method: null,
+      statusCode: 429,
+      statusMessage: 'Too Many Requests',
+      client: [TLSSocket],
+      _consuming: false,
+      _dumped: false,
+      req: [Circular *1],
+      responseUrl: 'https://api.groq.com/openai/v1/chat/completions',
+      redirects: [],
+      [Symbol(kCapture)]: false,
+      [Symbol(kHeaders)]: [Object],
+      [Symbol(kHeadersCount)]: 42,
+      [Symbol(kTrailers)]: null,
+      [Symbol(kTrailersCount)]: 0
+    },
+    aborted: false,
+    timeoutCb: null,
+    upgradeOrConnect: false,
+    parser: null,
+    maxHeadersCount: null,
+    reusedSocket: false,
+    host: 'api.groq.com',
+    protocol: 'https:',
+    _redirectable: Writable {
+      _writableState: [WritableState],
+      _events: [Object: null prototype],
+      _eventsCount: 3,
+      _maxListeners: undefined,
+      _options: [Object],
+      _ended: true,
+      _ending: true,
+      _redirectCount: 0,
+      _redirects: [],
+      _requestBodyLength: 18136,
+      _requestBodyBuffers: [],
+      _onNativeResponse: [Function (anonymous)],
+      _currentRequest: [Circular *1],
+      _currentUrl: 'https://api.groq.com/openai/v1/chat/completions',
+      _timeout: null,
+      [Symbol(kCapture)]: false
+    },
+    [Symbol(kCapture)]: false,
+    [Symbol(kBytesWritten)]: 0,
+    [Symbol(kNeedDrain)]: true,
+    [Symbol(corked)]: 0,
+    [Symbol(kOutHeaders)]: [Object: null prototype] {
+      accept: [Array],
+      'content-type': [Array],
+      authorization: [Array],
+      'user-agent': [Array],
+      'content-length': [Array],
+      'accept-encoding': [Array],
+      host: [Array]
+    },
+    [Symbol(errored)]: null,
+    [Symbol(kHighWaterMark)]: 16384,
+    [Symbol(kRejectNonStandardBodyWrites)]: false,
+    [Symbol(kUniqueHeaders)]: null
+  },
+  response: {
+    status: 429,
+    statusText: 'Too Many Requests',
+    headers: Object [AxiosHeaders] {
+      date: 'Thu, 26 Feb 2026 08:35:39 GMT',
+      'content-type': 'application/json',
+      'content-length': '378',
+      connection: 'close',
+      'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate',
+      'retry-after': '2',
+      server: 'cloudflare',
+      vary: 'Origin',
+      'x-groq-region': 'yul',
+      'x-ratelimit-limit-requests': '14400',
+      'x-ratelimit-limit-tokens': '6000',
+      'x-ratelimit-remaining-requests': '14400',
+      'x-ratelimit-remaining-tokens': '4534',
+      'x-ratelimit-reset-requests': '1ms',
+      'x-ratelimit-reset-tokens': '14.66s',
+      'x-request-id': 'req_01kjchdrhcfw2vcpm83k795mg9',
+      'cf-cache-status': 'DYNAMIC',
+      'set-cookie': [Array],
+      'strict-transport-security': 'max-age=15552000',
+      'cf-ray': '9d3e1c3ceff5e60f-IAD',
+      'alt-svc': 'h3=":443"; ma=86400'
+    },
+    config: {
+      transitional: [Object],
+      adapter: [Array],
+      transformRequest: [Array],
+      transformResponse: [Array],
+      timeout: 50000,
+      xsrfCookieName: 'XSRF-TOKEN',
+      xsrfHeaderName: 'X-XSRF-TOKEN',
+      maxContentLength: -1,
+      maxBodyLength: -1,
+      env: [Object],
+      validateStatus: [Function: validateStatus],
+      headers: [Object [AxiosHeaders]],
+      method: 'post',
+      url: 'https://api.groq.com/openai/v1/chat/completions',
+      data: `{"model":"llama-3.1-8b-instant","messages":[{"role":"system","content":"You are a YouTube comment analysis engine. You MUST respond with ONLY valid JSON, no markdown, no code fences, no explanation."},{"role":"user","content":"Analyze these YouTube video comments (sampled from 2500 total comments) and provide insights:\\n\\n[COMMENTS DATA]\\nBig fan of mortal kombat\\n---\\nGoosebumps! I can’t wait!\\n---\\nThis looks breathtaking.\\n---\\nLet's hope we see an MC Liu Kang who could go toe to toe with Shao Kahn.\\n---\\nTHIS LOOKS SO GOOD!!!!🥲🥲🥲\\n---\\nBooking it! Lifelong mk fan....\\n---\\nKarl Urban is fine but...that role doesn't suit him anymore. Man, it really should have been The Miz\\n---\\nRaiden: Billy Butcher, you have been chosen for Mortal Ko--\\n\\nButcher: Ye ye ye, fork off there, sunshine\\n---\\nMortal Kombat II: A Johnny Cage Story\\n---\\nAll you have to do is have scorpion saying \\"Get over here\\" for me to watch\\n---\\nJohnny is definitely about to hit that glow kick at the end of the trailer. I can’t wait\\n---\\nSo happy can’t wait just 3 months away\\n---\\nOne of the best instant recharge music\\n---\\nOi hughie im in mortal kombat\\n---\\nAbsolutely Brutality❤ Nostalgic Fatality❤….\\n---\\nDamm the music and the VFX looks amazing!\\n---\\nWhere tf sub zero?\\n---\\nThis is going to be incredible 😳👏🔥\\n---\\nCritics can go watch The Sheep Detectives - this one right here is for the fans🤜🏼🤛🏼\\n---\\nab maaza aayega\\n---\\nIs joe taslim still being the subzero?\\n---\\nI've been sold on this movie ever since they cast Karl Urban as Johnny Cage. This is gonna be great!\\n---\\nThis looks absolutely dope!!!\\nThis is the Mortal Kombat we've been waiting for since the first Mortal Kombat movie in 1996!!\\n\\n*Still not sure if they chose the right Johnny Cage, (he was good in The Boys tho) but I'm still on board. \\nLet's go!!!\\n---\\nNeeds way more Kano.\\n---\\nStill will never understand why they turned the most beautiful women in the history of MK into Brown Caillou\\n---\\nThe only thing that bothers me is that there's over 100 characters and they choose Johnny Cage and Katana as the main ones I hope the movie does justice no hate on Karl Urban I love his energy imo his character is boring I'm talking too soon maybe I'm wrong and it'll satisfy me 😂\\n---\\nI'm so glad they kept going with this version despite the nay sayers after the first movie.  It wasn't good, there's no denying that, but it was enjoyable but it had so much potential.  It's good they're leaning into that potential.\\n---\\nmy idol is Scorpion.. 🥰RIP to Cary-Hiroyuki Tagawa aka. Shang Tsun 🙏\\n---\\nThey better not save the shadow kick for the very end 😂\\n---\\nI love it ❤\\n---\\nbeautiful 2001 visual effects <3\\n---\\nWhere is Cole Young?\\n---\\nGoosebumps!\\n---\\noh ok, this fan made still lit\\n---\\nwhy was scott adkins not johnny cage...?\\n---\\nyh cole is dying\\n---\\nTrailer's good 👍\\n---\\nfinish hii*crack voice*mm\\n---\\nCharlie the Unicorn as Johnny Cage\\n---\\nI liked cole. I hope he plays a bignpart in this.\\n---\\nflawless victory\\n---\\n- I want to hear \\"COME HEREEE!!!\\"\\n- The fight scene motions are a little slow.\\n- Did I just see Raiden do his tackle fly, love it. He better yell \\"GeT BaCK iN tHe Caaar\\" and do the flip after it. I don't know what he really says either, lol.\\n- Did I wish the whole cast would be in their late 20's-early 30's? Yes but, I guess this series is about maturing with us the players, we got older so did they. And plus if you had the chance to play as one of your influential figures from your youth. Would you pass that up and not honor a game that formed friendships?\\n- I would love to hear \\"Immortal by Adema\\" playing on with someone working out or one of the fighters saying \\"You can't kill me. I'm Immortal\\" then boom the song starts playing.\\n---\\nhe’s never gonna kill bloody homelander\\n---\\nLooks wild. The nostalgic game just keeps on going. Blessings to you all on your journeys! - John 11:25-26\\n---\\nWhere is vidhut jamwal ??\\n---\\nSaibot better get justice\\n---\\nThat was a very epic sounding trailer. Even the visuals look a lot better.\\n---\\nYour soul is forever. Rest in Peace Our Real Tsung, CARY-HIROYUKI-TAGAWA!\\n---\\nSoundtrack still hits hard\\n---\\n@dsitan1900 That’s stupid, how can you have Mortal Kombat without Sub Zero\\n---\\nCan't wait to watch it on the big screens\\n---\\nTest your might...\\nKano\\nLiu Kang\\nRaiden\\nJohnny Cage\\nScorpion\\nSub-Zero\\nSonya\\nMORTAL KOMBAT!\\n---\\nDidn't we already do this already in the 90s?\\n---\\nDamn we got some good movies coming this summer can't wait\\n---\\nVeronica Vaughan is my Sonia Blade.\\n---\\nMORTAL KOMBAT! BYE SUCKERS! 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋 👋\\n---\\n1995 mortal kombat i saw theatre with my father my childhood chennai india\\n---\\nJade still bald... Like come on in the game she's not bald bro make it accurate\\n---\\nPlease let this be Good\\n---\\nIt is so stupid and so good at the same time. It is Mortal Combat!\\n---\\nGod Dman!!!!!\\n---\\nRidiculous and 30 years late\\n---\\nYOU GUYS  ARE DOING INCREDIBLY GREAT ❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤❤\\n---\\n....so are we skipping over Kung Lao still alive after dying??\\n---\\nGood riddance on Cole Young\\n---\\nStreet fighter where😂\\n---\\nwhere is sindel??😌\\n---\\ni feel like the main character from the first movie was just a bad choice. shouldve had jonny cage this looks way too hype\\n---\\nGet over here giving goosebumps\\n---\\nМне 40, но жду фильма, как ребенком ждал оригинальный фильм!\\n---\\nI seen the first one in theaters with my coworker. We was In there floating! Im probably going to go back to the theaters for the 2nd.\\n---\\nI have goosebumps right now😂\\n---\\nSo what happened to the protag from the first movie? Wasn't he the one going to recruit Johnny at the end of the first?\\u0004 He's nowhere to be seen. \\nNot complaining. Just a little confused.\\n---\\nScott adkins should have been johnny cage.\\n---\\nCompare this to the 1995 trailer lol😂😂\\n---\\nSomebody please re edit this with the actual mortal kombat theme! Come on Internet\\n---\\nAt least we have this to look forward to this movie right here is definitely going to bring everybody back to the theater especially if they do it like how they had annihilation in the theaters❤\\n---\\nYou know it's good when it's New Line Cinema\\n---\\nI thought Cole was a cool addition personally, but I'm glad Cage is taking center stage\\n---\\nFirst Mortal Kombat 11,\\nThen video game reboot :mortal Kombat 1 \\nNow ! live action movie Mortal Kombat 2\\n---\\nI am ready for this movie!\\n---\\nWe all feel like that. \\"I'm no hero, I'm no chosen one-\\" but when fate is at your doorstep, you answer. Because that's real responsibility.\\n---\\ni thought kung lao died?\\n---\\nWait for part 3, which features the killer robot Cyrax Sektor from Linkue.\\n---\\nIt's Time For KOMBAT ❤ LFG!!\\n---\\nNowadays\\nGames>movies\\n---\\nPost credit scene they open a new realm and find Orochi from kof....one can dream\\n---\\n... there was a first one?\\n---\\nAnd to think, this movie was suppose to come out last year in October.\\n---\\nI don't know if this movie is gonna be good. But it sure is gonna be fun!\\n---\\nUnbelievable ❤❤!!! They nailed it !!! Can’t wait !!\\n---\\nFirst trailer in the History of Mortal Kombat where the Music was not played for the entirety of the trailer.\\n---\\nMortal Kombat vs street fighter vs tekken. Maybe in the future?\\n---\\nI'm just a Mortal, Hughie. Now lets have a Kombat with 'omelander.\\n---\\nOnly Here for scorpion\\n---\\n@connor-g4r- Tron-Ares was that bad?\\n---\\nlet's abusing 1 hit over and over  again\\n---\\nNOOB SAIBOT????\\n---\\nBilly what are side-quest you takin this time\\n---\\nWhy didn’t they just use Brendan Frazier\\n---\\nDoes Lui Kang actually do any martial arts in this movie or is he just gonna keep throwin fire over and over again? I need to see my boy put hands and feet on someone this time around...\\n---\\nIdc what people say about any of the movies good or bad ones that fact that this arcade game has gotten to this lvl of even getting movies is enough for me. I love mortal kombat.\\n---\\ndamn...this looks so much better than pt. 1\\n---\\nThank God it's still finish him!\\n---\\nDear May 8, GET OVER HERE!\\n---\\nBrooooo this is what the fans want omg I’m so keen for this 🎉🎉🎉🎉\\n---\\nSO glad the focus is taken away from the random NPC from the first film\\n---\\nwhy is billy butcher in mortal kombat\\n---\\nTHIS WILL BE PEAKK 🎉🎉\\n---\\nThe wait was over but am happy to seen sindel was in side the mortal combat 2\\n---\\nWhere's the Citizen Cage 4k steelbook?\\n---\\nThey're going for a reverse MK Annihilation and I'm definitely here for it.\\n---\\nShao Khan looks siiiick\\n---\\nI can't wait to see Shao Kahn point and laugh at people\\n---\\nI am ready for mortal kombat 2 movie\\n---\\nNo Cole young, very wise\\n---\\nDang they straight up dropped Cole Young.\\n---\\nHe's going to scorch earth\\n---\\nAfter the first one I didn't really care for the sequel. Getting Karl Urban definitely brought me back.\\n---\\nOMGGGG I CAN'T WAITTT\\n---\\nErmmm I’m sorry, where’s sub zero?\\n---\\ncharacters Confirmed \\n*Liu Kang \\n*Kung Lao\\n*Jade\\n*Mileena\\n*Kitana\\n*Raiden\\n*Jax\\n*Kintaro\\n*Ermac\\n*Quan Chi \\n*Shang Tsung \\n*Shinnok\\n*Shao Khan \\n*Noob Saibot \\n*Scorpion \\n*Sub-Zero \\n*Kano\\n*Cole Young \\n*Li Mei \\n*Sindel \\n*Sonya\\n*Baraka\\n*Johnny Cage\\n---\\nThis looks better than the first one. Seemingly they introduce A LOT characters too. Expectations is high, but I hope the final product won't be underwhelming.\\n\\nAlso, they seemingly put aside the made up protagonist from the first one, it might be a sign that they listening to the fans.\\n---\\nJade looks bad\\n---\\nYea. I’m wondering which mk this is a sequel to\\n---\\nPick a better JC 😂. All them are clumsy 😂 why the main character always has to be a WHITE MAN 😂. Weak asf\\n---\\nR.I.P`... 7667 more characters,
+      allowAbsoluteUrls: true
+    },
+    request: <ref *1> ClientRequest {
+      _events: [Object: null prototype],
+      _eventsCount: 7,
+      _maxListeners: undefined,
+      outputData: [],
+      outputSize: 0,
+      writable: true,
+      destroyed: false,
+      _last: true,
+      chunkedEncoding: false,
+      shouldKeepAlive: false,
+      maxRequestsOnConnectionReached: false,
+      _defaultKeepAlive: true,
+      useChunkedEncodingByDefault: true,
+      sendDate: false,
+      _removedConnection: false,
+      _removedContLen: false,
+      _removedTE: false,
+      strictContentLength: false,
+      _contentLength: '18136',
+      _hasBody: true,
+      _trailer: '',
+      finished: true,
+      _headerSent: true,
+      _closed: false,
+      socket: [TLSSocket],
+      _header: 'POST /openai/v1/chat/completions HTTP/1.1\r\n' +
+        'Accept: application/json, text/plain, */*\r\n' +
+        'Content-Type: application/json\r\n' +
+        'Authorization: Bearer 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\r\n' +
+        'User-Agent: axios/1.13.5\r\n' +
+        'Content-Length: 18136\r\n' +
+        'Accept-Encoding: gzip, compress, deflate, br\r\n' +
+        'Host: api.groq.com\r\n' +
+        'Connection: close\r\n' +
+        '\r\n',
+      _keepAliveTimeout: 0,
+      _onPendingData: [Function: nop],
+      agent: [Agent],
+      socketPath: undefined,
+      method: 'POST',
+      maxHeaderSize: undefined,
+      insecureHTTPParser: undefined,
+      joinDuplicateHeaders: undefined,
+      path: '/openai/v1/chat/completions',
+      _ended: true,
+      res: [IncomingMessage],
+      aborted: false,
+      timeoutCb: null,
+      upgradeOrConnect: false,
+      parser: null,
+      maxHeadersCount: null,
+      reusedSocket: false,
+      host: 'api.groq.com',
+      protocol: 'https:',
+      _redirectable: [Writable],
+      [Symbol(kCapture)]: false,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(kNeedDrain)]: true,
+      [Symbol(corked)]: 0,
+      [Symbol(kOutHeaders)]: [Object: null prototype],
+      [Symbol(errored)]: null,
+      [Symbol(kHighWaterMark)]: 16384,
+      [Symbol(kRejectNonStandardBodyWrites)]: false,
+      [Symbol(kUniqueHeaders)]: null
+    },
+    data: { error: [Object] }
+  },
+  status: 429
+}
+
+END RequestId: a37e269b-0910-4b52-9566-1c0856a07817
+
+REPORT RequestId: a37e269b-0910-4b52-9566-1c0856a07817	Duration: 228.15 ms	Billed Duration: 229 ms	Memory Size: 1024 MB	Max Memory Used: 115 MB	
+
+START RequestId: d83dcf42-46df-4a12-bd73-f68de4a0b8a2 Version: $LATEST
+
+2026-02-26T08:36:28.086Z	d83dcf42-46df-4a12-bd73-f68de4a0b8a2	INFO	Analyzing 2500 comments for analysisId: ef3f3f88-8457-4588-8aa0-2c38caa6033c
+
+2026-02-26T08:36:29.605Z	d83dcf42-46df-4a12-bd73-f68de4a0b8a2	INFO	Groq response received, length: 2821
+
+2026-02-26T08:36:29.619Z	d83dcf42-46df-4a12-bd73-f68de4a0b8a2	INFO	Analysis completed for analysisId: ef3f3f88-8457-4588-8aa0-2c38caa6033c
+
+END RequestId: d83dcf42-46df-4a12-bd73-f68de4a0b8a2
+
+REPORT RequestId: d83dcf42-46df-4a12-bd73-f68de4a0b8a2	Duration: 1664.91 ms	Billed Duration: 1665 ms	Memory Size: 1024 MB	Max Memory Used: 115 MB	
+
+START RequestId: e6ba15c1-8ab2-400c-9f07-b767febfb508 Version: $LATEST
+
+2026-02-26T08:37:01.495Z	e6ba15c1-8ab2-400c-9f07-b767febfb508	INFO	Analyzing 383 comments for analysisId: fde1e25e-8cd5-42bf-960d-ddc31d427b0f
+
+2026-02-26T08:37:01.559Z	e6ba15c1-8ab2-400c-9f07-b767febfb508	ERROR	Analysis Failed: _AxiosError: Request failed with status code 429
+    at settle (/var/task/index.js:45224:12)
+    at IncomingMessage.handleStreamEnd (/var/task/index.js:46287:11)
+    at IncomingMessage.emit (node:events:529:35)
+    at endReadableNT (node:internal/streams/readable:1400:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+    at Axios.request (/var/task/index.js:47188:41)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Runtime.handler (/var/task/index.js:47650:26) {
+  isAxiosError: true,
+  code: 'ERR_BAD_REQUEST',
+  config: {
+    transitional: {
+      silentJSONParsing: true,
+      forcedJSONParsing: true,
+      clarifyTimeoutError: false,
+      legacyInterceptorReqResOrdering: true
+    },
+    adapter: [ 'xhr', 'http', 'fetch' ],
+    transformRequest: [ [Function: transformRequest] ],
+    transformResponse: [ [Function: transformResponse] ],
+    timeout: 50000,
+    xsrfCookieName: 'XSRF-TOKEN',
+    xsrfHeaderName: 'X-XSRF-TOKEN',
+    maxContentLength: -1,
+    maxBodyLength: -1,
+    env: { FormData: [Function], Blob: [class Blob] },
+    validateStatus: [Function: validateStatus],
+    headers: Object [AxiosHeaders] {
+      Accept: 'application/json, text/plain, */*',
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer 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',
+      'User-Agent': 'axios/1.13.5',
+      'Content-Length': '17596',
+      'Accept-Encoding': 'gzip, compress, deflate, br'
+    },
+    method: 'post',
+    url: 'https://api.groq.com/openai/v1/chat/completions',
+    data: `{"model":"llama-3.1-8b-instant","messages":[{"role":"system","content":"You are a YouTube comment analysis engine. You MUST respond with ONLY valid JSON, no markdown, no code fences, no explanation."},{"role":"user","content":"Analyze these YouTube video comments (sampled from 383 total comments) and provide insights:\\n\\n[COMMENTS DATA]\\nWill never be a feature : ⏭️ skip dialogue cutscene\\n---\\nI miss her threats of ripping out our vocal cords.. 🥲\\n---\\nas it should lmao\\n---\\ni like potatoes\\n---\\n​@nineonine9082met her have her \\"freedom\\" 😂\\n---\\nThank God i had some awkward moments in co op cuz of this 😭\\n---\\nSame! Like these ones cuz it's already compressed down and I can focus on other things with the stream instead ❤\\n---\\n@lunalovesbina If I recall correctly, she took issue with Natlan (being a black woman herself) and the fact that the characters weren't voiced by black VAs. She ended up leaving because of the harassment she got.\\n---\\nno, the va's have stated it clearly the two times that did happen when a chaarcter goes to Standard banner. Nothing was said for Varka, so he's limited only\\n---\\nWe’ve had archon quests every single patch since Luna 1, it was bound to happen sooner or later.\\n---\\nThey could buff Amber, Lisa, & Kaeya.\\n---\\n​@mysticsteliosin single player, not coop. i once coop with a player before this patch & couldn't make the boss respawn on the spot if only one player took the mats\\n---\\nI deleted wuwa 💩 for genshin ❤️‍🔥\\n---\\nIt may not look like it at first, but genshin is a resource management game as well. Books and mora go out pretty quickly the higher in level you go. So not finishing leveling characters to 90 and instead using materials to build more characters for fun/theater/making new teams is better.\\n---\\n@Etherion195 For now, it only tracks characters that you own. Yes it can track the talent mats for that character, and yes it tracks the mats for whatever weapon is equipped on them. There’s a new feature where the adventurer’s handbook shows you the domains of the characters you selected (for talent mats and other things)\\n---\\nAino's house theme\\n---\\nAll the talk in the quest of Varka training up various Knights makes me think they're laying the groundwork for a Knight faction. God knows Eula could use some help. And Noelle. As well as all the standard Knights that everyone gets. Maybe even Diluc.\\n\\n...But they also put Varka and several other Knights in the Hexenzirkel faction so ¯\\\\_(ツ)_/¯ I don't know what the plan is. Still, I feel pretty confidant that once they're ready to move on from the 'Witch's Homework' it'll be time for the 'Grandmaster's Training'. Maybe there'll be characters like Klee and Albedo that cross over between factions and you'll have options for which buffs you'd rather activate.\\n---\\nStill no artifacts loadout ffs.\\n---\\nthat Milliastra Wonderland whatever is the grossest thing Ive ever seen. Hoyo does anything for money and hardly nothing to improve their game.\\n---\\nBeen waiting over a year for Nilou to get a thespian trick and I guess I’m still waiting even longer 💔\\n---\\nThank as always!\\n---\\nI'm busy right now, gonna watch it later but please tell me if there's a horse update\\n---\\n@Maanie5400i think it’s pretty obvious\\n---\\nQuestion: is everyone voiced now in paragolism? Was albedo last one thats left?\\n0:40\\n---\\nDoes this mean i cam watch the cutscene again throufh the game?\\n---\\nTolDDaddy This is so out of context bto🥀🥀\\n---\\nThank you for adding Time Stamps. It saves me time. I didn't bother watching the last 2 1/2 minutes because none of that stuff interests me. As a reward, I leave this comment and a Like ^_^ lol\\n---\\n​@trinityy-7bruh\\n---\\n? What happened?\\n---\\nOn mobile version, Google Play Games and Apple Game Center are added achievements\\n---\\nI thought there's a new map expansion\\n---\\nWait this patch going on more than 1 month? Not enough primos to save to get C6 damn it Dawei\\n---\\n0:40 WHY JUST NOW\\n---\\nIt's Because We Got Exp For Killing Enemies\\n\\nIf Your Level Are Maxed Out, You Didn't Get Exp No More, So A Lot Of People Just Let It Stay At 79/89 So All Those Exp Won't Go To Waste\\n\\nAnd Why 88?\\nBecause He Killing A Lot Of Enemies, Probably Also Helping New Player As Well\\nSo His Characters Will Leveled Up Fast, That's Why He Leave It Minus 2 Level\\n---\\nHow So?\\n\\nTCG Updates Are Normal, Just Like In Every Version\\n---\\nQoL is mid, Wonderland is still ahh but now with voice chat, still no horses, exploration game but no new area to explore (pt. 2), td event kinda interesting  (bloons td nostalgia invoked), another annoying ahh picture quest event, no free 10 pulls like hsr\\nrating: strip-me-naked-oil-me-up-and-slap-me-in-the-ahh-i-cant--/10\\n---\\n​@HapPawhere been praying for this. I need that Kaeya buff.\\n---\\n​@brexcubo6766frrr\\n---\\n1:20 Sandrone being hugged by Columbina so cute !!! OMG I can't ahhhh\\n---\\nso the leak about Varka getting a weapon skin after his story quest turned out to be wrong huh?\\n---\\n​@trinityy-7 😂😂😂\\n---\\nYou can now spectate your friends TCG game\\n---\\nI was not able to complete the Archon Quest Luna 4 and because did not kill/fight Rerir   now I am stuck and cannot advance until I do that!!\\nPerhaps it is the time for me to leave Genshin Impact for ever. Pity. That's life the real one!🙂\\n---\\nIt's always like this after a big patch, like the lantern rite.\\n---\\nI'm trying to dip my toes in MW. Any guides/tips to most efficiently level up there?\\n---\\nFinally, every time I helped someone I had to tp to and away every single time\\n---\\nWhere do I get the new instrument?\\n---\\n@RPGzin This has been in the game for about a year now I believe, it's not new\\n---\\n@Senpaiish-e_re I got Varka and now I want Flins😭😭😭\\n---\\nradiant gecko exists to remind me how much i hate nod krai enemies\\n---\\n@uligallardo8110 Genshin is not dubbed in any language. Every voice over is recorded at a similar point, so the VAs have the voice guides and the directors have the final say in how they sound like (maybe EN, JP and KR have to send their results to the CN voice director though), so the EN, JP and KR voice actors don't have the chinese voice over to base their interpretation on, which means they're all original voicing.\\n---\\nTolDDaddyas a wuwa player myself pls sybau and go back to wuwa\\n---\\ni got c4 keqing on his banner i fear\\n---\\n@researts i am flins wanter\\n---\\ni have been waiting for paralogism to be voiced for a while now, so with the addition of albedo's lines i think its fully voiced now?\\n---\\nPls stfu that game barley release male characters and the design have the black and white outfit disease and the female characters are all fan service\\n---\\nTolDDaddy bot\\n---\\nNon existent\\n---\\n​@nineonine9082 she had meltdowns online back when ororon was revealed and was attacking any one that was against her points of view to me it was unprofessional and needed to get out of the game asap\\n---\\nDo You Think Varka Is Weak, That He Should Be On Standard?\\n---\\n​@NewWave3313 i am\\n---\\nDammit man I just wanna start the story so bad already but paralogism and the latest dainslif quest aren’t voiced yet in dub so I’m gonna wait longer 😭\\n---\\nyou know this patch is dead as a doornail when it's not even 4 minutes in and he's going through the TCG adjustments\\nlmao at wasting time on an echo for ayato. I own the character and I doubt I'll ever see it\\n---\\nNo recipes?\\n---\\n@lunalovesbinafrfr.\\n---\\n@Von@VonTachyonhonestly fair lol. I dont mind the sucrose, rosaria and jean voices if they dont play a major role in the quest, i know albedo does so i waited a while for his voice. Maybe jean might play a bigger role but idc about sucrose and rosaria if its just 1 or 2 lines\\n---\\nempty update...\\n---\\nI so desperately wish we could get alter versions of the teapot realms (like a dessert,Lush Forest, Frost Moons of the Scions or like a grassy field) with matching mansions (also a feature to customise the entire interior layout would be much better than them just reusing the same layouts all the time)\\n---\\nWaiting for mondstat port\\n---\\nThey’re doing everything except adding an artifact loadout feature and a skip button.\\n---\\nso a bunch of nothing\\n---\\nAww~ I thought they'd fix the traveler's new skin issue not being in cutscenes, but then they have to animate 4 cutscenes instead of two so... hm\\n---\\nLet’s wish Istaroth  brings the skip button with her of she ever becomes playable 😅\\n---\\nI don't understand how they can't voice TRAVELER of all people!!!! Zach has tons of voiced dialogues in Nod krai yet 10 lines that he missed in Natlan is still silent! This doesn't make any sense!\\n---\\nCan the new patch end already so we can get to the juicy thing that is 6.5.\\n---\\n​@lilystrtion huh?\\n---\\nDon't worry, it comes out next version\\n---\\n@TheKittyUnicorn nope. to be fair albedo's only lines in that boss cutscene are \\"you okay?\\" and parts where his mouth is open and i assume he's grunting or something\\n---\\nSuper boring patch\\n---\\n​@samuelhuff3427Uh, no. Those VAs were already awful. Also, VERY stupid and misinformed a LOT.\\n---\\nmanifesting skirk !!!\\n---\\nL :/, old one sounded better\\n---\\nI live in hope that milastra becomes a stand alone (so I can uninstall it)\\n---\\nIt Would Never Happens\\n\\nThey Got Genshin That's Still Unbeatable For Other Game, They'll Capitalized On This As Much\\n\\nPeople That Are Switch To Wuwa Periodically Came Back To Genshin, Because Kuro Just Can't Design As Good As Mihoyo\\nCharacters Outfit, Story, Music, All Mid\\n\\nKuro Only Win With Expression, But Then Again If The Characters Expression You Wanted, Zenless Zone Zero Did It Soo Much Better\\n---\\n0:28 huh really vc? Lemme make a cod map rq\\n---\\nHahaha fraudka quest making him a solo dps but without anyone he just mid into mid of all 😅\\n---\\nMihoyo is training ai now ?! Tf isn't that unethical...\\n---\\nOH!  You can now have 4 char guides now?  Thanks for letting us know!  That'll be nice to have`... 7470 more characters,
+    allowAbsoluteUrls: true
+  },
+  request: <ref *1> ClientRequest {
+    _events: [Object: null prototype] {
+      abort: [Function (anonymous)],
+      aborted: [Function (anonymous)],
+      connect: [Function (anonymous)],
+      error: [Function (anonymous)],
+      socket: [Function (anonymous)],
+      timeout: [Function (anonymous)],
+      finish: [Function: requestOnFinish]
+    },
+    _eventsCount: 7,
+    _maxListeners: undefined,
+    outputData: [],
+    outputSize: 0,
+    writable: true,
+    destroyed: false,
+    _last: true,
+    chunkedEncoding: false,
+    shouldKeepAlive: false,
+    maxRequestsOnConnectionReached: false,
+    _defaultKeepAlive: true,
+    useChunkedEncodingByDefault: true,
+    sendDate: false,
+    _removedConnection: false,
+    _removedContLen: false,
+    _removedTE: false,
+    strictContentLength: false,
+    _contentLength: '17596',
+    _hasBody: true,
+    _trailer: '',
+    finished: true,
+    _headerSent: true,
+    _closed: false,
+    socket: TLSSocket {
+      _tlsOptions: [Object],
+      _secureEstablished: true,
+      _securePending: false,
+      _newSessionPending: false,
+      _controlReleased: true,
+      secureConnecting: false,
+      _SNICallback: null,
+      servername: 'api.groq.com',
+      alpnProtocol: false,
+      authorized: true,
+      authorizationError: null,
+      encrypted: true,
+      _events: [Object: null prototype],
+      _eventsCount: 10,
+      connecting: false,
+      _hadError: false,
+      _parent: null,
+      _host: 'api.groq.com',
+      _closeAfterHandlingError: false,
+      _readableState: [ReadableState],
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: false,
+      _sockname: null,
+      _pendingData: null,
+      _pendingEncoding: '',
+      server: undefined,
+      _server: null,
+      ssl: [TLSWrap],
+      _requestCert: true,
+      _rejectUnauthorized: true,
+      parser: null,
+      _httpMessage: [Circular *1],
+      timeout: 50000,
+      [Symbol(alpncallback)]: null,
+      [Symbol(res)]: [TLSWrap],
+      [Symbol(verified)]: true,
+      [Symbol(pendingSession)]: null,
+      [Symbol(async_id_symbol)]: 2945,
+      [Symbol(kHandle)]: [TLSWrap],
+      [Symbol(lastWriteQueueSize)]: 0,
+      [Symbol(timeout)]: Timeout {
+        _idleTimeout: 50000,
+        _idlePrev: [TimersList],
+        _idleNext: [TimersList],
+        _idleStart: 344374,
+        _onTimeout: [Function: bound ],
+        _timerArgs: undefined,
+        _repeat: null,
+        _destroyed: false,
+        [Symbol(refed)]: false,
+        [Symbol(kHasPrimitive)]: false,
+        [Symbol(asyncId)]: 2953,
+        [Symbol(triggerId)]: 2948
+      },
+      [Symbol(kBuffer)]: null,
+      [Symbol(kBufferCb)]: null,
+      [Symbol(kBufferGen)]: null,
+      [Symbol(kCapture)]: false,
+      [Symbol(kSetNoDelay)]: false,
+      [Symbol(kSetKeepAlive)]: true,
+      [Symbol(kSetKeepAliveInitialDelay)]: 60,
+      [Symbol(kBytesRead)]: 0,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(connect-options)]: [Object]
+    },
+    _header: 'POST /openai/v1/chat/completions HTTP/1.1\r\n' +
+      'Accept: application/json, text/plain, */*\r\n' +
+      'Content-Type: application/json\r\n' +
+      'Authorization: Bearer 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\r\n' +
+      'User-Agent: axios/1.13.5\r\n' +
+      'Content-Length: 17596\r\n' +
+      'Accept-Encoding: gzip, compress, deflate, br\r\n' +
+      'Host: api.groq.com\r\n' +
+      'Connection: close\r\n' +
+      '\r\n',
+    _keepAliveTimeout: 0,
+    _onPendingData: [Function: nop],
+    agent: Agent {
+      _events: [Object: null prototype],
+      _eventsCount: 2,
+      _maxListeners: undefined,
+      defaultPort: 443,
+      protocol: 'https:',
+      options: [Object: null prototype],
+      requests: [Object: null prototype] {},
+      sockets: [Object: null prototype],
+      freeSockets: [Object: null prototype] {},
+      keepAliveMsecs: 1000,
+      keepAlive: false,
+      maxSockets: Infinity,
+      maxFreeSockets: 256,
+      scheduling: 'lifo',
+      maxTotalSockets: Infinity,
+      totalSocketCount: 1,
+      maxCachedSessions: 100,
+      _sessionCache: [Object],
+      [Symbol(kCapture)]: false
+    },
+    socketPath: undefined,
+    method: 'POST',
+    maxHeaderSize: undefined,
+    insecureHTTPParser: undefined,
+    joinDuplicateHeaders: undefined,
+    path: '/openai/v1/chat/completions',
+    _ended: true,
+    res: IncomingMessage {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      socket: [TLSSocket],
+      httpVersionMajor: 1,
+      httpVersionMinor: 1,
+      httpVersion: '1.1',
+      complete: true,
+      rawHeaders: [Array],
+      rawTrailers: [],
+      joinDuplicateHeaders: undefined,
+      aborted: false,
+      upgrade: false,
+      url: '',
+      method: null,
+      statusCode: 429,
+      statusMessage: 'Too Many Requests',
+      client: [TLSSocket],
+      _consuming: false,
+      _dumped: false,
+      req: [Circular *1],
+      responseUrl: 'https://api.groq.com/openai/v1/chat/completions',
+      redirects: [],
+      [Symbol(kCapture)]: false,
+      [Symbol(kHeaders)]: [Object],
+      [Symbol(kHeadersCount)]: 42,
+      [Symbol(kTrailers)]: null,
+      [Symbol(kTrailersCount)]: 0
+    },
+    aborted: false,
+    timeoutCb: null,
+    upgradeOrConnect: false,
+    parser: null,
+    maxHeadersCount: null,
+    reusedSocket: false,
+    host: 'api.groq.com',
+    protocol: 'https:',
+    _redirectable: Writable {
+      _writableState: [WritableState],
+      _events: [Object: null prototype],
+      _eventsCount: 3,
+      _maxListeners: undefined,
+      _options: [Object],
+      _ended: true,
+      _ending: true,
+      _redirectCount: 0,
+      _redirects: [],
+      _requestBodyLength: 17596,
+      _requestBodyBuffers: [],
+      _onNativeResponse: [Function (anonymous)],
+      _currentRequest: [Circular *1],
+      _currentUrl: 'https://api.groq.com/openai/v1/chat/completions',
+      _timeout: null,
+      [Symbol(kCapture)]: false
+    },
+    [Symbol(kCapture)]: false,
+    [Symbol(kBytesWritten)]: 0,
+    [Symbol(kNeedDrain)]: true,
+    [Symbol(corked)]: 0,
+    [Symbol(kOutHeaders)]: [Object: null prototype] {
+      accept: [Array],
+      'content-type': [Array],
+      authorization: [Array],
+      'user-agent': [Array],
+      'content-length': [Array],
+      'accept-encoding': [Array],
+      host: [Array]
+    },
+    [Symbol(errored)]: null,
+    [Symbol(kHighWaterMark)]: 16384,
+    [Symbol(kRejectNonStandardBodyWrites)]: false,
+    [Symbol(kUniqueHeaders)]: null
+  },
+  response: {
+    status: 429,
+    statusText: 'Too Many Requests',
+    headers: Object [AxiosHeaders] {
+      date: 'Thu, 26 Feb 2026 08:37:01 GMT',
+      'content-type': 'application/json',
+      'content-length': '378',
+      connection: 'close',
+      'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate',
+      'retry-after': '5',
+      server: 'cloudflare',
+      vary: 'Origin',
+      'x-groq-region': 'msp',
+      'x-ratelimit-limit-requests': '14400',
+      'x-ratelimit-limit-tokens': '6000',
+      'x-ratelimit-remaining-requests': '14400',
+      'x-ratelimit-remaining-tokens': '3896',
+      'x-ratelimit-reset-requests': '1ms',
+      'x-ratelimit-reset-tokens': '21.04s',
+      'x-request-id': 'req_01kjchg8evejvtn3gcy5nphgqe',
+      'cf-cache-status': 'DYNAMIC',
+      'set-cookie': [Array],
+      'strict-transport-security': 'max-age=15552000',
+      'cf-ray': '9d3e1e3c7a93c5fb-IAD',
+      'alt-svc': 'h3=":443"; ma=86400'
+    },
+    config: {
+      transitional: [Object],
+      adapter: [Array],
+      transformRequest: [Array],
+      transformResponse: [Array],
+      timeout: 50000,
+      xsrfCookieName: 'XSRF-TOKEN',
+      xsrfHeaderName: 'X-XSRF-TOKEN',
+      maxContentLength: -1,
+      maxBodyLength: -1,
+      env: [Object],
+      validateStatus: [Function: validateStatus],
+      headers: [Object [AxiosHeaders]],
+      method: 'post',
+      url: 'https://api.groq.com/openai/v1/chat/completions',
+      data: `{"model":"llama-3.1-8b-instant","messages":[{"role":"system","content":"You are a YouTube comment analysis engine. You MUST respond with ONLY valid JSON, no markdown, no code fences, no explanation."},{"role":"user","content":"Analyze these YouTube video comments (sampled from 383 total comments) and provide insights:\\n\\n[COMMENTS DATA]\\nWill never be a feature : ⏭️ skip dialogue cutscene\\n---\\nI miss her threats of ripping out our vocal cords.. 🥲\\n---\\nas it should lmao\\n---\\ni like potatoes\\n---\\n​@nineonine9082met her have her \\"freedom\\" 😂\\n---\\nThank God i had some awkward moments in co op cuz of this 😭\\n---\\nSame! Like these ones cuz it's already compressed down and I can focus on other things with the stream instead ❤\\n---\\n@lunalovesbina If I recall correctly, she took issue with Natlan (being a black woman herself) and the fact that the characters weren't voiced by black VAs. She ended up leaving because of the harassment she got.\\n---\\nno, the va's have stated it clearly the two times that did happen when a chaarcter goes to Standard banner. Nothing was said for Varka, so he's limited only\\n---\\nWe’ve had archon quests every single patch since Luna 1, it was bound to happen sooner or later.\\n---\\nThey could buff Amber, Lisa, & Kaeya.\\n---\\n​@mysticsteliosin single player, not coop. i once coop with a player before this patch & couldn't make the boss respawn on the spot if only one player took the mats\\n---\\nI deleted wuwa 💩 for genshin ❤️‍🔥\\n---\\nIt may not look like it at first, but genshin is a resource management game as well. Books and mora go out pretty quickly the higher in level you go. So not finishing leveling characters to 90 and instead using materials to build more characters for fun/theater/making new teams is better.\\n---\\n@Etherion195 For now, it only tracks characters that you own. Yes it can track the talent mats for that character, and yes it tracks the mats for whatever weapon is equipped on them. There’s a new feature where the adventurer’s handbook shows you the domains of the characters you selected (for talent mats and other things)\\n---\\nAino's house theme\\n---\\nAll the talk in the quest of Varka training up various Knights makes me think they're laying the groundwork for a Knight faction. God knows Eula could use some help. And Noelle. As well as all the standard Knights that everyone gets. Maybe even Diluc.\\n\\n...But they also put Varka and several other Knights in the Hexenzirkel faction so ¯\\\\_(ツ)_/¯ I don't know what the plan is. Still, I feel pretty confidant that once they're ready to move on from the 'Witch's Homework' it'll be time for the 'Grandmaster's Training'. Maybe there'll be characters like Klee and Albedo that cross over between factions and you'll have options for which buffs you'd rather activate.\\n---\\nStill no artifacts loadout ffs.\\n---\\nthat Milliastra Wonderland whatever is the grossest thing Ive ever seen. Hoyo does anything for money and hardly nothing to improve their game.\\n---\\nBeen waiting over a year for Nilou to get a thespian trick and I guess I’m still waiting even longer 💔\\n---\\nThank as always!\\n---\\nI'm busy right now, gonna watch it later but please tell me if there's a horse update\\n---\\n@Maanie5400i think it’s pretty obvious\\n---\\nQuestion: is everyone voiced now in paragolism? Was albedo last one thats left?\\n0:40\\n---\\nDoes this mean i cam watch the cutscene again throufh the game?\\n---\\nTolDDaddy This is so out of context bto🥀🥀\\n---\\nThank you for adding Time Stamps. It saves me time. I didn't bother watching the last 2 1/2 minutes because none of that stuff interests me. As a reward, I leave this comment and a Like ^_^ lol\\n---\\n​@trinityy-7bruh\\n---\\n? What happened?\\n---\\nOn mobile version, Google Play Games and Apple Game Center are added achievements\\n---\\nI thought there's a new map expansion\\n---\\nWait this patch going on more than 1 month? Not enough primos to save to get C6 damn it Dawei\\n---\\n0:40 WHY JUST NOW\\n---\\nIt's Because We Got Exp For Killing Enemies\\n\\nIf Your Level Are Maxed Out, You Didn't Get Exp No More, So A Lot Of People Just Let It Stay At 79/89 So All Those Exp Won't Go To Waste\\n\\nAnd Why 88?\\nBecause He Killing A Lot Of Enemies, Probably Also Helping New Player As Well\\nSo His Characters Will Leveled Up Fast, That's Why He Leave It Minus 2 Level\\n---\\nHow So?\\n\\nTCG Updates Are Normal, Just Like In Every Version\\n---\\nQoL is mid, Wonderland is still ahh but now with voice chat, still no horses, exploration game but no new area to explore (pt. 2), td event kinda interesting  (bloons td nostalgia invoked), another annoying ahh picture quest event, no free 10 pulls like hsr\\nrating: strip-me-naked-oil-me-up-and-slap-me-in-the-ahh-i-cant--/10\\n---\\n​@HapPawhere been praying for this. I need that Kaeya buff.\\n---\\n​@brexcubo6766frrr\\n---\\n1:20 Sandrone being hugged by Columbina so cute !!! OMG I can't ahhhh\\n---\\nso the leak about Varka getting a weapon skin after his story quest turned out to be wrong huh?\\n---\\n​@trinityy-7 😂😂😂\\n---\\nYou can now spectate your friends TCG game\\n---\\nI was not able to complete the Archon Quest Luna 4 and because did not kill/fight Rerir   now I am stuck and cannot advance until I do that!!\\nPerhaps it is the time for me to leave Genshin Impact for ever. Pity. That's life the real one!🙂\\n---\\nIt's always like this after a big patch, like the lantern rite.\\n---\\nI'm trying to dip my toes in MW. Any guides/tips to most efficiently level up there?\\n---\\nFinally, every time I helped someone I had to tp to and away every single time\\n---\\nWhere do I get the new instrument?\\n---\\n@RPGzin This has been in the game for about a year now I believe, it's not new\\n---\\n@Senpaiish-e_re I got Varka and now I want Flins😭😭😭\\n---\\nradiant gecko exists to remind me how much i hate nod krai enemies\\n---\\n@uligallardo8110 Genshin is not dubbed in any language. Every voice over is recorded at a similar point, so the VAs have the voice guides and the directors have the final say in how they sound like (maybe EN, JP and KR have to send their results to the CN voice director though), so the EN, JP and KR voice actors don't have the chinese voice over to base their interpretation on, which means they're all original voicing.\\n---\\nTolDDaddyas a wuwa player myself pls sybau and go back to wuwa\\n---\\ni got c4 keqing on his banner i fear\\n---\\n@researts i am flins wanter\\n---\\ni have been waiting for paralogism to be voiced for a while now, so with the addition of albedo's lines i think its fully voiced now?\\n---\\nPls stfu that game barley release male characters and the design have the black and white outfit disease and the female characters are all fan service\\n---\\nTolDDaddy bot\\n---\\nNon existent\\n---\\n​@nineonine9082 she had meltdowns online back when ororon was revealed and was attacking any one that was against her points of view to me it was unprofessional and needed to get out of the game asap\\n---\\nDo You Think Varka Is Weak, That He Should Be On Standard?\\n---\\n​@NewWave3313 i am\\n---\\nDammit man I just wanna start the story so bad already but paralogism and the latest dainslif quest aren’t voiced yet in dub so I’m gonna wait longer 😭\\n---\\nyou know this patch is dead as a doornail when it's not even 4 minutes in and he's going through the TCG adjustments\\nlmao at wasting time on an echo for ayato. I own the character and I doubt I'll ever see it\\n---\\nNo recipes?\\n---\\n@lunalovesbinafrfr.\\n---\\n@Von@VonTachyonhonestly fair lol. I dont mind the sucrose, rosaria and jean voices if they dont play a major role in the quest, i know albedo does so i waited a while for his voice. Maybe jean might play a bigger role but idc about sucrose and rosaria if its just 1 or 2 lines\\n---\\nempty update...\\n---\\nI so desperately wish we could get alter versions of the teapot realms (like a dessert,Lush Forest, Frost Moons of the Scions or like a grassy field) with matching mansions (also a feature to customise the entire interior layout would be much better than them just reusing the same layouts all the time)\\n---\\nWaiting for mondstat port\\n---\\nThey’re doing everything except adding an artifact loadout feature and a skip button.\\n---\\nso a bunch of nothing\\n---\\nAww~ I thought they'd fix the traveler's new skin issue not being in cutscenes, but then they have to animate 4 cutscenes instead of two so... hm\\n---\\nLet’s wish Istaroth  brings the skip button with her of she ever becomes playable 😅\\n---\\nI don't understand how they can't voice TRAVELER of all people!!!! Zach has tons of voiced dialogues in Nod krai yet 10 lines that he missed in Natlan is still silent! This doesn't make any sense!\\n---\\nCan the new patch end already so we can get to the juicy thing that is 6.5.\\n---\\n​@lilystrtion huh?\\n---\\nDon't worry, it comes out next version\\n---\\n@TheKittyUnicorn nope. to be fair albedo's only lines in that boss cutscene are \\"you okay?\\" and parts where his mouth is open and i assume he's grunting or something\\n---\\nSuper boring patch\\n---\\n​@samuelhuff3427Uh, no. Those VAs were already awful. Also, VERY stupid and misinformed a LOT.\\n---\\nmanifesting skirk !!!\\n---\\nL :/, old one sounded better\\n---\\nI live in hope that milastra becomes a stand alone (so I can uninstall it)\\n---\\nIt Would Never Happens\\n\\nThey Got Genshin That's Still Unbeatable For Other Game, They'll Capitalized On This As Much\\n\\nPeople That Are Switch To Wuwa Periodically Came Back To Genshin, Because Kuro Just Can't Design As Good As Mihoyo\\nCharacters Outfit, Story, Music, All Mid\\n\\nKuro Only Win With Expression, But Then Again If The Characters Expression You Wanted, Zenless Zone Zero Did It Soo Much Better\\n---\\n0:28 huh really vc? Lemme make a cod map rq\\n---\\nHahaha fraudka quest making him a solo dps but without anyone he just mid into mid of all 😅\\n---\\nMihoyo is training ai now ?! Tf isn't that unethical...\\n---\\nOH!  You can now have 4 char guides now?  Thanks for letting us know!  That'll be nice to have`... 7470 more characters,
+      allowAbsoluteUrls: true
+    },
+    request: <ref *1> ClientRequest {
+      _events: [Object: null prototype],
+      _eventsCount: 7,
+      _maxListeners: undefined,
+      outputData: [],
+      outputSize: 0,
+      writable: true,
+      destroyed: false,
+      _last: true,
+      chunkedEncoding: false,
+      shouldKeepAlive: false,
+      maxRequestsOnConnectionReached: false,
+      _defaultKeepAlive: true,
+      useChunkedEncodingByDefault: true,
+      sendDate: false,
+      _removedConnection: false,
+      _removedContLen: false,
+      _removedTE: false,
+      strictContentLength: false,
+      _contentLength: '17596',
+      _hasBody: true,
+      _trailer: '',
+      finished: true,
+      _headerSent: true,
+      _closed: false,
+      socket: [TLSSocket],
+      _header: 'POST /openai/v1/chat/completions HTTP/1.1\r\n' +
+        'Accept: application/json, text/plain, */*\r\n' +
+        'Content-Type: application/json\r\n' +
+        'Authorization: Bearer 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\r\n' +
+        'User-Agent: axios/1.13.5\r\n' +
+        'Content-Length: 17596\r\n' +
+        'Accept-Encoding: gzip, compress, deflate, br\r\n' +
+        'Host: api.groq.com\r\n' +
+        'Connection: close\r\n' +
+        '\r\n',
+      _keepAliveTimeout: 0,
+      _onPendingData: [Function: nop],
+      agent: [Agent],
+      socketPath: undefined,
+      method: 'POST',
+      maxHeaderSize: undefined,
+      insecureHTTPParser: undefined,
+      joinDuplicateHeaders: undefined,
+      path: '/openai/v1/chat/completions',
+      _ended: true,
+      res: [IncomingMessage],
+      aborted: false,
+      timeoutCb: null,
+      upgradeOrConnect: false,
+      parser: null,
+      maxHeadersCount: null,
+      reusedSocket: false,
+      host: 'api.groq.com',
+      protocol: 'https:',
+      _redirectable: [Writable],
+      [Symbol(kCapture)]: false,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(kNeedDrain)]: true,
+      [Symbol(corked)]: 0,
+      [Symbol(kOutHeaders)]: [Object: null prototype],
+      [Symbol(errored)]: null,
+      [Symbol(kHighWaterMark)]: 16384,
+      [Symbol(kRejectNonStandardBodyWrites)]: false,
+      [Symbol(kUniqueHeaders)]: null
+    },
+    data: { error: [Object] }
+  },
+  status: 429
+}
+
+END RequestId: e6ba15c1-8ab2-400c-9f07-b767febfb508
+
+REPORT RequestId: e6ba15c1-8ab2-400c-9f07-b767febfb508	Duration: 93.09 ms	Billed Duration: 94 ms	Memory Size: 1024 MB	Max Memory Used: 115 MB	
+
+START RequestId: 6c226725-fcb4-456c-ba07-f4d7b4e49e77 Version: $LATEST
+
+END RequestId: 6c226725-fcb4-456c-ba07-f4d7b4e49e77
+
+REPORT RequestId: 6c226725-fcb4-456c-ba07-f4d7b4e49e77	Duration: 15.62 ms	Billed Duration: 16 ms	Memory Size: 1024 MB	Max Memory Used: 115 MB	
+
+INIT_START Runtime Version: nodejs:18.v100	Runtime Version ARN: arn:aws:lambda:us-east-1::runtime:9a9659568bf79d197303268f6f12daf1b07196863769ffdfec56057ebf0b0553
+
+2026-02-26T08:40:30.345Z	undefined	ERROR	(node:2) Warning: NodeDeprecationWarning: The AWS SDK for JavaScript (v3) will
+no longer support Node.js v18.20.8 in January 2026.
+
+To continue receiving updates to AWS services, bug fixes, and security
+updates please upgrade to a supported Node.js LTS version.
+
+More information can be found at: https://a.co/c895JFp
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+INIT_START Runtime Version: nodejs:18.v100	Runtime Version ARN: arn:aws:lambda:us-east-1::runtime:9a9659568bf79d197303268f6f12daf1b07196863769ffdfec56057ebf0b0553
+
+2026-02-26T08:45:21.416Z	undefined	ERROR	(node:2) Warning: NodeDeprecationWarning: The AWS SDK for JavaScript (v3) will
+no longer support Node.js v18.20.8 in January 2026.
+
+To continue receiving updates to AWS services, bug fixes, and security
+updates please upgrade to a supported Node.js LTS version.
+
+More information can be found at: https://a.co/c895JFp
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+START RequestId: 0ad92c8c-d647-4243-b4f8-4c4e9d8d8bc7 Version: $LATEST
+
+2026-02-26T08:45:21.521Z	0ad92c8c-d647-4243-b4f8-4c4e9d8d8bc7	INFO	Analyzing 11 comments for analysisId: 3f60aa84-26a9-4b8b-8151-1deeff3134a0
+
+2026-02-26T08:45:21.597Z	0ad92c8c-d647-4243-b4f8-4c4e9d8d8bc7	ERROR	Analysis Failed: _AxiosError: Request failed with status code 401
+    at settle (/var/task/index.js:45224:12)
+    at IncomingMessage.handleStreamEnd (/var/task/index.js:46287:11)
+    at IncomingMessage.emit (node:events:529:35)
+    at endReadableNT (node:internal/streams/readable:1400:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+    at Axios.request (/var/task/index.js:47188:41)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Runtime.handler (/var/task/index.js:47655:24) {
+  isAxiosError: true,
+  code: 'ERR_BAD_REQUEST',
+  config: {
+    transitional: {
+      silentJSONParsing: true,
+      forcedJSONParsing: true,
+      clarifyTimeoutError: false,
+      legacyInterceptorReqResOrdering: true
+    },
+    adapter: [ 'xhr', 'http', 'fetch' ],
+    transformRequest: [ [Function: transformRequest] ],
+    transformResponse: [ [Function: transformResponse] ],
+    timeout: 50000,
+    xsrfCookieName: 'XSRF-TOKEN',
+    xsrfHeaderName: 'X-XSRF-TOKEN',
+    maxContentLength: -1,
+    maxBodyLength: -1,
+    env: { FormData: [Function], Blob: [class Blob] },
+    validateStatus: [Function: validateStatus],
+    headers: Object [AxiosHeaders] {
+      Accept: 'application/json, text/plain, */*',
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ',
+      'User-Agent': 'axios/1.13.5',
+      'Content-Length': '2544',
+      'Accept-Encoding': 'gzip, compress, deflate, br'
+    },
+    method: 'post',
+    url: 'https://api.groq.com/openai/v1/chat/completions',
+    data: `{"model":"llama-3.1-8b-instant","messages":[{"role":"system","content":"You are a YouTube comment analysis engine. You MUST respond with ONLY valid JSON, no markdown, no code fences, no explanation."},{"role":"user","content":"Analyze these YouTube video comments (sampled from 11 total comments) and provide insights:\\n\\n[COMMENTS DATA]\\nHow much is it?\\n---\\nHow much does this cost?\\n---\\nGreat video!\\n---\\nI didn't understand the part at 3:42, can you explain?\\n---\\nThe database setup at 2:15 was very helpful, thanks!\\n---\\nStill confused about the database setup.\\n---\\nWhat's the pricing model like?\\n---\\nAt 3:42 the screen goes black, what happened?\\n---\\nWhere is the github link?\\n---\\nIs there a free tier for this service?\\n\\nPlease identify:\\n1. COMMON QUESTIONS: Group similar questions together and count frequency\\n2. CONFUSION POINTS: What specific things are people confused about? Look for timestamps.\\n3. TIMESTAMP MENTIONS: Extract any time references (like \\"at 3:42\\") and what people say about them\\n4. SENTIMENT ANALYSIS: Count how many comments are positive, negative, neutral, and questions. Also give an overall sentiment summary.\\n5. EXECUTIVE SUMMARY: Write a 2-3 sentence summary of the overall audience reception, key themes, and notable patterns in the comments.\\n6. ENGAGEMENT METRICS: Count how many comments contain praise/positive feedback that could be pinned, and identify the most liked or impactful positive comment.\\n\\nYou MUST respond with ONLY valid JSON, no other text. \\nCRITICAL INSTRUCTION: You MUST calculate ACTUAL counts from the provided comments. DO NOT output the placeholder values (0, \\"string\\") from the schema below. If there are no items for a list, return an empty array []. Use this exact JSON structure:\\n{\\n  \\"commonQuestions\\": [\\n    {\\"question\\": \\"string\\", \\"count\\": 0, \\"examples\\": [\\"string\\"]}\\n  ],\\n  \\"confusionPoints\\": [\\n    {\\"issue\\": \\"string\\", \\"count\\": 0, \\"timestamp\\": \\"string\\"}\\n  ],\\n  \\"timelineMarkers\\": [\\n    {\\"timestamp\\": \\"string\\", \\"mentions\\": 0, \\"sentiment\\": \\"positive|negative|confusion|neutral\\"}\\n  ],\\n  \\"sentimentBreakdown\\": {\\n    \\"positive\\": 0,\\n    \\"negative\\": 0,\\n    \\"neutral\\": 0,\\n    \\"questions\\": 0,\\n    \\"overallSentiment\\": \\"string\\"\\n  },\\n  \\"executiveSummary\\": \\"string\\",\\n  \\"engagementMetrics\\": {\\n    \\"positiveFeedbackCount\\": 0,\\n    \\"topPositiveComment\\": \\"string\\",\\n    \\"actionItems\\": [\\"string\\"]\\n  }\\n}"}],"max_tokens":1500,"temperature":0.2,"response_format":{"type":"json_object"}}`,
+    allowAbsoluteUrls: true
+  },
+  request: <ref *1> ClientRequest {
+    _events: [Object: null prototype] {
+      abort: [Function (anonymous)],
+      aborted: [Function (anonymous)],
+      connect: [Function (anonymous)],
+      error: [Function (anonymous)],
+      socket: [Function (anonymous)],
+      timeout: [Function (anonymous)],
+      finish: [Function: requestOnFinish]
+    },
+    _eventsCount: 7,
+    _maxListeners: undefined,
+    outputData: [],
+    outputSize: 0,
+    writable: true,
+    destroyed: false,
+    _last: true,
+    chunkedEncoding: false,
+    shouldKeepAlive: false,
+    maxRequestsOnConnectionReached: false,
+    _defaultKeepAlive: true,
+    useChunkedEncodingByDefault: true,
+    sendDate: false,
+    _removedConnection: false,
+    _removedContLen: false,
+    _removedTE: false,
+    strictContentLength: false,
+    _contentLength: '2544',
+    _hasBody: true,
+    _trailer: '',
+    finished: true,
+    _headerSent: true,
+    _closed: false,
+    socket: TLSSocket {
+      _tlsOptions: [Object],
+      _secureEstablished: true,
+      _securePending: false,
+      _newSessionPending: false,
+      _controlReleased: true,
+      secureConnecting: false,
+      _SNICallback: null,
+      servername: 'api.groq.com',
+      alpnProtocol: false,
+      authorized: true,
+      authorizationError: null,
+      encrypted: true,
+      _events: [Object: null prototype],
+      _eventsCount: 10,
+      connecting: false,
+      _hadError: false,
+      _parent: null,
+      _host: 'api.groq.com',
+      _closeAfterHandlingError: false,
+      _readableState: [ReadableState],
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: false,
+      _sockname: null,
+      _pendingData: null,
+      _pendingEncoding: '',
+      server: undefined,
+      _server: null,
+      ssl: [TLSWrap],
+      _requestCert: true,
+      _rejectUnauthorized: true,
+      parser: null,
+      _httpMessage: [Circular *1],
+      timeout: 50000,
+      [Symbol(alpncallback)]: null,
+      [Symbol(res)]: [TLSWrap],
+      [Symbol(verified)]: true,
+      [Symbol(pendingSession)]: null,
+      [Symbol(async_id_symbol)]: 43,
+      [Symbol(kHandle)]: [TLSWrap],
+      [Symbol(lastWriteQueueSize)]: 0,
+      [Symbol(timeout)]: Timeout {
+        _idleTimeout: 50000,
+        _idlePrev: [TimersList],
+        _idleNext: [TimersList],
+        _idleStart: 475,
+        _onTimeout: [Function: bound ],
+        _timerArgs: undefined,
+        _repeat: null,
+        _destroyed: false,
+        [Symbol(refed)]: false,
+        [Symbol(kHasPrimitive)]: false,
+        [Symbol(asyncId)]: 51,
+        [Symbol(triggerId)]: 46
+      },
+      [Symbol(kBuffer)]: null,
+      [Symbol(kBufferCb)]: null,
+      [Symbol(kBufferGen)]: null,
+      [Symbol(kCapture)]: false,
+      [Symbol(kSetNoDelay)]: false,
+      [Symbol(kSetKeepAlive)]: true,
+      [Symbol(kSetKeepAliveInitialDelay)]: 60,
+      [Symbol(kBytesRead)]: 0,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(connect-options)]: [Object]
+    },
+    _header: 'POST /openai/v1/chat/completions HTTP/1.1\r\n' +
+      'Accept: application/json, text/plain, */*\r\n' +
+      'Content-Type: application/json\r\n' +
+      'Authorization: Bearer \r\n' +
+      'User-Agent: axios/1.13.5\r\n' +
+      'Content-Length: 2544\r\n' +
+      'Accept-Encoding: gzip, compress, deflate, br\r\n' +
+      'Host: api.groq.com\r\n' +
+      'Connection: close\r\n' +
+      '\r\n',
+    _keepAliveTimeout: 0,
+    _onPendingData: [Function: nop],
+    agent: Agent {
+      _events: [Object: null prototype],
+      _eventsCount: 2,
+      _maxListeners: undefined,
+      defaultPort: 443,
+      protocol: 'https:',
+      options: [Object: null prototype],
+      requests: [Object: null prototype] {},
+      sockets: [Object: null prototype],
+      freeSockets: [Object: null prototype] {},
+      keepAliveMsecs: 1000,
+      keepAlive: false,
+      maxSockets: Infinity,
+      maxFreeSockets: 256,
+      scheduling: 'lifo',
+      maxTotalSockets: Infinity,
+      totalSocketCount: 1,
+      maxCachedSessions: 100,
+      _sessionCache: [Object],
+      [Symbol(kCapture)]: false
+    },
+    socketPath: undefined,
+    method: 'POST',
+    maxHeaderSize: undefined,
+    insecureHTTPParser: undefined,
+    joinDuplicateHeaders: undefined,
+    path: '/openai/v1/chat/completions',
+    _ended: true,
+    res: IncomingMessage {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      socket: [TLSSocket],
+      httpVersionMajor: 1,
+      httpVersionMinor: 1,
+      httpVersion: '1.1',
+      complete: true,
+      rawHeaders: [Array],
+      rawTrailers: [],
+      joinDuplicateHeaders: undefined,
+      aborted: false,
+      upgrade: false,
+      url: '',
+      method: null,
+      statusCode: 401,
+      statusMessage: 'Unauthorized',
+      client: [TLSSocket],
+      _consuming: false,
+      _dumped: false,
+      req: [Circular *1],
+      responseUrl: 'https://api.groq.com/openai/v1/chat/completions',
+      redirects: [],
+      [Symbol(kCapture)]: false,
+      [Symbol(kHeaders)]: [Object],
+      [Symbol(kHeadersCount)]: 28,
+      [Symbol(kTrailers)]: null,
+      [Symbol(kTrailersCount)]: 0
+    },
+    aborted: false,
+    timeoutCb: null,
+    upgradeOrConnect: false,
+    parser: null,
+    maxHeadersCount: null,
+    reusedSocket: false,
+    host: 'api.groq.com',
+    protocol: 'https:',
+    _redirectable: Writable {
+      _writableState: [WritableState],
+      _events: [Object: null prototype],
+      _eventsCount: 3,
+      _maxListeners: undefined,
+      _options: [Object],
+      _ended: true,
+      _ending: true,
+      _redirectCount: 0,
+      _redirects: [],
+      _requestBodyLength: 2544,
+      _requestBodyBuffers: [],
+      _onNativeResponse: [Function (anonymous)],
+      _currentRequest: [Circular *1],
+      _currentUrl: 'https://api.groq.com/openai/v1/chat/completions',
+      _timeout: null,
+      [Symbol(kCapture)]: false
+    },
+    [Symbol(kCapture)]: false,
+    [Symbol(kBytesWritten)]: 0,
+    [Symbol(kNeedDrain)]: false,
+    [Symbol(corked)]: 0,
+    [Symbol(kOutHeaders)]: [Object: null prototype] {
+      accept: [Array],
+      'content-type': [Array],
+      authorization: [Array],
+      'user-agent': [Array],
+      'content-length': [Array],
+      'accept-encoding': [Array],
+      host: [Array]
+    },
+    [Symbol(errored)]: null,
+    [Symbol(kHighWaterMark)]: 16384,
+    [Symbol(kRejectNonStandardBodyWrites)]: false,
+    [Symbol(kUniqueHeaders)]: null
+  },
+  response: {
+    status: 401,
+    statusText: 'Unauthorized',
+    headers: Object [AxiosHeaders] {
+      date: 'Thu, 26 Feb 2026 08:45:21 GMT',
+      'content-type': 'application/json',
+      'content-length': '96',
+      connection: 'close',
+      'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate',
+      server: 'cloudflare',
+      vary: 'Origin',
+      'x-groq-region': 'yul',
+      'x-request-id': 'req_01kjchzgscf6hvd50baf3wvnrc',
+      'cf-cache-status': 'DYNAMIC',
+      'set-cookie': [Array],
+      'strict-transport-security': 'max-age=15552000',
+      'cf-ray': '9d3e2a71bd329c85-IAD',
+      'alt-svc': 'h3=":443"; ma=86400'
+    },
+    config: {
+      transitional: [Object],
+      adapter: [Array],
+      transformRequest: [Array],
+      transformResponse: [Array],
+      timeout: 50000,
+      xsrfCookieName: 'XSRF-TOKEN',
+      xsrfHeaderName: 'X-XSRF-TOKEN',
+      maxContentLength: -1,
+      maxBodyLength: -1,
+      env: [Object],
+      validateStatus: [Function: validateStatus],
+      headers: [Object [AxiosHeaders]],
+      method: 'post',
+      url: 'https://api.groq.com/openai/v1/chat/completions',
+      data: `{"model":"llama-3.1-8b-instant","messages":[{"role":"system","content":"You are a YouTube comment analysis engine. You MUST respond with ONLY valid JSON, no markdown, no code fences, no explanation."},{"role":"user","content":"Analyze these YouTube video comments (sampled from 11 total comments) and provide insights:\\n\\n[COMMENTS DATA]\\nHow much is it?\\n---\\nHow much does this cost?\\n---\\nGreat video!\\n---\\nI didn't understand the part at 3:42, can you explain?\\n---\\nThe database setup at 2:15 was very helpful, thanks!\\n---\\nStill confused about the database setup.\\n---\\nWhat's the pricing model like?\\n---\\nAt 3:42 the screen goes black, what happened?\\n---\\nWhere is the github link?\\n---\\nIs there a free tier for this service?\\n\\nPlease identify:\\n1. COMMON QUESTIONS: Group similar questions together and count frequency\\n2. CONFUSION POINTS: What specific things are people confused about? Look for timestamps.\\n3. TIMESTAMP MENTIONS: Extract any time references (like \\"at 3:42\\") and what people say about them\\n4. SENTIMENT ANALYSIS: Count how many comments are positive, negative, neutral, and questions. Also give an overall sentiment summary.\\n5. EXECUTIVE SUMMARY: Write a 2-3 sentence summary of the overall audience reception, key themes, and notable patterns in the comments.\\n6. ENGAGEMENT METRICS: Count how many comments contain praise/positive feedback that could be pinned, and identify the most liked or impactful positive comment.\\n\\nYou MUST respond with ONLY valid JSON, no other text. \\nCRITICAL INSTRUCTION: You MUST calculate ACTUAL counts from the provided comments. DO NOT output the placeholder values (0, \\"string\\") from the schema below. If there are no items for a list, return an empty array []. Use this exact JSON structure:\\n{\\n  \\"commonQuestions\\": [\\n    {\\"question\\": \\"string\\", \\"count\\": 0, \\"examples\\": [\\"string\\"]}\\n  ],\\n  \\"confusionPoints\\": [\\n    {\\"issue\\": \\"string\\", \\"count\\": 0, \\"timestamp\\": \\"string\\"}\\n  ],\\n  \\"timelineMarkers\\": [\\n    {\\"timestamp\\": \\"string\\", \\"mentions\\": 0, \\"sentiment\\": \\"positive|negative|confusion|neutral\\"}\\n  ],\\n  \\"sentimentBreakdown\\": {\\n    \\"positive\\": 0,\\n    \\"negative\\": 0,\\n    \\"neutral\\": 0,\\n    \\"questions\\": 0,\\n    \\"overallSentiment\\": \\"string\\"\\n  },\\n  \\"executiveSummary\\": \\"string\\",\\n  \\"engagementMetrics\\": {\\n    \\"positiveFeedbackCount\\": 0,\\n    \\"topPositiveComment\\": \\"string\\",\\n    \\"actionItems\\": [\\"string\\"]\\n  }\\n}"}],"max_tokens":1500,"temperature":0.2,"response_format":{"type":"json_object"}}`,
+      allowAbsoluteUrls: true
+    },
+    request: <ref *1> ClientRequest {
+      _events: [Object: null prototype],
+      _eventsCount: 7,
+      _maxListeners: undefined,
+      outputData: [],
+      outputSize: 0,
+      writable: true,
+      destroyed: false,
+      _last: true,
+      chunkedEncoding: false,
+      shouldKeepAlive: false,
+      maxRequestsOnConnectionReached: false,
+      _defaultKeepAlive: true,
+      useChunkedEncodingByDefault: true,
+      sendDate: false,
+      _removedConnection: false,
+      _removedContLen: false,
+      _removedTE: false,
+      strictContentLength: false,
+      _contentLength: '2544',
+      _hasBody: true,
+      _trailer: '',
+      finished: true,
+      _headerSent: true,
+      _closed: false,
+      socket: [TLSSocket],
+      _header: 'POST /openai/v1/chat/completions HTTP/1.1\r\n' +
+        'Accept: application/json, text/plain, */*\r\n' +
+        'Content-Type: application/json\r\n' +
+        'Authorization: Bearer \r\n' +
+        'User-Agent: axios/1.13.5\r\n' +
+        'Content-Length: 2544\r\n' +
+        'Accept-Encoding: gzip, compress, deflate, br\r\n' +
+        'Host: api.groq.com\r\n' +
+        'Connection: close\r\n' +
+        '\r\n',
+      _keepAliveTimeout: 0,
+      _onPendingData: [Function: nop],
+      agent: [Agent],
+      socketPath: undefined,
+      method: 'POST',
+      maxHeaderSize: undefined,
+      insecureHTTPParser: undefined,
+      joinDuplicateHeaders: undefined,
+      path: '/openai/v1/chat/completions',
+      _ended: true,
+      res: [IncomingMessage],
+      aborted: false,
+      timeoutCb: null,
+      upgradeOrConnect: false,
+      parser: null,
+      maxHeadersCount: null,
+      reusedSocket: false,
+      host: 'api.groq.com',
+      protocol: 'https:',
+      _redirectable: [Writable],
+      [Symbol(kCapture)]: false,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(kNeedDrain)]: false,
+      [Symbol(corked)]: 0,
+      [Symbol(kOutHeaders)]: [Object: null prototype],
+      [Symbol(errored)]: null,
+      [Symbol(kHighWaterMark)]: 16384,
+      [Symbol(kRejectNonStandardBodyWrites)]: false,
+      [Symbol(kUniqueHeaders)]: null
+    },
+    data: { error: [Object] }
+  },
+  status: 401
+}
+
+END RequestId: 0ad92c8c-d647-4243-b4f8-4c4e9d8d8bc7
+
+REPORT RequestId: 0ad92c8c-d647-4243-b4f8-4c4e9d8d8bc7	Duration: 208.41 ms	Billed Duration: 608 ms	Memory Size: 1024 MB	Max Memory Used: 99 MB	Init Duration: 398.60 ms	
+
+START RequestId: bb29d642-f756-4b6c-92a8-6a5aff3deb20 Version: $LATEST
+
+2026-02-26T08:45:42.061Z	bb29d642-f756-4b6c-92a8-6a5aff3deb20	INFO	Analyzing 11 comments for analysisId: dffcb43d-253c-4183-b673-eab48c38e79b
+
+2026-02-26T08:45:42.113Z	bb29d642-f756-4b6c-92a8-6a5aff3deb20	ERROR	Analysis Failed: _AxiosError: Request failed with status code 401
+    at settle (/var/task/index.js:45224:12)
+    at IncomingMessage.handleStreamEnd (/var/task/index.js:46287:11)
+    at IncomingMessage.emit (node:events:529:35)
+    at endReadableNT (node:internal/streams/readable:1400:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+    at Axios.request (/var/task/index.js:47188:41)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Runtime.handler (/var/task/index.js:47655:24) {
+  isAxiosError: true,
+  code: 'ERR_BAD_REQUEST',
+  config: {
+    transitional: {
+      silentJSONParsing: true,
+      forcedJSONParsing: true,
+      clarifyTimeoutError: false,
+      legacyInterceptorReqResOrdering: true
+    },
+    adapter: [ 'xhr', 'http', 'fetch' ],
+    transformRequest: [ [Function: transformRequest] ],
+    transformResponse: [ [Function: transformResponse] ],
+    timeout: 50000,
+    xsrfCookieName: 'XSRF-TOKEN',
+    xsrfHeaderName: 'X-XSRF-TOKEN',
+    maxContentLength: -1,
+    maxBodyLength: -1,
+    env: { FormData: [Function], Blob: [class Blob] },
+    validateStatus: [Function: validateStatus],
+    headers: Object [AxiosHeaders] {
+      Accept: 'application/json, text/plain, */*',
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ',
+      'User-Agent': 'axios/1.13.5',
+      'Content-Length': '2544',
+      'Accept-Encoding': 'gzip, compress, deflate, br'
+    },
+    method: 'post',
+    url: 'https://api.groq.com/openai/v1/chat/completions',
+    data: `{"model":"llama-3.1-8b-instant","messages":[{"role":"system","content":"You are a YouTube comment analysis engine. You MUST respond with ONLY valid JSON, no markdown, no code fences, no explanation."},{"role":"user","content":"Analyze these YouTube video comments (sampled from 11 total comments) and provide insights:\\n\\n[COMMENTS DATA]\\nHow much does this cost?\\n---\\nHow much is it?\\n---\\nAt 3:42 the screen goes black, what happened?\\n---\\nWhere is the github link?\\n---\\nGreat video!\\n---\\nStill confused about the database setup.\\n---\\nWhat's the pricing model like?\\n---\\nI didn't understand the part at 3:42, can you explain?\\n---\\nThe database setup at 2:15 was very helpful, thanks!\\n---\\nIs there a free tier for this service?\\n\\nPlease identify:\\n1. COMMON QUESTIONS: Group similar questions together and count frequency\\n2. CONFUSION POINTS: What specific things are people confused about? Look for timestamps.\\n3. TIMESTAMP MENTIONS: Extract any time references (like \\"at 3:42\\") and what people say about them\\n4. SENTIMENT ANALYSIS: Count how many comments are positive, negative, neutral, and questions. Also give an overall sentiment summary.\\n5. EXECUTIVE SUMMARY: Write a 2-3 sentence summary of the overall audience reception, key themes, and notable patterns in the comments.\\n6. ENGAGEMENT METRICS: Count how many comments contain praise/positive feedback that could be pinned, and identify the most liked or impactful positive comment.\\n\\nYou MUST respond with ONLY valid JSON, no other text. \\nCRITICAL INSTRUCTION: You MUST calculate ACTUAL counts from the provided comments. DO NOT output the placeholder values (0, \\"string\\") from the schema below. If there are no items for a list, return an empty array []. Use this exact JSON structure:\\n{\\n  \\"commonQuestions\\": [\\n    {\\"question\\": \\"string\\", \\"count\\": 0, \\"examples\\": [\\"string\\"]}\\n  ],\\n  \\"confusionPoints\\": [\\n    {\\"issue\\": \\"string\\", \\"count\\": 0, \\"timestamp\\": \\"string\\"}\\n  ],\\n  \\"timelineMarkers\\": [\\n    {\\"timestamp\\": \\"string\\", \\"mentions\\": 0, \\"sentiment\\": \\"positive|negative|confusion|neutral\\"}\\n  ],\\n  \\"sentimentBreakdown\\": {\\n    \\"positive\\": 0,\\n    \\"negative\\": 0,\\n    \\"neutral\\": 0,\\n    \\"questions\\": 0,\\n    \\"overallSentiment\\": \\"string\\"\\n  },\\n  \\"executiveSummary\\": \\"string\\",\\n  \\"engagementMetrics\\": {\\n    \\"positiveFeedbackCount\\": 0,\\n    \\"topPositiveComment\\": \\"string\\",\\n    \\"actionItems\\": [\\"string\\"]\\n  }\\n}"}],"max_tokens":1500,"temperature":0.2,"response_format":{"type":"json_object"}}`,
+    allowAbsoluteUrls: true
+  },
+  request: <ref *1> ClientRequest {
+    _events: [Object: null prototype] {
+      abort: [Function (anonymous)],
+      aborted: [Function (anonymous)],
+      connect: [Function (anonymous)],
+      error: [Function (anonymous)],
+      socket: [Function (anonymous)],
+      timeout: [Function (anonymous)],
+      finish: [Function: requestOnFinish]
+    },
+    _eventsCount: 7,
+    _maxListeners: undefined,
+    outputData: [],
+    outputSize: 0,
+    writable: true,
+    destroyed: false,
+    _last: true,
+    chunkedEncoding: false,
+    shouldKeepAlive: false,
+    maxRequestsOnConnectionReached: false,
+    _defaultKeepAlive: true,
+    useChunkedEncodingByDefault: true,
+    sendDate: false,
+    _removedConnection: false,
+    _removedContLen: false,
+    _removedTE: false,
+    strictContentLength: false,
+    _contentLength: '2544',
+    _hasBody: true,
+    _trailer: '',
+    finished: true,
+    _headerSent: true,
+    _closed: false,
+    socket: TLSSocket {
+      _tlsOptions: [Object],
+      _secureEstablished: true,
+      _securePending: false,
+      _newSessionPending: false,
+      _controlReleased: true,
+      secureConnecting: false,
+      _SNICallback: null,
+      servername: 'api.groq.com',
+      alpnProtocol: false,
+      authorized: true,
+      authorizationError: null,
+      encrypted: true,
+      _events: [Object: null prototype],
+      _eventsCount: 10,
+      connecting: false,
+      _hadError: false,
+      _parent: null,
+      _host: 'api.groq.com',
+      _closeAfterHandlingError: false,
+      _readableState: [ReadableState],
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: false,
+      _sockname: null,
+      _pendingData: null,
+      _pendingEncoding: '',
+      server: undefined,
+      _server: null,
+      ssl: [TLSWrap],
+      _requestCert: true,
+      _rejectUnauthorized: true,
+      parser: null,
+      _httpMessage: [Circular *1],
+      timeout: 50000,
+      [Symbol(alpncallback)]: null,
+      [Symbol(res)]: [TLSWrap],
+      [Symbol(verified)]: true,
+      [Symbol(pendingSession)]: null,
+      [Symbol(async_id_symbol)]: 106,
+      [Symbol(kHandle)]: [TLSWrap],
+      [Symbol(lastWriteQueueSize)]: 0,
+      [Symbol(timeout)]: Timeout {
+        _idleTimeout: 50000,
+        _idlePrev: [TimersList],
+        _idleNext: [TimersList],
+        _idleStart: 20996,
+        _onTimeout: [Function: bound ],
+        _timerArgs: undefined,
+        _repeat: null,
+        _destroyed: false,
+        [Symbol(refed)]: false,
+        [Symbol(kHasPrimitive)]: false,
+        [Symbol(asyncId)]: 114,
+        [Symbol(triggerId)]: 109
+      },
+      [Symbol(kBuffer)]: null,
+      [Symbol(kBufferCb)]: null,
+      [Symbol(kBufferGen)]: null,
+      [Symbol(kCapture)]: false,
+      [Symbol(kSetNoDelay)]: false,
+      [Symbol(kSetKeepAlive)]: true,
+      [Symbol(kSetKeepAliveInitialDelay)]: 60,
+      [Symbol(kBytesRead)]: 0,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(connect-options)]: [Object]
+    },
+    _header: 'POST /openai/v1/chat/completions HTTP/1.1\r\n' +
+      'Accept: application/json, text/plain, */*\r\n' +
+      'Content-Type: application/json\r\n' +
+      'Authorization: Bearer \r\n' +
+      'User-Agent: axios/1.13.5\r\n' +
+      'Content-Length: 2544\r\n' +
+      'Accept-Encoding: gzip, compress, deflate, br\r\n' +
+      'Host: api.groq.com\r\n' +
+      'Connection: close\r\n' +
+      '\r\n',
+    _keepAliveTimeout: 0,
+    _onPendingData: [Function: nop],
+    agent: Agent {
+      _events: [Object: null prototype],
+      _eventsCount: 2,
+      _maxListeners: undefined,
+      defaultPort: 443,
+      protocol: 'https:',
+      options: [Object: null prototype],
+      requests: [Object: null prototype] {},
+      sockets: [Object: null prototype],
+      freeSockets: [Object: null prototype] {},
+      keepAliveMsecs: 1000,
+      keepAlive: false,
+      maxSockets: Infinity,
+      maxFreeSockets: 256,
+      scheduling: 'lifo',
+      maxTotalSockets: Infinity,
+      totalSocketCount: 1,
+      maxCachedSessions: 100,
+      _sessionCache: [Object],
+      [Symbol(kCapture)]: false
+    },
+    socketPath: undefined,
+    method: 'POST',
+    maxHeaderSize: undefined,
+    insecureHTTPParser: undefined,
+    joinDuplicateHeaders: undefined,
+    path: '/openai/v1/chat/completions',
+    _ended: true,
+    res: IncomingMessage {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      socket: [TLSSocket],
+      httpVersionMajor: 1,
+      httpVersionMinor: 1,
+      httpVersion: '1.1',
+      complete: true,
+      rawHeaders: [Array],
+      rawTrailers: [],
+      joinDuplicateHeaders: undefined,
+      aborted: false,
+      upgrade: false,
+      url: '',
+      method: null,
+      statusCode: 401,
+      statusMessage: 'Unauthorized',
+      client: [TLSSocket],
+      _consuming: false,
+      _dumped: false,
+      req: [Circular *1],
+      responseUrl: 'https://api.groq.com/openai/v1/chat/completions',
+      redirects: [],
+      [Symbol(kCapture)]: false,
+      [Symbol(kHeaders)]: [Object],
+      [Symbol(kHeadersCount)]: 28,
+      [Symbol(kTrailers)]: null,
+      [Symbol(kTrailersCount)]: 0
+    },
+    aborted: false,
+    timeoutCb: null,
+    upgradeOrConnect: false,
+    parser: null,
+    maxHeadersCount: null,
+    reusedSocket: false,
+    host: 'api.groq.com',
+    protocol: 'https:',
+    _redirectable: Writable {
+      _writableState: [WritableState],
+      _events: [Object: null prototype],
+      _eventsCount: 3,
+      _maxListeners: undefined,
+      _options: [Object],
+      _ended: true,
+      _ending: true,
+      _redirectCount: 0,
+      _redirects: [],
+      _requestBodyLength: 2544,
+      _requestBodyBuffers: [],
+      _onNativeResponse: [Function (anonymous)],
+      _currentRequest: [Circular *1],
+      _currentUrl: 'https://api.groq.com/openai/v1/chat/completions',
+      _timeout: null,
+      [Symbol(kCapture)]: false
+    },
+    [Symbol(kCapture)]: false,
+    [Symbol(kBytesWritten)]: 0,
+    [Symbol(kNeedDrain)]: false,
+    [Symbol(corked)]: 0,
+    [Symbol(kOutHeaders)]: [Object: null prototype] {
+      accept: [Array],
+      'content-type': [Array],
+      authorization: [Array],
+      'user-agent': [Array],
+      'content-length': [Array],
+      'accept-encoding': [Array],
+      host: [Array]
+    },
+    [Symbol(errored)]: null,
+    [Symbol(kHighWaterMark)]: 16384,
+    [Symbol(kRejectNonStandardBodyWrites)]: false,
+    [Symbol(kUniqueHeaders)]: null
+  },
+  response: {
+    status: 401,
+    statusText: 'Unauthorized',
+    headers: Object [AxiosHeaders] {
+      date: 'Thu, 26 Feb 2026 08:45:42 GMT',
+      'content-type': 'application/json',
+      'content-length': '96',
+      connection: 'close',
+      'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate',
+      server: 'cloudflare',
+      vary: 'Origin',
+      'x-groq-region': 'yul',
+      'x-request-id': 'req_01kjcj04tpe8gr55aqc586g0r5',
+      'cf-cache-status': 'DYNAMIC',
+      'set-cookie': [Array],
+      'strict-transport-security': 'max-age=15552000',
+      'cf-ray': '9d3e2af1f877e646-IAD',
+      'alt-svc': 'h3=":443"; ma=86400'
+    },
+    config: {
+      transitional: [Object],
+      adapter: [Array],
+      transformRequest: [Array],
+      transformResponse: [Array],
+      timeout: 50000,
+      xsrfCookieName: 'XSRF-TOKEN',
+      xsrfHeaderName: 'X-XSRF-TOKEN',
+      maxContentLength: -1,
+      maxBodyLength: -1,
+      env: [Object],
+      validateStatus: [Function: validateStatus],
+      headers: [Object [AxiosHeaders]],
+      method: 'post',
+      url: 'https://api.groq.com/openai/v1/chat/completions',
+      data: `{"model":"llama-3.1-8b-instant","messages":[{"role":"system","content":"You are a YouTube comment analysis engine. You MUST respond with ONLY valid JSON, no markdown, no code fences, no explanation."},{"role":"user","content":"Analyze these YouTube video comments (sampled from 11 total comments) and provide insights:\\n\\n[COMMENTS DATA]\\nHow much does this cost?\\n---\\nHow much is it?\\n---\\nAt 3:42 the screen goes black, what happened?\\n---\\nWhere is the github link?\\n---\\nGreat video!\\n---\\nStill confused about the database setup.\\n---\\nWhat's the pricing model like?\\n---\\nI didn't understand the part at 3:42, can you explain?\\n---\\nThe database setup at 2:15 was very helpful, thanks!\\n---\\nIs there a free tier for this service?\\n\\nPlease identify:\\n1. COMMON QUESTIONS: Group similar questions together and count frequency\\n2. CONFUSION POINTS: What specific things are people confused about? Look for timestamps.\\n3. TIMESTAMP MENTIONS: Extract any time references (like \\"at 3:42\\") and what people say about them\\n4. SENTIMENT ANALYSIS: Count how many comments are positive, negative, neutral, and questions. Also give an overall sentiment summary.\\n5. EXECUTIVE SUMMARY: Write a 2-3 sentence summary of the overall audience reception, key themes, and notable patterns in the comments.\\n6. ENGAGEMENT METRICS: Count how many comments contain praise/positive feedback that could be pinned, and identify the most liked or impactful positive comment.\\n\\nYou MUST respond with ONLY valid JSON, no other text. \\nCRITICAL INSTRUCTION: You MUST calculate ACTUAL counts from the provided comments. DO NOT output the placeholder values (0, \\"string\\") from the schema below. If there are no items for a list, return an empty array []. Use this exact JSON structure:\\n{\\n  \\"commonQuestions\\": [\\n    {\\"question\\": \\"string\\", \\"count\\": 0, \\"examples\\": [\\"string\\"]}\\n  ],\\n  \\"confusionPoints\\": [\\n    {\\"issue\\": \\"string\\", \\"count\\": 0, \\"timestamp\\": \\"string\\"}\\n  ],\\n  \\"timelineMarkers\\": [\\n    {\\"timestamp\\": \\"string\\", \\"mentions\\": 0, \\"sentiment\\": \\"positive|negative|confusion|neutral\\"}\\n  ],\\n  \\"sentimentBreakdown\\": {\\n    \\"positive\\": 0,\\n    \\"negative\\": 0,\\n    \\"neutral\\": 0,\\n    \\"questions\\": 0,\\n    \\"overallSentiment\\": \\"string\\"\\n  },\\n  \\"executiveSummary\\": \\"string\\",\\n  \\"engagementMetrics\\": {\\n    \\"positiveFeedbackCount\\": 0,\\n    \\"topPositiveComment\\": \\"string\\",\\n    \\"actionItems\\": [\\"string\\"]\\n  }\\n}"}],"max_tokens":1500,"temperature":0.2,"response_format":{"type":"json_object"}}`,
+      allowAbsoluteUrls: true
+    },
+    request: <ref *1> ClientRequest {
+      _events: [Object: null prototype],
+      _eventsCount: 7,
+      _maxListeners: undefined,
+      outputData: [],
+      outputSize: 0,
+      writable: true,
+      destroyed: false,
+      _last: true,
+      chunkedEncoding: false,
+      shouldKeepAlive: false,
+      maxRequestsOnConnectionReached: false,
+      _defaultKeepAlive: true,
+      useChunkedEncodingByDefault: true,
+      sendDate: false,
+      _removedConnection: false,
+      _removedContLen: false,
+      _removedTE: false,
+      strictContentLength: false,
+      _contentLength: '2544',
+      _hasBody: true,
+      _trailer: '',
+      finished: true,
+      _headerSent: true,
+      _closed: false,
+      socket: [TLSSocket],
+      _header: 'POST /openai/v1/chat/completions HTTP/1.1\r\n' +
+        'Accept: application/json, text/plain, */*\r\n' +
+        'Content-Type: application/json\r\n' +
+        'Authorization: Bearer \r\n' +
+        'User-Agent: axios/1.13.5\r\n' +
+        'Content-Length: 2544\r\n' +
+        'Accept-Encoding: gzip, compress, deflate, br\r\n' +
+        'Host: api.groq.com\r\n' +
+        'Connection: close\r\n' +
+        '\r\n',
+      _keepAliveTimeout: 0,
+      _onPendingData: [Function: nop],
+      agent: [Agent],
+      socketPath: undefined,
+      method: 'POST',
+      maxHeaderSize: undefined,
+      insecureHTTPParser: undefined,
+      joinDuplicateHeaders: undefined,
+      path: '/openai/v1/chat/completions',
+      _ended: true,
+      res: [IncomingMessage],
+      aborted: false,
+      timeoutCb: null,
+      upgradeOrConnect: false,
+      parser: null,
+      maxHeadersCount: null,
+      reusedSocket: false,
+      host: 'api.groq.com',
+      protocol: 'https:',
+      _redirectable: [Writable],
+      [Symbol(kCapture)]: false,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(kNeedDrain)]: false,
+      [Symbol(corked)]: 0,
+      [Symbol(kOutHeaders)]: [Object: null prototype],
+      [Symbol(errored)]: null,
+      [Symbol(kHighWaterMark)]: 16384,
+      [Symbol(kRejectNonStandardBodyWrites)]: false,
+      [Symbol(kUniqueHeaders)]: null
+    },
+    data: { error: [Object] }
+  },
+  status: 401
+}
+
+END RequestId: bb29d642-f756-4b6c-92a8-6a5aff3deb20
+
+REPORT RequestId: bb29d642-f756-4b6c-92a8-6a5aff3deb20	Duration: 112.94 ms	Billed Duration: 113 ms	Memory Size: 1024 MB	Max Memory Used: 99 MB	
+
+START RequestId: 441afa7c-c758-4afb-8a36-1a3b1b75019f Version: $LATEST
+
+2026-02-26T08:47:35.992Z	441afa7c-c758-4afb-8a36-1a3b1b75019f	INFO	Analyzing 11 comments for analysisId: 44ba3cbd-c53c-445f-8831-508ee09511b2
+
+2026-02-26T08:47:36.041Z	441afa7c-c758-4afb-8a36-1a3b1b75019f	ERROR	Analysis Failed: _AxiosError: Request failed with status code 401
+    at settle (/var/task/index.js:45224:12)
+    at IncomingMessage.handleStreamEnd (/var/task/index.js:46287:11)
+    at IncomingMessage.emit (node:events:529:35)
+    at endReadableNT (node:internal/streams/readable:1400:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+    at Axios.request (/var/task/index.js:47188:41)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Runtime.handler (/var/task/index.js:47655:24) {
+  isAxiosError: true,
+  code: 'ERR_BAD_REQUEST',
+  config: {
+    transitional: {
+      silentJSONParsing: true,
+      forcedJSONParsing: true,
+      clarifyTimeoutError: false,
+      legacyInterceptorReqResOrdering: true
+    },
+    adapter: [ 'xhr', 'http', 'fetch' ],
+    transformRequest: [ [Function: transformRequest] ],
+    transformResponse: [ [Function: transformResponse] ],
+    timeout: 50000,
+    xsrfCookieName: 'XSRF-TOKEN',
+    xsrfHeaderName: 'X-XSRF-TOKEN',
+    maxContentLength: -1,
+    maxBodyLength: -1,
+    env: { FormData: [Function], Blob: [class Blob] },
+    validateStatus: [Function: validateStatus],
+    headers: Object [AxiosHeaders] {
+      Accept: 'application/json, text/plain, */*',
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ',
+      'User-Agent': 'axios/1.13.5',
+      'Content-Length': '2544',
+      'Accept-Encoding': 'gzip, compress, deflate, br'
+    },
+    method: 'post',
+    url: 'https://api.groq.com/openai/v1/chat/completions',
+    data: `{"model":"llama-3.1-8b-instant","messages":[{"role":"system","content":"You are a YouTube comment analysis engine. You MUST respond with ONLY valid JSON, no markdown, no code fences, no explanation."},{"role":"user","content":"Analyze these YouTube video comments (sampled from 11 total comments) and provide insights:\\n\\n[COMMENTS DATA]\\nHow much is it?\\n---\\nThe database setup at 2:15 was very helpful, thanks!\\n---\\nWhat's the pricing model like?\\n---\\nHow much does this cost?\\n---\\nIs there a free tier for this service?\\n---\\nStill confused about the database setup.\\n---\\nAt 3:42 the screen goes black, what happened?\\n---\\nI didn't understand the part at 3:42, can you explain?\\n---\\nGreat video!\\n---\\nWhere is the github link?\\n\\nPlease identify:\\n1. COMMON QUESTIONS: Group similar questions together and count frequency\\n2. CONFUSION POINTS: What specific things are people confused about? Look for timestamps.\\n3. TIMESTAMP MENTIONS: Extract any time references (like \\"at 3:42\\") and what people say about them\\n4. SENTIMENT ANALYSIS: Count how many comments are positive, negative, neutral, and questions. Also give an overall sentiment summary.\\n5. EXECUTIVE SUMMARY: Write a 2-3 sentence summary of the overall audience reception, key themes, and notable patterns in the comments.\\n6. ENGAGEMENT METRICS: Count how many comments contain praise/positive feedback that could be pinned, and identify the most liked or impactful positive comment.\\n\\nYou MUST respond with ONLY valid JSON, no other text. \\nCRITICAL INSTRUCTION: You MUST calculate ACTUAL counts from the provided comments. DO NOT output the placeholder values (0, \\"string\\") from the schema below. If there are no items for a list, return an empty array []. Use this exact JSON structure:\\n{\\n  \\"commonQuestions\\": [\\n    {\\"question\\": \\"string\\", \\"count\\": 0, \\"examples\\": [\\"string\\"]}\\n  ],\\n  \\"confusionPoints\\": [\\n    {\\"issue\\": \\"string\\", \\"count\\": 0, \\"timestamp\\": \\"string\\"}\\n  ],\\n  \\"timelineMarkers\\": [\\n    {\\"timestamp\\": \\"string\\", \\"mentions\\": 0, \\"sentiment\\": \\"positive|negative|confusion|neutral\\"}\\n  ],\\n  \\"sentimentBreakdown\\": {\\n    \\"positive\\": 0,\\n    \\"negative\\": 0,\\n    \\"neutral\\": 0,\\n    \\"questions\\": 0,\\n    \\"overallSentiment\\": \\"string\\"\\n  },\\n  \\"executiveSummary\\": \\"string\\",\\n  \\"engagementMetrics\\": {\\n    \\"positiveFeedbackCount\\": 0,\\n    \\"topPositiveComment\\": \\"string\\",\\n    \\"actionItems\\": [\\"string\\"]\\n  }\\n}"}],"max_tokens":1500,"temperature":0.2,"response_format":{"type":"json_object"}}`,
+    allowAbsoluteUrls: true
+  },
+  request: <ref *1> ClientRequest {
+    _events: [Object: null prototype] {
+      abort: [Function (anonymous)],
+      aborted: [Function (anonymous)],
+      connect: [Function (anonymous)],
+      error: [Function (anonymous)],
+      socket: [Function (anonymous)],
+      timeout: [Function (anonymous)],
+      finish: [Function: requestOnFinish]
+    },
+    _eventsCount: 7,
+    _maxListeners: undefined,
+    outputData: [],
+    outputSize: 0,
+    writable: true,
+    destroyed: false,
+    _last: true,
+    chunkedEncoding: false,
+    shouldKeepAlive: false,
+    maxRequestsOnConnectionReached: false,
+    _defaultKeepAlive: true,
+    useChunkedEncodingByDefault: true,
+    sendDate: false,
+    _removedConnection: false,
+    _removedContLen: false,
+    _removedTE: false,
+    strictContentLength: false,
+    _contentLength: '2544',
+    _hasBody: true,
+    _trailer: '',
+    finished: true,
+    _headerSent: true,
+    _closed: false,
+    socket: TLSSocket {
+      _tlsOptions: [Object],
+      _secureEstablished: true,
+      _securePending: false,
+      _newSessionPending: false,
+      _controlReleased: true,
+      secureConnecting: false,
+      _SNICallback: null,
+      servername: 'api.groq.com',
+      alpnProtocol: false,
+      authorized: true,
+      authorizationError: null,
+      encrypted: true,
+      _events: [Object: null prototype],
+      _eventsCount: 10,
+      connecting: false,
+      _hadError: false,
+      _parent: null,
+      _host: 'api.groq.com',
+      _closeAfterHandlingError: false,
+      _readableState: [ReadableState],
+      _maxListeners: undefined,
+      _writableState: [WritableState],
+      allowHalfOpen: false,
+      _sockname: null,
+      _pendingData: null,
+      _pendingEncoding: '',
+      server: undefined,
+      _server: null,
+      ssl: [TLSWrap],
+      _requestCert: true,
+      _rejectUnauthorized: true,
+      parser: null,
+      _httpMessage: [Circular *1],
+      timeout: 50000,
+      [Symbol(alpncallback)]: null,
+      [Symbol(res)]: [TLSWrap],
+      [Symbol(verified)]: true,
+      [Symbol(pendingSession)]: null,
+      [Symbol(async_id_symbol)]: 190,
+      [Symbol(kHandle)]: [TLSWrap],
+      [Symbol(lastWriteQueueSize)]: 0,
+      [Symbol(timeout)]: Timeout {
+        _idleTimeout: 50000,
+        _idlePrev: [TimersList],
+        _idleNext: [TimersList],
+        _idleStart: 134923,
+        _onTimeout: [Function: bound ],
+        _timerArgs: undefined,
+        _repeat: null,
+        _destroyed: false,
+        [Symbol(refed)]: false,
+        [Symbol(kHasPrimitive)]: false,
+        [Symbol(asyncId)]: 198,
+        [Symbol(triggerId)]: 193
+      },
+      [Symbol(kBuffer)]: null,
+      [Symbol(kBufferCb)]: null,
+      [Symbol(kBufferGen)]: null,
+      [Symbol(kCapture)]: false,
+      [Symbol(kSetNoDelay)]: false,
+      [Symbol(kSetKeepAlive)]: true,
+      [Symbol(kSetKeepAliveInitialDelay)]: 60,
+      [Symbol(kBytesRead)]: 0,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(connect-options)]: [Object]
+    },
+    _header: 'POST /openai/v1/chat/completions HTTP/1.1\r\n' +
+      'Accept: application/json, text/plain, */*\r\n' +
+      'Content-Type: application/json\r\n' +
+      'Authorization: Bearer \r\n' +
+      'User-Agent: axios/1.13.5\r\n' +
+      'Content-Length: 2544\r\n' +
+      'Accept-Encoding: gzip, compress, deflate, br\r\n' +
+      'Host: api.groq.com\r\n' +
+      'Connection: close\r\n' +
+      '\r\n',
+    _keepAliveTimeout: 0,
+    _onPendingData: [Function: nop],
+    agent: Agent {
+      _events: [Object: null prototype],
+      _eventsCount: 2,
+      _maxListeners: undefined,
+      defaultPort: 443,
+      protocol: 'https:',
+      options: [Object: null prototype],
+      requests: [Object: null prototype] {},
+      sockets: [Object: null prototype],
+      freeSockets: [Object: null prototype] {},
+      keepAliveMsecs: 1000,
+      keepAlive: false,
+      maxSockets: Infinity,
+      maxFreeSockets: 256,
+      scheduling: 'lifo',
+      maxTotalSockets: Infinity,
+      totalSocketCount: 1,
+      maxCachedSessions: 100,
+      _sessionCache: [Object],
+      [Symbol(kCapture)]: false
+    },
+    socketPath: undefined,
+    method: 'POST',
+    maxHeaderSize: undefined,
+    insecureHTTPParser: undefined,
+    joinDuplicateHeaders: undefined,
+    path: '/openai/v1/chat/completions',
+    _ended: true,
+    res: IncomingMessage {
+      _readableState: [ReadableState],
+      _events: [Object: null prototype],
+      _eventsCount: 4,
+      _maxListeners: undefined,
+      socket: [TLSSocket],
+      httpVersionMajor: 1,
+      httpVersionMinor: 1,
+      httpVersion: '1.1',
+      complete: true,
+      rawHeaders: [Array],
+      rawTrailers: [],
+      joinDuplicateHeaders: undefined,
+      aborted: false,
+      upgrade: false,
+      url: '',
+      method: null,
+      statusCode: 401,
+      statusMessage: 'Unauthorized',
+      client: [TLSSocket],
+      _consuming: false,
+      _dumped: false,
+      req: [Circular *1],
+      responseUrl: 'https://api.groq.com/openai/v1/chat/completions',
+      redirects: [],
+      [Symbol(kCapture)]: false,
+      [Symbol(kHeaders)]: [Object],
+      [Symbol(kHeadersCount)]: 28,
+      [Symbol(kTrailers)]: null,
+      [Symbol(kTrailersCount)]: 0
+    },
+    aborted: false,
+    timeoutCb: null,
+    upgradeOrConnect: false,
+    parser: null,
+    maxHeadersCount: null,
+    reusedSocket: false,
+    host: 'api.groq.com',
+    protocol: 'https:',
+    _redirectable: Writable {
+      _writableState: [WritableState],
+      _events: [Object: null prototype],
+      _eventsCount: 3,
+      _maxListeners: undefined,
+      _options: [Object],
+      _ended: true,
+      _ending: true,
+      _redirectCount: 0,
+      _redirects: [],
+      _requestBodyLength: 2544,
+      _requestBodyBuffers: [],
+      _onNativeResponse: [Function (anonymous)],
+      _currentRequest: [Circular *1],
+      _currentUrl: 'https://api.groq.com/openai/v1/chat/completions',
+      _timeout: null,
+      [Symbol(kCapture)]: false
+    },
+    [Symbol(kCapture)]: false,
+    [Symbol(kBytesWritten)]: 0,
+    [Symbol(kNeedDrain)]: false,
+    [Symbol(corked)]: 0,
+    [Symbol(kOutHeaders)]: [Object: null prototype] {
+      accept: [Array],
+      'content-type': [Array],
+      authorization: [Array],
+      'user-agent': [Array],
+      'content-length': [Array],
+      'accept-encoding': [Array],
+      host: [Array]
+    },
+    [Symbol(errored)]: null,
+    [Symbol(kHighWaterMark)]: 16384,
+    [Symbol(kRejectNonStandardBodyWrites)]: false,
+    [Symbol(kUniqueHeaders)]: null
+  },
+  response: {
+    status: 401,
+    statusText: 'Unauthorized',
+    headers: Object [AxiosHeaders] {
+      date: 'Thu, 26 Feb 2026 08:47:36 GMT',
+      'content-type': 'application/json',
+      'content-length': '96',
+      connection: 'close',
+      'cache-control': 'private, max-age=0, no-store, no-cache, must-revalidate',
+      server: 'cloudflare',
+      vary: 'Origin',
+      'x-groq-region': 'msp',
+      'x-request-id': 'req_01kjcj3m2pfkcb0vp56dq2vemq',
+      'cf-cache-status': 'DYNAMIC',
+      'set-cookie': [Array],
+      'strict-transport-security': 'max-age=15552000',
+      'cf-ray': '9d3e2dba09f9c5a5-IAD',
+      'alt-svc': 'h3=":443"; ma=86400'
+    },
+    config: {
+      transitional: [Object],
+      adapter: [Array],
+      transformRequest: [Array],
+      transformResponse: [Array],
+      timeout: 50000,
+      xsrfCookieName: 'XSRF-TOKEN',
+      xsrfHeaderName: 'X-XSRF-TOKEN',
+      maxContentLength: -1,
+      maxBodyLength: -1,
+      env: [Object],
+      validateStatus: [Function: validateStatus],
+      headers: [Object [AxiosHeaders]],
+      method: 'post',
+      url: 'https://api.groq.com/openai/v1/chat/completions',
+      data: `{"model":"llama-3.1-8b-instant","messages":[{"role":"system","content":"You are a YouTube comment analysis engine. You MUST respond with ONLY valid JSON, no markdown, no code fences, no explanation."},{"role":"user","content":"Analyze these YouTube video comments (sampled from 11 total comments) and provide insights:\\n\\n[COMMENTS DATA]\\nHow much is it?\\n---\\nThe database setup at 2:15 was very helpful, thanks!\\n---\\nWhat's the pricing model like?\\n---\\nHow much does this cost?\\n---\\nIs there a free tier for this service?\\n---\\nStill confused about the database setup.\\n---\\nAt 3:42 the screen goes black, what happened?\\n---\\nI didn't understand the part at 3:42, can you explain?\\n---\\nGreat video!\\n---\\nWhere is the github link?\\n\\nPlease identify:\\n1. COMMON QUESTIONS: Group similar questions together and count frequency\\n2. CONFUSION POINTS: What specific things are people confused about? Look for timestamps.\\n3. TIMESTAMP MENTIONS: Extract any time references (like \\"at 3:42\\") and what people say about them\\n4. SENTIMENT ANALYSIS: Count how many comments are positive, negative, neutral, and questions. Also give an overall sentiment summary.\\n5. EXECUTIVE SUMMARY: Write a 2-3 sentence summary of the overall audience reception, key themes, and notable patterns in the comments.\\n6. ENGAGEMENT METRICS: Count how many comments contain praise/positive feedback that could be pinned, and identify the most liked or impactful positive comment.\\n\\nYou MUST respond with ONLY valid JSON, no other text. \\nCRITICAL INSTRUCTION: You MUST calculate ACTUAL counts from the provided comments. DO NOT output the placeholder values (0, \\"string\\") from the schema below. If there are no items for a list, return an empty array []. Use this exact JSON structure:\\n{\\n  \\"commonQuestions\\": [\\n    {\\"question\\": \\"string\\", \\"count\\": 0, \\"examples\\": [\\"string\\"]}\\n  ],\\n  \\"confusionPoints\\": [\\n    {\\"issue\\": \\"string\\", \\"count\\": 0, \\"timestamp\\": \\"string\\"}\\n  ],\\n  \\"timelineMarkers\\": [\\n    {\\"timestamp\\": \\"string\\", \\"mentions\\": 0, \\"sentiment\\": \\"positive|negative|confusion|neutral\\"}\\n  ],\\n  \\"sentimentBreakdown\\": {\\n    \\"positive\\": 0,\\n    \\"negative\\": 0,\\n    \\"neutral\\": 0,\\n    \\"questions\\": 0,\\n    \\"overallSentiment\\": \\"string\\"\\n  },\\n  \\"executiveSummary\\": \\"string\\",\\n  \\"engagementMetrics\\": {\\n    \\"positiveFeedbackCount\\": 0,\\n    \\"topPositiveComment\\": \\"string\\",\\n    \\"actionItems\\": [\\"string\\"]\\n  }\\n}"}],"max_tokens":1500,"temperature":0.2,"response_format":{"type":"json_object"}}`,
+      allowAbsoluteUrls: true
+    },
+    request: <ref *1> ClientRequest {
+      _events: [Object: null prototype],
+      _eventsCount: 7,
+      _maxListeners: undefined,
+      outputData: [],
+      outputSize: 0,
+      writable: true,
+      destroyed: false,
+      _last: true,
+      chunkedEncoding: false,
+      shouldKeepAlive: false,
+      maxRequestsOnConnectionReached: false,
+      _defaultKeepAlive: true,
+      useChunkedEncodingByDefault: true,
+      sendDate: false,
+      _removedConnection: false,
+      _removedContLen: false,
+      _removedTE: false,
+      strictContentLength: false,
+      _contentLength: '2544',
+      _hasBody: true,
+      _trailer: '',
+      finished: true,
+      _headerSent: true,
+      _closed: false,
+      socket: [TLSSocket],
+      _header: 'POST /openai/v1/chat/completions HTTP/1.1\r\n' +
+        'Accept: application/json, text/plain, */*\r\n' +
+        'Content-Type: application/json\r\n' +
+        'Authorization: Bearer \r\n' +
+        'User-Agent: axios/1.13.5\r\n' +
+        'Content-Length: 2544\r\n' +
+        'Accept-Encoding: gzip, compress, deflate, br\r\n' +
+        'Host: api.groq.com\r\n' +
+        'Connection: close\r\n' +
+        '\r\n',
+      _keepAliveTimeout: 0,
+      _onPendingData: [Function: nop],
+      agent: [Agent],
+      socketPath: undefined,
+      method: 'POST',
+      maxHeaderSize: undefined,
+      insecureHTTPParser: undefined,
+      joinDuplicateHeaders: undefined,
+      path: '/openai/v1/chat/completions',
+      _ended: true,
+      res: [IncomingMessage],
+      aborted: false,
+      timeoutCb: null,
+      upgradeOrConnect: false,
+      parser: null,
+      maxHeadersCount: null,
+      reusedSocket: false,
+      host: 'api.groq.com',
+      protocol: 'https:',
+      _redirectable: [Writable],
+      [Symbol(kCapture)]: false,
+      [Symbol(kBytesWritten)]: 0,
+      [Symbol(kNeedDrain)]: false,
+      [Symbol(corked)]: 0,
+      [Symbol(kOutHeaders)]: [Object: null prototype],
+      [Symbol(errored)]: null,
+      [Symbol(kHighWaterMark)]: 16384,
+      [Symbol(kRejectNonStandardBodyWrites)]: false,
+      [Symbol(kUniqueHeaders)]: null
+    },
+    data: { error: [Object] }
+  },
+  status: 401
+}
+
+END RequestId: 441afa7c-c758-4afb-8a36-1a3b1b75019f
+
+REPORT RequestId: 441afa7c-c758-4afb-8a36-1a3b1b75019f	Duration: 158.66 ms	Billed Duration: 159 ms	Memory Size: 1024 MB	Max Memory Used: 99 MB	

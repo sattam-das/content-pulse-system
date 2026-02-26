@@ -98,6 +98,7 @@ export class InfraStack extends cdk.Stack {
         environment: {
           VIDEO_ANALYSES_TABLE: videoAnalysesTable.tableName,
           ANALYSIS_RESULTS_TABLE: analysisResultsTable.tableName,
+          COMMENTS_TABLE: commentsTable.tableName,
         },
         bundling: {
           externalModules: [],
@@ -115,6 +116,7 @@ export class InfraStack extends cdk.Stack {
 
     videoAnalysesTable.grantReadData(getStatusLambda);
     analysisResultsTable.grantReadData(getStatusLambda);
+    commentsTable.grantReadData(getStatusLambda);
 
     // Grant fetch comments lambda permission to invoke itself (worker pattern) and the analyze lambda
     fetchCommentsLambda.addToRolePolicy(

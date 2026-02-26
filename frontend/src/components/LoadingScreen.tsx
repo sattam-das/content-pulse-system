@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import { Search, Brain, BarChart3 } from 'lucide-react';
 
 interface LoadingScreenProps {
-  commentCount?: number;
+  // Add props if needed in future
 }
 
 const steps = [
@@ -12,7 +12,7 @@ const steps = [
   { icon: BarChart3, label: 'Building insights' },
 ];
 
-export default function LoadingScreen({ commentCount }: LoadingScreenProps) {
+export default function LoadingScreen({}: LoadingScreenProps = {}) {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {

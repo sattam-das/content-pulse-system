@@ -1,0 +1,45 @@
+import { Command as $Command } from "@smithy/smithy-client";
+import { MetadataBearer as __MetadataBearer } from "@smithy/types";
+import {
+  CloudWatchLogsClientResolvedConfig,
+  ServiceInputTypes,
+  ServiceOutputTypes,
+} from "../CloudWatchLogsClient";
+import { CreateLogStreamRequest } from "../models/models_0";
+export { __MetadataBearer };
+export { $Command };
+export interface CreateLogStreamCommandInput extends CreateLogStreamRequest {}
+export interface CreateLogStreamCommandOutput extends __MetadataBearer {}
+declare const CreateLogStreamCommand_base: {
+  new (
+    input: CreateLogStreamCommandInput
+  ): import("@smithy/smithy-client").CommandImpl<
+    CreateLogStreamCommandInput,
+    CreateLogStreamCommandOutput,
+    CloudWatchLogsClientResolvedConfig,
+    ServiceInputTypes,
+    ServiceOutputTypes
+  >;
+  new (
+    input: CreateLogStreamCommandInput
+  ): import("@smithy/smithy-client").CommandImpl<
+    CreateLogStreamCommandInput,
+    CreateLogStreamCommandOutput,
+    CloudWatchLogsClientResolvedConfig,
+    ServiceInputTypes,
+    ServiceOutputTypes
+  >;
+  getEndpointParameterInstructions(): import("@smithy/middleware-endpoint").EndpointParameterInstructions;
+};
+export declare class CreateLogStreamCommand extends CreateLogStreamCommand_base {
+  protected static __types: {
+    api: {
+      input: CreateLogStreamRequest;
+      output: {};
+    };
+    sdk: {
+      input: CreateLogStreamCommandInput;
+      output: CreateLogStreamCommandOutput;
+    };
+  };
+}

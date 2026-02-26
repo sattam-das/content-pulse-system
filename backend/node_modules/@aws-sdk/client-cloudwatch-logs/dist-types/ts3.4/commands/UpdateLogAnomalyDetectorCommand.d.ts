@@ -1,0 +1,47 @@
+import { Command as $Command } from "@smithy/smithy-client";
+import { MetadataBearer as __MetadataBearer } from "@smithy/types";
+import {
+  CloudWatchLogsClientResolvedConfig,
+  ServiceInputTypes,
+  ServiceOutputTypes,
+} from "../CloudWatchLogsClient";
+import { UpdateLogAnomalyDetectorRequest } from "../models/models_0";
+export { __MetadataBearer };
+export { $Command };
+export interface UpdateLogAnomalyDetectorCommandInput
+  extends UpdateLogAnomalyDetectorRequest {}
+export interface UpdateLogAnomalyDetectorCommandOutput
+  extends __MetadataBearer {}
+declare const UpdateLogAnomalyDetectorCommand_base: {
+  new (
+    input: UpdateLogAnomalyDetectorCommandInput
+  ): import("@smithy/smithy-client").CommandImpl<
+    UpdateLogAnomalyDetectorCommandInput,
+    UpdateLogAnomalyDetectorCommandOutput,
+    CloudWatchLogsClientResolvedConfig,
+    ServiceInputTypes,
+    ServiceOutputTypes
+  >;
+  new (
+    input: UpdateLogAnomalyDetectorCommandInput
+  ): import("@smithy/smithy-client").CommandImpl<
+    UpdateLogAnomalyDetectorCommandInput,
+    UpdateLogAnomalyDetectorCommandOutput,
+    CloudWatchLogsClientResolvedConfig,
+    ServiceInputTypes,
+    ServiceOutputTypes
+  >;
+  getEndpointParameterInstructions(): import("@smithy/middleware-endpoint").EndpointParameterInstructions;
+};
+export declare class UpdateLogAnomalyDetectorCommand extends UpdateLogAnomalyDetectorCommand_base {
+  protected static __types: {
+    api: {
+      input: UpdateLogAnomalyDetectorRequest;
+      output: {};
+    };
+    sdk: {
+      input: UpdateLogAnomalyDetectorCommandInput;
+      output: UpdateLogAnomalyDetectorCommandOutput;
+    };
+  };
+}

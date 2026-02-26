@@ -1,0 +1,46 @@
+import { Command as $Command } from "@smithy/smithy-client";
+import { MetadataBearer as __MetadataBearer } from "@smithy/types";
+import {
+  CloudWatchLogsClientResolvedConfig,
+  ServiceInputTypes,
+  ServiceOutputTypes,
+} from "../CloudWatchLogsClient";
+import { DeleteMetricFilterRequest } from "../models/models_0";
+export { __MetadataBearer };
+export { $Command };
+export interface DeleteMetricFilterCommandInput
+  extends DeleteMetricFilterRequest {}
+export interface DeleteMetricFilterCommandOutput extends __MetadataBearer {}
+declare const DeleteMetricFilterCommand_base: {
+  new (
+    input: DeleteMetricFilterCommandInput
+  ): import("@smithy/smithy-client").CommandImpl<
+    DeleteMetricFilterCommandInput,
+    DeleteMetricFilterCommandOutput,
+    CloudWatchLogsClientResolvedConfig,
+    ServiceInputTypes,
+    ServiceOutputTypes
+  >;
+  new (
+    input: DeleteMetricFilterCommandInput
+  ): import("@smithy/smithy-client").CommandImpl<
+    DeleteMetricFilterCommandInput,
+    DeleteMetricFilterCommandOutput,
+    CloudWatchLogsClientResolvedConfig,
+    ServiceInputTypes,
+    ServiceOutputTypes
+  >;
+  getEndpointParameterInstructions(): import("@smithy/middleware-endpoint").EndpointParameterInstructions;
+};
+export declare class DeleteMetricFilterCommand extends DeleteMetricFilterCommand_base {
+  protected static __types: {
+    api: {
+      input: DeleteMetricFilterRequest;
+      output: {};
+    };
+    sdk: {
+      input: DeleteMetricFilterCommandInput;
+      output: DeleteMetricFilterCommandOutput;
+    };
+  };
+}

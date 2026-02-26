@@ -1,0 +1,50 @@
+import { Command as $Command } from "@smithy/smithy-client";
+import { MetadataBearer as __MetadataBearer } from "@smithy/types";
+import {
+  CloudWatchLogsClientResolvedConfig,
+  ServiceInputTypes,
+  ServiceOutputTypes,
+} from "../CloudWatchLogsClient";
+import {
+  PutDestinationRequest,
+  PutDestinationResponse,
+} from "../models/models_0";
+export { __MetadataBearer };
+export { $Command };
+export interface PutDestinationCommandInput extends PutDestinationRequest {}
+export interface PutDestinationCommandOutput
+  extends PutDestinationResponse,
+    __MetadataBearer {}
+declare const PutDestinationCommand_base: {
+  new (
+    input: PutDestinationCommandInput
+  ): import("@smithy/smithy-client").CommandImpl<
+    PutDestinationCommandInput,
+    PutDestinationCommandOutput,
+    CloudWatchLogsClientResolvedConfig,
+    ServiceInputTypes,
+    ServiceOutputTypes
+  >;
+  new (
+    input: PutDestinationCommandInput
+  ): import("@smithy/smithy-client").CommandImpl<
+    PutDestinationCommandInput,
+    PutDestinationCommandOutput,
+    CloudWatchLogsClientResolvedConfig,
+    ServiceInputTypes,
+    ServiceOutputTypes
+  >;
+  getEndpointParameterInstructions(): import("@smithy/middleware-endpoint").EndpointParameterInstructions;
+};
+export declare class PutDestinationCommand extends PutDestinationCommand_base {
+  protected static __types: {
+    api: {
+      input: PutDestinationRequest;
+      output: PutDestinationResponse;
+    };
+    sdk: {
+      input: PutDestinationCommandInput;
+      output: PutDestinationCommandOutput;
+    };
+  };
+}

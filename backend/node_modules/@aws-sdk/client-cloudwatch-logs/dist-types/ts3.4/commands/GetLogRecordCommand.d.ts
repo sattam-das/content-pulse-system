@@ -1,0 +1,47 @@
+import { Command as $Command } from "@smithy/smithy-client";
+import { MetadataBearer as __MetadataBearer } from "@smithy/types";
+import {
+  CloudWatchLogsClientResolvedConfig,
+  ServiceInputTypes,
+  ServiceOutputTypes,
+} from "../CloudWatchLogsClient";
+import { GetLogRecordRequest, GetLogRecordResponse } from "../models/models_0";
+export { __MetadataBearer };
+export { $Command };
+export interface GetLogRecordCommandInput extends GetLogRecordRequest {}
+export interface GetLogRecordCommandOutput
+  extends GetLogRecordResponse,
+    __MetadataBearer {}
+declare const GetLogRecordCommand_base: {
+  new (
+    input: GetLogRecordCommandInput
+  ): import("@smithy/smithy-client").CommandImpl<
+    GetLogRecordCommandInput,
+    GetLogRecordCommandOutput,
+    CloudWatchLogsClientResolvedConfig,
+    ServiceInputTypes,
+    ServiceOutputTypes
+  >;
+  new (
+    input: GetLogRecordCommandInput
+  ): import("@smithy/smithy-client").CommandImpl<
+    GetLogRecordCommandInput,
+    GetLogRecordCommandOutput,
+    CloudWatchLogsClientResolvedConfig,
+    ServiceInputTypes,
+    ServiceOutputTypes
+  >;
+  getEndpointParameterInstructions(): import("@smithy/middleware-endpoint").EndpointParameterInstructions;
+};
+export declare class GetLogRecordCommand extends GetLogRecordCommand_base {
+  protected static __types: {
+    api: {
+      input: GetLogRecordRequest;
+      output: GetLogRecordResponse;
+    };
+    sdk: {
+      input: GetLogRecordCommandInput;
+      output: GetLogRecordCommandOutput;
+    };
+  };
+}
