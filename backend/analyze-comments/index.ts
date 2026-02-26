@@ -87,7 +87,7 @@ CRITICAL INSTRUCTION: You MUST calculate ACTUAL counts from the provided comment
         let groqResponse;
         let retries = 0;
         const maxRetries = 3;
-        const models = ['llama3-8b-8192', 'llama-3.1-8b-instant', 'gemma2-9b-it'];
+        const models = ['llama-3.3-70b-versatile', 'llama-3.1-8b-instant', 'gemma2-9b-it'];
 
         while (retries < maxRetries) {
             try {
@@ -118,17 +118,21 @@ CRITICAL INSTRUCTION: You MUST calculate ACTUAL counts from the provided comment
                 });
                 break; // Success, exit retry loop
             } catch (err: any) {
-                if (err.response && err.response.status === 429 && retries < maxRetries - 1) {
-                    const retryAfter = err.response.headers['retry-after'];
-                    const delayStr = err.response.headers['x-ratelimit-reset-tokens'];
-                    let waitTime = 5000; // Shorter base wait, swapping models might bypass it
-                    if (retryAfter) {
-                        waitTime = parseInt(retryAfter) * 1000;
-                    } else if (delayStr && delayStr.endsWith('s')) {
-                        waitTime = parseFloat(delayStr.replace('s', '')) * 1000;
+                const status = err.response?.status;
+                const isRetryable = (status === 429 || status === 400) && retries < maxRetries - 1;
+                if (isRetryable) {
+                    console.warn(`Model error (status ${status}). Switching to next model (retry ${retries + 1})...`);
+                    let waitTime = status === 429 ? 5000 : 500; // Wait less for model errors, more for rate limits
+                    if (status === 429) {
+                        const retryAfter = err.response.headers['retry-after'];
+                        const delayStr = err.response.headers['x-ratelimit-reset-tokens'];
+                        if (retryAfter) {
+                            waitTime = parseInt(retryAfter) * 1000;
+                        } else if (delayStr && delayStr.endsWith('s')) {
+                            waitTime = parseFloat(delayStr.replace('s', '')) * 1000;
+                        }
                     }
-                    console.log(`Rate limited by Groq API. Waiting ${waitTime}ms before retry ${retries + 1}...`);
-                    await new Promise(r => setTimeout(r, Math.min(waitTime, 10000))); // Cap wait at 10s since we swap models
+                    await new Promise(r => setTimeout(r, Math.min(waitTime, 10000)));
                     retries++;
                 } else {
                     console.error((err as any).response?.data || err);

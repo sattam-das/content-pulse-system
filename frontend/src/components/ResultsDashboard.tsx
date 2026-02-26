@@ -25,16 +25,19 @@ export default function ResultsDashboard({ data, onReset, onNavigate }: ResultsD
     return parts[0] || 0;
   };
 
-  // Transform timelineMarkers into chart data, sorted chronologically
-  const chartData = [...results.timelineMarkers]
-    .sort((a, b) => timestampToSeconds(a.timestamp) - timestampToSeconds(b.timestamp))
-    .map((marker) => ({
-      time: marker.timestamp,
-      positive: marker.sentiment === 'positive' ? marker.mentions : 0,
-      confusion: marker.sentiment === 'confusion' ? marker.mentions : 0,
-      negative: marker.sentiment === 'negative' ? marker.mentions : 0,
-      mentions: marker.mentions,
-    }));
+  // Transform timelineMarkers into chart data, aggregated by timestamp and sorted chronologically
+  const chartDataMap = new Map<string, { positive: number; confusion: number; negative: number; mentions: number }>();
+  for (const marker of results.timelineMarkers) {
+    const existing = chartDataMap.get(marker.timestamp) || { positive: 0, confusion: 0, negative: 0, mentions: 0 };
+    if (marker.sentiment === 'positive') existing.positive += marker.mentions;
+    else if (marker.sentiment === 'confusion') existing.confusion += marker.mentions;
+    else if (marker.sentiment === 'negative') existing.negative += marker.mentions;
+    existing.mentions += marker.mentions;
+    chartDataMap.set(marker.timestamp, existing);
+  }
+  const chartData = Array.from(chartDataMap.entries())
+    .sort(([a], [b]) => timestampToSeconds(a) - timestampToSeconds(b))
+    .map(([time, values]) => ({ time, ...values }));
 
   // Use real sentiment data from AI if available, fallback to timeline-based
   const totalComments = data.commentCount;
