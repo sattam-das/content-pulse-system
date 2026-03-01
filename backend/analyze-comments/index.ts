@@ -2,6 +2,7 @@ import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 import { DynamoDBDocumentClient, QueryCommand, PutCommand, UpdateCommand } from '@aws-sdk/lib-dynamodb';
 import axios from 'axios';
 import { SentimentAnalyzer } from '../src/services/sentimentAnalyzer';
+import { logError } from '../src/utils/errorSanitizer';
 
 const dbClient = new DynamoDBClient({});
 const docClient = DynamoDBDocumentClient.from(dbClient);
@@ -93,7 +94,7 @@ export const handler = async (event: any) => {
         console.log(`Analysis completed for analysisId: ${analysisId}`);
 
     } catch (error) {
-        console.error("Analysis Failed:", error);
+        logError("Analysis Failed", error);
         await updateStatus(analysisId, 'failed');
     }
 };
@@ -149,7 +150,6 @@ async function analyzeWithHybrid(meaningfulComments: any[], totalCommentCount: n
     // Step 2: Prepare data for LLM with sentiment annotations
     const annotatedComments = meaningfulComments.map((c, i) => {
         const sentiment = sentimentResult.comments[i].sentiment;
-        const scores = sentimentResult.comments[i].scores;
         return `[${sentiment.toUpperCase()}] ${c.text}`;
     }).join('\n---\n').slice(0, 8000);
     
@@ -289,7 +289,7 @@ You MUST respond with ONLY valid JSON, no other text. Use this exact structure:
                 await new Promise(r => setTimeout(r, Math.min(waitTime, 10000)));
                 retries++;
             } else {
-                console.error('LLM API error:', (err as any).response?.data || err.message);
+                logError('LLM API error', err);
                 throw err;
             }
         }
@@ -432,161 +432,4 @@ CRITICAL INSTRUCTION: You MUST calculate ACTUAL counts from the provided comment
     }
 }
 
-/**
- * Groups similar questions together.
- */
-function groupSimilarQuestions(questions: string[]): Array<{question: string, count: number, examples: string[]}> {
-    if (questions.length === 0) return [];
-    
-    // Simple grouping by first 3 words
-    const groups = new Map<string, string[]>();
-    
-    for (const q of questions) {
-        const key = q.split(/\s+/).slice(0, 3).join(' ').toLowerCase();
-        if (!groups.has(key)) {
-            groups.set(key, []);
-        }
-        groups.get(key)!.push(q);
-    }
-    
-    return Array.from(groups.entries())
-        .map(([key, examples]) => ({
-            question: examples[0],
-            count: examples.length,
-            examples: examples.slice(0, 3)
-        }))
-        .sort((a, b) => b.count - a.count)
-        .slice(0, 10);
-}
 
-/**
- * Extracts timestamp mentions from comments.
- */
-function extractTimestampMentions(comments: any[], sentiments: any[]): Array<{timestamp: string, mentions: number, sentiment: string}> {
-    const timestampRegex = /(\d{1,2}):(\d{2})/g;
-    const timestamps = new Map<string, {count: number, sentiments: string[]}>();
-    
-    for (let i = 0; i < comments.length; i++) {
-        const text = comments[i].text;
-        const matches = text.matchAll(timestampRegex);
-        
-        for (const match of matches) {
-            const timestamp = match[0];
-            if (!timestamps.has(timestamp)) {
-                timestamps.set(timestamp, {count: 0, sentiments: []});
-            }
-            timestamps.get(timestamp)!.count++;
-            timestamps.get(timestamp)!.sentiments.push(sentiments[i].sentiment);
-        }
-    }
-    
-    return Array.from(timestamps.entries())
-        .map(([timestamp, data]) => {
-            const sentimentCounts = data.sentiments.reduce((acc, s) => {
-                acc[s] = (acc[s] || 0) + 1;
-                return acc;
-            }, {} as any);
-            
-            const dominantSentiment = Object.entries(sentimentCounts)
-                .sort((a: any, b: any) => b[1] - a[1])[0][0];
-            
-            return {
-                timestamp,
-                mentions: data.count,
-                sentiment: dominantSentiment
-            };
-        })
-        .sort((a, b) => b.mentions - a.mentions)
-        .slice(0, 10);
-}
-
-/**
- * Generates executive summary from sentiment breakdown.
- */
-function generateExecutiveSummary(breakdown: any, totalComments: number, analyzedComments: number): string {
-    const total = breakdown.positive + breakdown.negative + breakdown.neutral + breakdown.question + breakdown.confusion;
-    const positivePercent = ((breakdown.positive / total) * 100).toFixed(0);
-    const negativePercent = ((breakdown.negative / total) * 100).toFixed(0);
-    
-    return `Analyzed ${analyzedComments} of ${totalComments} comments. ${positivePercent}% positive, ${negativePercent}% negative. ${breakdown.question} questions identified. Overall sentiment: ${breakdown.overallSentiment || 'Mixed'}.`;
-}
-
-/**
- * Calculates engagement metrics.
- */
-function calculateEngagementMetrics(comments: any[], sentiments: any[]): any {
-    const positiveComments = comments.filter((c, i) => sentiments[i].sentiment === 'positive');
-    const topPositive = positiveComments.sort((a, b) => (b.likeCount || 0) - (a.likeCount || 0))[0];
-    
-    return {
-        positiveFeedbackCount: positiveComments.length,
-        topPositiveComment: topPositive?.text || '',
-        actionItems: []
-    };
-}
-
-/**
- * Detects confusion points in comments using pattern matching.
- */
-function detectConfusionPoints(comments: any[], sentiments: any[]): Array<{issue: string, count: number, timestamp: string}> {
-    const confusionPatterns = [
-        /\b(confused|confusing|don'?t understand|unclear|lost|what does|what is|can someone explain|explain|not sure|unsure|hard to follow|difficult to understand)\b/i,
-        /\b(what'?s the|how does|why does|why is|how is|what are|how are)\b/i,
-        /\b(makes no sense|doesn'?t make sense|not clear|not getting|can'?t follow)\b/i
-    ];
-    
-    const confusionComments: Array<{text: string, timestamp: string | null}> = [];
-    
-    for (let i = 0; i < comments.length; i++) {
-        const text = comments[i].text;
-        const hasConfusionPattern = confusionPatterns.some(pattern => pattern.test(text));
-        
-        if (hasConfusionPattern) {
-            // Extract timestamp if present
-            const timestampMatch = text.match(/(\d{1,2}):(\d{2})/);
-            confusionComments.push({
-                text,
-                timestamp: timestampMatch ? timestampMatch[0] : null
-            });
-        }
-    }
-    
-    if (confusionComments.length === 0) return [];
-    
-    // Group similar confusion points by extracting key phrases
-    const groups = new Map<string, {count: number, timestamp: string | null, examples: string[]}>();
-    
-    for (const comment of confusionComments) {
-        // Extract the confusion phrase (first 5-7 words after the pattern match)
-        let key = comment.text.toLowerCase();
-        for (const pattern of confusionPatterns) {
-            const match = pattern.exec(comment.text);
-            if (match) {
-                const startIdx = match.index;
-                const words = comment.text.slice(startIdx).split(/\s+/).slice(0, 7).join(' ');
-                key = words.toLowerCase();
-                break;
-            }
-        }
-        
-        if (!groups.has(key)) {
-            groups.set(key, {count: 0, timestamp: comment.timestamp, examples: []});
-        }
-        groups.get(key)!.count++;
-        if (comment.timestamp && !groups.get(key)!.timestamp) {
-            groups.get(key)!.timestamp = comment.timestamp;
-        }
-        if (groups.get(key)!.examples.length < 2) {
-            groups.get(key)!.examples.push(comment.text);
-        }
-    }
-    
-    return Array.from(groups.entries())
-        .map(([key, data]) => ({
-            issue: data.examples[0] || key,
-            count: data.count,
-            timestamp: data.timestamp || ''
-        }))
-        .sort((a, b) => b.count - a.count)
-        .slice(0, 10);
-}
