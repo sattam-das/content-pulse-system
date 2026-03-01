@@ -26,7 +26,7 @@ YouTube creators receive thousands of comments but lack the tools to understand 
 ContentPulse is an **enterprise-grade, serverless platform** that automatically analyzes YouTube comments using AWS AI services, delivering:
 
 - **Real-time sentiment analysis** powered by AWS Comprehend
-- **Intelligent pattern recognition** using Amazon Bedrock (Claude 3)
+- **Intelligent pattern recognition** using Groq API (Llama 3.3 70B Versatile)
 - **Actionable insights** presented in an intuitive dashboard
 - **Scalable architecture** handling videos with 100K+ comments
 - **99.9% uptime** with serverless AWS infrastructure
@@ -82,7 +82,7 @@ ContentPulse is an **enterprise-grade, serverless platform** that automatically 
 │  fetch-comments       │   │  analyze-comments         │
 │  Lambda Function      │   │  Lambda Function          │
 │  • YouTube API v3     │   │  • AWS Comprehend         │
-│  • Comment Extraction │   │  • Amazon Bedrock         │
+│  • Comment Extraction │   │  • Groq (Llama 3.3 70B)   │
 │  • Data Validation    │   │  • Batch Processing       │
 └───────────┬───────────┘   └────────────┬──────────────┘
             │                            │
@@ -108,7 +108,7 @@ ContentPulse is an **enterprise-grade, serverless platform** that automatically 
 **Backend**
 - AWS Lambda (Node.js 20.x)
 - AWS Comprehend (sentiment analysis)
-- Amazon Bedrock (Claude 3 Haiku)
+- Groq API with Llama 3.3 70B Versatile (pattern recognition & insights)
 - Amazon DynamoDB (NoSQL database)
 - AWS API Gateway (REST API)
 
@@ -160,6 +160,7 @@ VITE_API_ENDPOINT=https://your-api-gateway-url.amazonaws.com/prod
 **infra/.env**
 ```env
 YOUTUBE_API_KEY=your_youtube_api_key_here
+GROQ_API_KEY=your_groq_api_key_here
 AWS_REGION=us-east-1
 ```
 
