@@ -58,6 +58,7 @@ export class InfraStack extends cdk.Stack {
           COMMENTS_TABLE: commentsTable.tableName,
           ANALYSIS_RESULTS_TABLE: analysisResultsTable.tableName,
           GROQ_API_KEY: process.env.GROQ_API_KEY || "",
+          USE_AWS_COMPREHEND: process.env.USE_AWS_COMPREHEND || "false",
         },
         bundling: {
           externalModules: [], // Bundle all dependencies
@@ -123,6 +124,24 @@ export class InfraStack extends cdk.Stack {
       new iam.PolicyStatement({
         actions: ["lambda:InvokeFunction"],
         resources: ["*"], // Allows invoking itself and the analyze lambda
+      }),
+    );
+
+    // AWS Comprehend permissions for sentiment analysis
+    analyzeCommentsLambda.addToRolePolicy(
+      new iam.PolicyStatement({
+        sid: "ComprehendSentimentAnalysis",
+        effect: iam.Effect.ALLOW,
+        actions: [
+          "comprehend:DetectSentiment",
+          "comprehend:BatchDetectSentiment"
+        ],
+        resources: ["*"],
+        conditions: {
+          StringEquals: {
+            "aws:RequestedRegion": this.region
+          }
+        }
       }),
     );
 

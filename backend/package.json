@@ -7,7 +7,9 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "keywords": [],
   "author": "",
@@ -24,10 +26,13 @@
   },
   "dependencies": {
     "@aws-sdk/client-bedrock-runtime": "^3.996.0",
+    "@aws-sdk/client-cloudwatch": "^3.1000.0",
     "@aws-sdk/client-cloudwatch-logs": "^3.998.0",
+    "@aws-sdk/client-comprehend": "^3.1000.0",
     "@aws-sdk/client-dynamodb": "^3.996.0",
     "@aws-sdk/client-lambda": "^3.997.0",
     "@aws-sdk/lib-dynamodb": "^3.996.0",
-    "axios": "^1.13.5"
+    "axios": "^1.13.5",
+    "fast-check": "^4.5.3"
   }
 }
