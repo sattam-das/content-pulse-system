@@ -42,7 +42,7 @@ const faqs = [
   {
     question: 'How do I interpret the results dashboard?',
     answer:
-      'The results dashboard is designed to be intuitive. The Sentiment Trend chart shows emotional responses over time. Common Questions highlights what your audience is asking most. Confusion Points pinpoint where viewers are struggling. The Audience Health score gives you an overall engagement rating. Each section includes actionable tips.',
+      'The results dashboard is designed to be intuitive. The Sentiment Distribution pie chart shows the overall breakdown of audience emotions. Common Questions highlights what your audience is asking most. Confusion Points pinpoint where viewers are struggling. The Audience Health score gives you an overall engagement rating. Each section includes actionable tips.',
   },
   {
     question: 'Is my data secure?',

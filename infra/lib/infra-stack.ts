@@ -57,7 +57,7 @@ export class InfraStack extends cdk.Stack {
           VIDEO_ANALYSES_TABLE: videoAnalysesTable.tableName,
           COMMENTS_TABLE: commentsTable.tableName,
           ANALYSIS_RESULTS_TABLE: analysisResultsTable.tableName,
-          GROQ_API_KEY: process.env.GROQ_API_KEY || "",
+          AWS_BEDROCK_REGION: 'us-east-1',
           USE_AWS_COMPREHEND: process.env.USE_AWS_COMPREHEND || "false",
         },
         bundling: {
@@ -145,7 +145,24 @@ export class InfraStack extends cdk.Stack {
       }),
     );
 
-    // Note: Bedrock IAM policy removed — now using Gemini API via HTTP
+    // AWS Bedrock permissions for AI model invocation
+    analyzeCommentsLambda.addToRolePolicy(
+      new iam.PolicyStatement({
+        sid: "BedrockModelInvocation",
+        effect: iam.Effect.ALLOW,
+        actions: ["bedrock:InvokeModel"],
+        resources: [
+          "arn:aws:bedrock:us-east-1::foundation-model/meta.llama3-3-70b-instruct-v1:0",
+          "arn:aws:bedrock:us-east-1::foundation-model/meta.llama3-1-70b-instruct-v1:0",
+          `arn:aws:bedrock:us-east-1:${this.account}:inference-profile/us.meta.llama3-3-70b-instruct-v1:0`,
+          `arn:aws:bedrock:us-east-1:${this.account}:inference-profile/us.meta.llama3-1-70b-instruct-v1:0`,
+          "arn:aws:bedrock:us-east-2::foundation-model/meta.llama3-3-70b-instruct-v1:0",
+          "arn:aws:bedrock:us-east-2::foundation-model/meta.llama3-1-70b-instruct-v1:0",
+          "arn:aws:bedrock:us-west-2::foundation-model/meta.llama3-3-70b-instruct-v1:0",
+          "arn:aws:bedrock:us-west-2::foundation-model/meta.llama3-1-70b-instruct-v1:0",
+        ],
+      }),
+    );
 
     // 3. API Gateway
     const api = new apigateway.RestApi(this, "ContentPulseApi", {

@@ -3,10 +3,11 @@ import { RefreshCcw, MessageSquare, HelpCircle, AlertCircle, ArrowUpRight, Targe
 import { Navbar } from './Navbar';
 import CommentBrowser from './CommentBrowser';
 import { 
-  AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, 
+  ResponsiveContainer, 
   PieChart, Pie, Cell 
 } from 'recharts';
 import type { AnalysisResult } from '../api';
+import SentimentPieChart from './SentimentPieChart';
 
 interface ResultsDashboardProps {
   data: AnalysisResult;
@@ -17,27 +18,7 @@ interface ResultsDashboardProps {
 export default function ResultsDashboard({ data, onReset, onNavigate }: ResultsDashboardProps) {
   const results = data.results!;
 
-  // Convert timestamp string (e.g. "3:42") to total seconds for sorting
-  const timestampToSeconds = (ts: string): number => {
-    const parts = ts.split(':').map(Number);
-    if (parts.length === 3) return parts[0] * 3600 + parts[1] * 60 + parts[2];
-    if (parts.length === 2) return parts[0] * 60 + parts[1];
-    return parts[0] || 0;
-  };
 
-  // Transform timelineMarkers into chart data, aggregated by timestamp and sorted chronologically
-  const chartDataMap = new Map<string, { positive: number; confusion: number; negative: number; mentions: number }>();
-  for (const marker of results.timelineMarkers) {
-    const existing = chartDataMap.get(marker.timestamp) || { positive: 0, confusion: 0, negative: 0, mentions: 0 };
-    if (marker.sentiment === 'positive') existing.positive += marker.mentions;
-    else if (marker.sentiment === 'confusion') existing.confusion += marker.mentions;
-    else if (marker.sentiment === 'negative') existing.negative += marker.mentions;
-    existing.mentions += marker.mentions;
-    chartDataMap.set(marker.timestamp, existing);
-  }
-  const chartData = Array.from(chartDataMap.entries())
-    .sort(([a], [b]) => timestampToSeconds(a) - timestampToSeconds(b))
-    .map(([time, values]) => ({ time, ...values }));
 
   // Use real sentiment data from AI if available, fallback to timeline-based
   const totalComments = data.commentCount;
@@ -69,7 +50,7 @@ export default function ResultsDashboard({ data, onReset, onNavigate }: ResultsD
     { name: 'Positive', value: positivePct || 0, color: '#22c55e' },
     { name: 'Negative', value: negativePct || 0, color: '#ef4444' },
     { name: 'Neutral', value: neutralPct || 0, color: '#64748b' },
-    { name: 'Questions', value: questionsPct || 0, color: '#6366f1' },
+    { name: 'Mixed', value: questionsPct || 0, color: '#f59e0b' },
   ];
 
   const healthScore = Math.min(100, Math.max(0, positivePct));
@@ -116,89 +97,16 @@ export default function ResultsDashboard({ data, onReset, onNavigate }: ResultsD
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="lg:col-span-9 glass-card p-8"
+            className="lg:col-span-9 glass-card p-8 flex flex-col"
           >
             <div className="flex items-center justify-between mb-8">
               <div>
-                <div className="text-3xl font-bold mb-1">Sentiment Trend</div>
-                <div className="text-sm text-slate-500">Audience emotional response over video timeline</div>
-              </div>
-              <div className="flex gap-4">
-                <div className="flex items-center gap-2 text-xs font-bold text-slate-500">
-                  <div className="w-3 h-3 rounded-full bg-green-500" /> Positive
-                </div>
-                <div className="flex items-center gap-2 text-xs font-bold text-slate-500">
-                  <div className="w-3 h-3 rounded-full bg-red-500" /> Negative
-                </div>
+                <div className="text-3xl font-bold mb-1">Sentiment Distribution</div>
+                <div className="text-sm text-slate-500">Overall audience emotional response</div>
               </div>
             </div>
-            <div className="h-[350px] w-full">
-              {chartData.length === 0 ? (
-                <div className="flex items-center justify-center h-full text-slate-500">
-                  <div className="text-center">
-                    <AlertCircle className="w-12 h-12 mx-auto mb-3 opacity-50" />
-                    <p className="text-sm">No timeline data available</p>
-                    <p className="text-xs mt-1">Timeline markers will appear here when available</p>
-                  </div>
-                </div>
-              ) : (
-                <ResponsiveContainer width="100%" height="100%">
-                  <AreaChart data={chartData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                    <defs>
-                      <linearGradient id="colorPos" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#22c55e" stopOpacity={0.3}/>
-                        <stop offset="95%" stopColor="#22c55e" stopOpacity={0}/>
-                      </linearGradient>
-                      <linearGradient id="colorNeg" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#ef4444" stopOpacity={0.3}/>
-                        <stop offset="95%" stopColor="#ef4444" stopOpacity={0}/>
-                      </linearGradient>
-                    </defs>
-                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(255,255,255,0.05)" />
-                    <XAxis 
-                      dataKey="time" 
-                      axisLine={false} 
-                      tickLine={false} 
-                      tick={{ fill: '#64748b', fontSize: 12 }}
-                      label={{ value: 'Video Timeline', position: 'insideBottom', offset: -5, fill: '#64748b', fontSize: 11 }}
-                    />
-                    <YAxis 
-                      axisLine={false} 
-                      tickLine={false} 
-                      tick={{ fill: '#64748b', fontSize: 12 }}
-                      label={{ value: 'Mentions', angle: -90, position: 'insideLeft', fill: '#64748b', fontSize: 11 }}
-                    />
-                    <Tooltip 
-                      contentStyle={{ 
-                        backgroundColor: '#0f172a', 
-                        border: '1px solid rgba(255,255,255,0.1)', 
-                        borderRadius: '12px',
-                        padding: '12px'
-                      }}
-                      labelStyle={{ color: '#e2e8f0', fontWeight: 'bold', marginBottom: '8px' }}
-                      itemStyle={{ color: '#cbd5e1', fontSize: '12px' }}
-                    />
-                    <Area 
-                      type="monotone" 
-                      dataKey="positive" 
-                      stroke="#22c55e" 
-                      fillOpacity={1} 
-                      fill="url(#colorPos)" 
-                      strokeWidth={3}
-                      name="Positive"
-                    />
-                    <Area 
-                      type="monotone" 
-                      dataKey="negative" 
-                      stroke="#ef4444" 
-                      fillOpacity={1} 
-                      fill="url(#colorNeg)" 
-                      strokeWidth={3}
-                      name="Negative"
-                    />
-                  </AreaChart>
-                </ResponsiveContainer>
-              )}
+            <div className="flex-1 w-full min-h-[350px]">
+              <SentimentPieChart sentimentData={sentiment} />
             </div>
           </motion.div>
 

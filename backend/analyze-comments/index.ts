@@ -1,8 +1,9 @@
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 import { DynamoDBDocumentClient, QueryCommand, PutCommand, UpdateCommand } from '@aws-sdk/lib-dynamodb';
-import axios from 'axios';
 import { SentimentAnalyzer } from '../src/services/sentimentAnalyzer';
 import { logError } from '../src/utils/errorSanitizer';
+import { BedrockClient } from './bedrock-client';
+import { parseModelResponse } from './response-parser';
 
 const dbClient = new DynamoDBClient({});
 const docClient = DynamoDBDocumentClient.from(dbClient);
@@ -10,9 +11,11 @@ const docClient = DynamoDBDocumentClient.from(dbClient);
 const VIDEO_ANALYSES_TABLE = process.env.VIDEO_ANALYSES_TABLE;
 const COMMENTS_TABLE = process.env.COMMENTS_TABLE;
 const ANALYSIS_RESULTS_TABLE = process.env.ANALYSIS_RESULTS_TABLE;
-const GROQ_API_KEY = process.env.GROQ_API_KEY;
 const USE_AWS_COMPREHEND = process.env.USE_AWS_COMPREHEND === 'true';
 const AWS_REGION = process.env.AWS_REGION || 'us-east-1';
+
+// Initialize Bedrock client (cached across Lambda invocations)
+const bedrockClient = new BedrockClient();
 
 // Initialize AWS Comprehend Sentiment Analyzer (cached across Lambda invocations)
 let sentimentAnalyzer: SentimentAnalyzer | null = null;
@@ -69,7 +72,7 @@ export const handler = async (event: any) => {
             console.log('Using hybrid approach: AWS Comprehend for sentiment + LLM for insights');
             parsedResults = await analyzeWithHybrid(meaningfulComments, meaningfulComments.length);
         } else {
-            console.log('Using LLM (Groq) for full analysis');
+            console.log('Using LLM (Bedrock) for full analysis');
             parsedResults = await analyzeWithLLM(meaningfulComments, meaningfulComments.length);
         }
 
@@ -181,6 +184,7 @@ async function analyzeWithHybrid(meaningfulComments: any[], totalCommentCount: n
 
 /**
  * Gets insights from LLM using sentiment-annotated comments.
+ * Uses AWS Bedrock with Claude (primary) / Llama (failsafe) models.
  */
 async function getLLMInsights(annotatedComments: string, sentimentBreakdown: any, totalComments: number, analyzedComments: number) {
     // Calculate percentages from Comprehend data
@@ -190,6 +194,8 @@ async function getLLMInsights(annotatedComments: string, sentimentBreakdown: any
     const neutralPercent = total > 0 ? Math.round((sentimentBreakdown.neutral / total) * 100) : 0;
     const questionPercent = total > 0 ? Math.round((sentimentBreakdown.question / total) * 100) : 0;
     
+    const systemPrompt = 'You are a YouTube comment analysis assistant. AWS Comprehend provides sentiment data, and you provide deeper insights. You MUST respond with ONLY valid JSON, no markdown, no code fences, no explanation.';
+
     const prompt = `You are analyzing YouTube video comments. AWS Comprehend has already performed sentiment analysis. Your job is to provide deeper insights.
 
 SENTIMENT ANALYSIS (from AWS Comprehend - DO NOT RECALCULATE):
@@ -238,86 +244,21 @@ You MUST respond with ONLY valid JSON, no other text. Use this exact structure:
   }
 }`;
 
-    let groqResponse;
-    let retries = 0;
-    const maxRetries = 3;
-    const models = ['llama-3.3-70b-versatile', 'llama-3.1-8b-instant', 'gemma2-9b-it'];
+    console.log('Invoking Bedrock for LLM insights (hybrid mode)...');
+    const result = await bedrockClient.invokeModel(prompt, systemPrompt);
+    console.log(`Bedrock response received (model: ${result.modelUsed}), parsing...`);
 
-    while (retries < maxRetries) {
-        try {
-            const selectedModel = models[retries % models.length];
-            console.log(`LLM attempt ${retries + 1}: Using model ${selectedModel}`);
-            
-            groqResponse = await axios.post('https://api.groq.com/openai/v1/chat/completions', {
-                model: selectedModel,
-                messages: [
-                    {
-                        role: 'system',
-                        content: 'You are a YouTube comment analysis assistant. AWS Comprehend provides sentiment data, and you provide deeper insights. You MUST respond with ONLY valid JSON, no markdown, no code fences, no explanation.'
-                    },
-                    {
-                        role: 'user',
-                        content: prompt
-                    }
-                ],
-                max_tokens: 1500,
-                temperature: 0.3,
-                response_format: { type: 'json_object' },
-            }, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${GROQ_API_KEY}`,
-                },
-                timeout: 50000,
-            });
-            break;
-        } catch (err: any) {
-            const status = err.response?.status;
-            const isRetryable = (status === 429 || status === 400) && retries < maxRetries - 1;
-            if (isRetryable) {
-                console.warn(`LLM error (status ${status}). Switching to next model (retry ${retries + 1})...`);
-                let waitTime = status === 429 ? 5000 : 500;
-                if (status === 429) {
-                    const retryAfter = err.response.headers['retry-after'];
-                    const delayStr = err.response.headers['x-ratelimit-reset-tokens'];
-                    if (retryAfter) {
-                        waitTime = parseInt(retryAfter) * 1000;
-                    } else if (delayStr && delayStr.endsWith('s')) {
-                        waitTime = parseFloat(delayStr.replace('s', '')) * 1000;
-                    }
-                }
-                await new Promise(r => setTimeout(r, Math.min(waitTime, 10000)));
-                retries++;
-            } else {
-                logError('LLM API error', err);
-                throw err;
-            }
-        }
-    }
-
-    if (!groqResponse) {
-        throw new Error("Failed to get response from LLM after retries");
-    }
-
-    const aiText = groqResponse.data.choices[0].message.content;
-    console.log("LLM response received, length:", aiText.length);
-    
-    try {
-        const jsonMatch = aiText.match(/\{[\s\S]*\}/);
-        const jsonString = jsonMatch ? jsonMatch[0] : aiText;
-        return JSON.parse(jsonString);
-    } catch (e) {
-        console.error("Failed to parse LLM response as JSON", aiText);
-        throw new Error("Invalid LLM output format");
-    }
+    return parseModelResponse(result.content);
 }
 
 /**
- * Analyzes comments using LLM (Groq) - original implementation.
+ * Analyzes comments using LLM via AWS Bedrock (Claude primary, Llama failsafe).
  */
 async function analyzeWithLLM(meaningfulComments: any[], totalCommentCount: number) {
     const commentTexts = meaningfulComments.map(c => c.text).join('\n---\n').slice(0, 5000);
     
+    const systemPrompt = 'You are a YouTube comment analysis engine. You MUST respond with ONLY valid JSON, no markdown, no code fences, no explanation.';
+
     const prompt = `Analyze these YouTube video comments (sampled from ${totalCommentCount} total comments) and provide insights:
 
 COMMENTS DATA:
@@ -358,78 +299,11 @@ CRITICAL INSTRUCTION: You MUST calculate ACTUAL counts from the provided comment
   }
 }`;
 
-    let groqResponse;
-    let retries = 0;
-    const maxRetries = 3;
-    const models = ['llama-3.3-70b-versatile', 'llama-3.1-8b-instant', 'gemma2-9b-it'];
+    console.log('Invoking Bedrock for LLM analysis (LLM-only mode)...');
+    const result = await bedrockClient.invokeModel(prompt, systemPrompt);
+    console.log(`Bedrock response received (model: ${result.modelUsed}), parsing...`);
 
-    while (retries < maxRetries) {
-        try {
-            const selectedModel = models[retries % models.length];
-            console.log(`Attempt ${retries + 1}: Using model ${selectedModel}`);
-            
-            groqResponse = await axios.post('https://api.groq.com/openai/v1/chat/completions', {
-                model: selectedModel,
-                messages: [
-                    {
-                        role: 'system',
-                        content: 'You are a YouTube comment analysis engine. You MUST respond with ONLY valid JSON, no markdown, no code fences, no explanation.'
-                    },
-                    {
-                        role: 'user',
-                        content: prompt
-                    }
-                ],
-                max_tokens: 1000,
-                temperature: 0.2,
-                response_format: { type: 'json_object' },
-            }, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${GROQ_API_KEY}`,
-                },
-                timeout: 50000,
-            });
-            break;
-        } catch (err: any) {
-            const status = err.response?.status;
-            const isRetryable = (status === 429 || status === 400) && retries < maxRetries - 1;
-            if (isRetryable) {
-                console.warn(`Model error (status ${status}). Switching to next model (retry ${retries + 1})...`);
-                let waitTime = status === 429 ? 5000 : 500;
-                if (status === 429) {
-                    const retryAfter = err.response.headers['retry-after'];
-                    const delayStr = err.response.headers['x-ratelimit-reset-tokens'];
-                    if (retryAfter) {
-                        waitTime = parseInt(retryAfter) * 1000;
-                    } else if (delayStr && delayStr.endsWith('s')) {
-                        waitTime = parseFloat(delayStr.replace('s', '')) * 1000;
-                    }
-                }
-                await new Promise(r => setTimeout(r, Math.min(waitTime, 10000)));
-                retries++;
-            } else {
-                console.error((err as any).response?.data || err);
-                throw err;
-            }
-        }
-    }
-
-    if (!groqResponse) {
-        throw new Error("Failed to get response from Groq API after retries");
-    }
-
-    const aiText = groqResponse.data.choices[0].message.content;
-    console.log("Groq response received, length:", aiText.length);
-    
-    try {
-        const jsonMatch = aiText.match(/\{[\s\S]*\}/);
-        const jsonString = jsonMatch ? jsonMatch[0] : aiText;
-        return JSON.parse(jsonString);
-    } catch (e) {
-        console.error("Failed to parse AI response as JSON", aiText);
-        throw new Error("Invalid AI Output format");
-    }
+    return parseModelResponse(result.content);
 }
 
 

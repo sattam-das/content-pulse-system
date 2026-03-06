@@ -20,6 +20,7 @@ function App() {
   const [analysisId, setAnalysisId] = useState<string | null>(null);
   const [analysisResult, setAnalysisResult] = useState<AnalysisResult | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isAnalysisComplete, setIsAnalysisComplete] = useState(false);
 
   const handleNavigate = useCallback((target: string) => {
     if (target === 'about' || target === 'faq') {
@@ -36,6 +37,7 @@ function App() {
 
   const handleSubmit = useCallback(async (url: string) => {
     setIsSubmitting(true);
+    setIsAnalysisComplete(false);
 
     if (USE_MOCK) {
       // Simulate network delay
@@ -66,9 +68,13 @@ function App() {
       // Simulate a loading delay then show mock results
       const timer = setTimeout(() => {
         const mockData = getMockAnalysisResult();
-        setAnalysisResult(mockData);
-        setScreen('results');
-      }, 6000); // 6 seconds to show the nice loading animation
+        setIsAnalysisComplete(true);
+        // Brief delay to show 100% before transitioning
+        setTimeout(() => {
+          setAnalysisResult(mockData);
+          setScreen('results');
+        }, 1500);
+      }, 6000);
       
       return () => {
         clearTimeout(timer);
@@ -80,9 +86,13 @@ function App() {
         const result = await getAnalysisStatus(analysisId);
 
         if (result.status === 'completed') {
-          setAnalysisResult(result);
-          setScreen('results');
           clearInterval(interval);
+          setIsAnalysisComplete(true);
+          // Let progress ring reach 100% before showing results
+          setTimeout(() => {
+            setAnalysisResult(result);
+            setScreen('results');
+          }, 1500);
         } else if (result.status === 'failed') {
           alert('Analysis failed. Please try again.');
           handleReset();
@@ -100,6 +110,7 @@ function App() {
     setScreen('input');
     setAnalysisId(null);
     setAnalysisResult(null);
+    setIsAnalysisComplete(false);
   };
 
   return (
@@ -128,7 +139,7 @@ function App() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <LoadingScreen />
+              <LoadingScreen isComplete={isAnalysisComplete} />
             </motion.div>
           )}
 

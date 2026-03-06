@@ -1,9 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
 import { Search, Brain, BarChart3 } from 'lucide-react';
 
 interface LoadingScreenProps {
-  // Add props if needed in future
+  /** 
+   * Whether the analysis is complete. When true, progress jumps to 100%.
+   * When false/undefined, progress slowly climbs toward 90% max.
+   */
+  isComplete?: boolean;
 }
 
 const steps = [
@@ -12,32 +16,35 @@ const steps = [
   { icon: BarChart3, label: 'Building insights' },
 ];
 
-export default function LoadingScreen({}: LoadingScreenProps = {}) {
+export default function LoadingScreen({ isComplete = false }: LoadingScreenProps) {
   const [progress, setProgress] = useState(0);
+  const startTimeRef = useRef(Date.now());
 
   useEffect(() => {
-    const duration = 5500;
-    const interval = 30;
-    const totalSteps = duration / interval;
-    let current = 0;
+    if (isComplete) {
+      setProgress(100);
+      return;
+    }
 
-    const timer = setInterval(() => {
-      current++;
-      const t = current / totalSteps;
-      const eased = 1 - Math.pow(1 - t, 3);
-      setProgress(Math.min(100, Math.round(eased * 100)));
+    const interval = setInterval(() => {
+      const elapsed = (Date.now() - startTimeRef.current) / 1000; // seconds
 
-      if (current >= totalSteps) clearInterval(timer);
-    }, interval);
+      // Asymptotic curve: fast at start, slows down as it approaches 90%
+      // Formula: 90 * (1 - e^(-elapsed/25))
+      // ~30% at 10s, ~50% at 18s, ~70% at 30s, ~85% at 50s, never reaches 90
+      const asymptotic = 90 * (1 - Math.exp(-elapsed / 25));
 
-    return () => clearInterval(timer);
-  }, []);
+      setProgress(Math.min(89, Math.round(asymptotic)));
+    }, 200);
+
+    return () => clearInterval(interval);
+  }, [isComplete]);
 
   const circumference = 2 * Math.PI * 120;
   const strokeOffset = circumference - (progress / 100) * circumference;
 
   // Determine active step based on progress
-  const activeStep = progress < 35 ? 0 : progress < 70 ? 1 : 2;
+  const activeStep = progress < 20 ? 0 : progress < 85 ? 1 : 2;
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-[#020617] relative overflow-hidden">
@@ -57,9 +64,10 @@ export default function LoadingScreen({}: LoadingScreenProps = {}) {
           <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 260 260">
             <circle
               cx="130" cy="130" r="120" fill="none"
-              stroke="#818cf8" strokeWidth="1.5" strokeLinecap="round"
+              stroke={progress >= 100 ? '#22c55e' : '#818cf8'}
+              strokeWidth="1.5" strokeLinecap="round"
               strokeDasharray={circumference} strokeDashoffset={strokeOffset}
-              style={{ transition: 'stroke-dashoffset 0.1s ease-out' }}
+              style={{ transition: 'stroke-dashoffset 0.3s ease-out, stroke 0.5s ease' }}
             />
           </svg>
           <span className="text-7xl font-light tracking-tight text-slate-100 tabular-nums font-sans">
