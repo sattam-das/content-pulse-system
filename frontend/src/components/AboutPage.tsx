@@ -100,7 +100,7 @@ export default function AboutPage({ onBack, onNavigate }: AboutPageProps) {
                 ContentPulse is built on a modern, scalable architecture, leveraging cutting-edge AI and robust cloud infrastructure:
               </p>
               <ul className="list-disc list-inside text-slate-400 leading-relaxed mb-4 space-y-2">
-                <li><span className="text-indigo-400 font-semibold">Groq (Llama 3.1)</span> powers our ultra-fast natural language understanding, processing thousands of comments in seconds to detect patterns, group similar questions, and identify confusion points</li>
+                <li><span className="text-indigo-400 font-semibold">AWS Bedrock (Llama 3.3 70B)</span> powers our natural language understanding, processing thousands of comments in seconds to detect patterns, group similar questions, and identify confusion points — with automatic failover to Llama 3.1 70B for reliability</li>
                 <li><span className="text-indigo-400 font-semibold">YouTube Data API</span> extracts deep structured comment data instantly directly from the source</li>
                 <li><span className="text-indigo-400 font-semibold">AWS Lambda</span> handles serverless processing on the backend, scaling instantly whether a video has 50 comments or 2,500</li>
                 <li><span className="text-indigo-400 font-semibold">Amazon DynamoDB</span> stores and structures your audience insights and extracted comments for lightning-fast retrieval</li>
@@ -108,7 +108,7 @@ export default function AboutPage({ onBack, onNavigate }: AboutPageProps) {
                 <li><span className="text-indigo-400 font-semibold">AWS API Gateway</span> securely orchestrates the entire workflow between the frontend and the cloud</li>
               </ul>
               <p className="text-slate-400 leading-relaxed mb-8">
-                This powerful combination of AWS serverless infrastructure and Groq's low-latency AI inference allows us to deliver enterprise-grade analytics in seconds.
+                This powerful combination of AWS serverless infrastructure and AWS Bedrock's managed AI inference allows us to deliver enterprise-grade analytics in seconds — with built-in dual-model failover ensuring reliability even during peak demand.
               </p>
 
               <h2 className="text-2xl font-bold text-white mb-4">The Team</h2>
