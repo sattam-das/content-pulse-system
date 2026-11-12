@@ -9,9 +9,8 @@
 [![AWS](https://img.shields.io/badge/AWS-Serverless-FF9900?style=for-the-badge&logo=amazon-aws&logoColor=white)](https://aws.amazon.com/)
 [![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://reactjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Tests](https://img.shields.io/badge/Tests-106%20Passing-00C853?style=for-the-badge&logo=jest&logoColor=white)](https://jestjs.io/)
 
-[Live Demo](#) • [Documentation](#) • [Architecture](#-architecture) • [Getting Started](#-quick-start)
+[Live Demo](https://master.d2n368wvzz9eo9.amplifyapp.com/) • [Architecture](#-architecture) • [Getting Started](#-quick-start)
 
 </div>
 
@@ -28,15 +27,14 @@ ContentPulse is an **enterprise-grade, serverless platform** that automatically 
 - **Real-time sentiment analysis** powered by AWS Comprehend
 - **Intelligent pattern recognition** using AWS Bedrock (Llama 3.3 70B)
 - **Actionable insights** presented in an intuitive dashboard
-- **Scalable architecture** handling videos with 100K+ comments
-- **99.9% uptime** with serverless AWS infrastructure
+- **Scalable architecture**: tested on videos with up to 2,000 comments (about 30 to 60 seconds per run)
 
 ---
 
 ## ✨ Key Features
 
 ### 🤖 AI-Powered Analysis
-- **AWS Comprehend Integration**: Enterprise-grade sentiment detection with 95%+ accuracy
+- **AWS Comprehend Integration**: Sentiment detection for each comment
 - **Batch Processing**: Analyze up to 25 comments per API call for optimal performance
 - **Smart Classification**: Automatically categorizes comments as positive, negative, neutral, or mixed
 - **Question Detection**: Identifies audience questions requiring creator response
@@ -50,7 +48,6 @@ ContentPulse is an **enterprise-grade, serverless platform** that automatically 
 ### ⚡ Performance & Reliability
 - **Serverless Architecture**: Auto-scales from 0 to millions of requests
 - **Sub-second Response**: Optimized batch processing with retry logic
-- **103 Passing Tests**: Comprehensive test coverage ensuring reliability
 - **Zero Downtime**: Deployed on AWS with built-in redundancy
 
 ### 🔒 Security & Compliance
@@ -121,7 +118,6 @@ ContentPulse is an **enterprise-grade, serverless platform** that automatically 
 - Jest (unit testing)
 - ts-jest (TypeScript support)
 - Fast-check (property-based testing)
-- 103 passing tests with 85%+ coverage
 
 ---
 
@@ -188,11 +184,11 @@ Visit `http://localhost:5173` to see the application.
 ### Run All Tests
 
 ```bash
-# Backend tests (103 tests)
+# Backend tests
 cd backend
 npm test
 
-# Frontend tests (3 tests)
+# Frontend tests
 cd frontend
 npm test
 ```
@@ -204,12 +200,6 @@ cd backend
 npm run test:coverage
 ```
 
-**Current Coverage:**
-- Lines: 87%
-- Branches: 82%
-- Functions: 91%
-- Statements: 87%
-
 ---
 
 ## 📊 Performance Metrics
@@ -220,8 +210,6 @@ npm run test:coverage
 | **Batch Processing Rate** | 25 comments/request |
 | **API Response Time** | < 500ms (p95) |
 | **Concurrent Users** | 1000+ (auto-scaling) |
-| **Test Coverage** | 85%+ |
-| **Uptime** | 99.9% |
 
 ---
 
