@@ -4,7 +4,7 @@
 
 **AI-Powered YouTube Comment Intelligence Platform**
 
-*Transform viewer feedback into actionable insights with enterprise-grade sentiment analysis*
+*Transform viewer feedback into actionable insights with AI-powered sentiment analysis*
 
 [![AWS](https://img.shields.io/badge/AWS-Serverless-FF9900?style=for-the-badge&logo=amazon-aws&logoColor=white)](https://aws.amazon.com/)
 [![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://reactjs.org/)
@@ -22,7 +22,7 @@ YouTube creators receive thousands of comments but lack the tools to understand 
 
 ## 💡 Our Solution
 
-ContentPulse is an **enterprise-grade, serverless platform** that automatically analyzes YouTube comments using AWS AI services, delivering:
+ContentPulse is a **serverless platform** that automatically analyzes YouTube comments using AWS AI services, delivering:
 
 - **Real-time sentiment analysis** powered by AWS Comprehend
 - **Intelligent pattern recognition** using AWS Bedrock (Llama 3.3 70B)
@@ -46,9 +46,8 @@ ContentPulse is an **enterprise-grade, serverless platform** that automatically 
 - **Top Comments**: Surface most impactful feedback automatically
 
 ### ⚡ Performance & Reliability
-- **Serverless Architecture**: Auto-scales from 0 to millions of requests
-- **Sub-second Response**: Optimized batch processing with retry logic
-- **Zero Downtime**: Deployed on AWS with built-in redundancy
+- **Serverless Architecture**: Runs on AWS Lambda, API Gateway and DynamoDB
+- **Batch Processing with Retries**: Comments are analyzed in batches, with retry logic and a Llama 3.1 failsafe
 
 ### 🔒 Security & Compliance
 - **Least-Privilege IAM**: Minimal permissions following AWS best practices
@@ -135,7 +134,7 @@ YouTube Data API v3 key
 ### 1. Clone & Install
 
 ```bash
-git clone https://github.com/yourusername/content-pulse-system.git
+git clone https://github.com/sattam-das/content-pulse-system.git
 cd content-pulse-system
 
 # Install all dependencies
@@ -206,10 +205,8 @@ npm run test:coverage
 
 | Metric | Value |
 |--------|-------|
-| **Average Analysis Time** | 2.3 seconds |
+| **Largest run tested** | 2,000 comments in about 30 to 60 seconds |
 | **Batch Processing Rate** | 25 comments/request |
-| **API Response Time** | < 500ms (p95) |
-| **Concurrent Users** | 1000+ (auto-scaling) |
 
 ---
 
@@ -238,10 +235,7 @@ npm run test:coverage
 ## 🔐 Security & Privacy
 
 ### Data Protection
-- ✅ All data encrypted in transit (TLS 1.3)
-- ✅ All data encrypted at rest (AES-256)
 - ✅ No PII stored in logs
-- ✅ Minimal data retention (30 days)
 
 ### AWS Security Best Practices
 - ✅ Least-privilege IAM roles
@@ -249,11 +243,6 @@ npm run test:coverage
 - ✅ CloudWatch monitoring
 - ✅ AWS WAF integration ready
 - ✅ DDoS protection via CloudFront
-
-### Compliance
-- GDPR-ready architecture
-- SOC 2 Type II compliant (AWS services)
-- HIPAA-eligible infrastructure
 
 ---
 
@@ -301,7 +290,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👥 Team
 
-Built with ❤️ by the ContentPulse team for the AWS Hackathon 2026.
+Built solo by Sattam Das for AWS Bharat Builds 2026 (advanced to round 2).
 
 ---
 
@@ -315,9 +304,8 @@ Built with ❤️ by the ContentPulse team for the AWS Hackathon 2026.
 
 ## 📞 Contact & Support
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/content-pulse-system/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/content-pulse-system/discussions)
-- **Email**: support@contentpulse.io
+- **Issues**: [GitHub Issues](https://github.com/sattam-das/content-pulse-system/issues)
+- **Email**: sattamwk06@gmail.com
 
 ---
 
